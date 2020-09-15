@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useParams, Redirect, Link } from "react-router-dom";
 
 import WSApiContext from "../api/websocket";
-import useGameApi from "../api/game";
+import useGameApi from "../api/api";
 
 function Join() {
   const { roomName: paramsRoomName } = useParams();
@@ -16,12 +16,21 @@ function Join() {
   const [infoMsg, setInfoMsg] = useState("");
 
   async function joinRoom(room) {
+    // authenticate first
+    const session = await api.authenticate(null, () => prompt("Nickname"));
     const r = await api.join({
       room_name: room,
-      session: api.localSession(),
+      session,
     });
+
     if (r.room_name) {
-      setInfoMsg(<Redirect to={`/room/${r.room_name}`} />);
+      setInfoMsg(`Joining ${r.room_name}...`);
+      setTimeout(() => {
+        clearTimeout();
+        setInfoMsg(<Redirect to={`/room/${r.room_name}`} />);
+      }, 500);
+    } else {
+      setInfoMsg(r.data);
     }
   }
 

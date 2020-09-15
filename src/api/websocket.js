@@ -14,7 +14,7 @@ function useWebSocketApi(socket) {
   // handle incoming data
   socket.on("data", (incomingData) => {
     if (validData(incomingData) && queue.has(incomingData.id)) {
-      const { data, id } = incomingData;
+      const { id, data } = incomingData;
       const callback = queue.get(id);
       callback(data);
       // remove id from the queue after callback
@@ -24,18 +24,18 @@ function useWebSocketApi(socket) {
     listeners.forEach((listener) => listener(incomingData));
   });
 
-  function request(data, callback) {
+  function request({ type, data }, callback) {
     // generate a uuid for the outgoing data
     const id = uuidv4();
-    socket.emit("data", { data, id });
+    socket.emit("data", { type, data, id });
     // use same ID to identify callback in queue
     queue.set(id, callback);
   }
 
-  function requestAsync(data) {
+  function requestAsync({ type, data }) {
     // promisify the callback-based request
     return new Promise((resolve, reject) => {
-      request(data, (responseData) => {
+      request({ type, data }, (responseData) => {
         resolve(responseData);
         clearTimeout();
       });

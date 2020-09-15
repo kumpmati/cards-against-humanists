@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import WSApiContext from "../api/websocket";
-import useGameApi from "../api/game";
+import useGameApi from "../api/api";
 
 // ingame room
 function Room() {
@@ -19,20 +18,11 @@ function Room() {
 
   useEffect(() => {
     (async () => {
-      // authenticate user
-      const session = await api.authenticate();
+      // authenticate user and ask for a nickname if session is new
+      const session = await api.authenticate(null, () =>
+        prompt("Choose a nickname:")
+      );
       setUserInfo(session);
-      // join room
-      const room = await api.join({ room_name: roomName, session });
-
-      if (!room.error) {
-        // get game state if joined successfully
-        const newData = await api.getState({
-          room_name: roomName,
-          session,
-        });
-        setGameData(newData);
-      }
     })();
   }, []);
 

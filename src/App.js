@@ -9,6 +9,8 @@ import Room from "./pages/Room";
 import NewRoom from "./pages/New";
 import Join from "./pages/Join";
 
+import Test from "./pages/Test";
+
 function App() {
   // connect to backend using socket.io
   const io = connect(process.env.REACT_APP_WS_URL);
@@ -27,6 +29,9 @@ function App() {
             </Route>
             <Route path="/room/:roomName" exact>
               <Room />
+            </Route>
+            <Route path="/test">
+              <Test />
             </Route>
             <Route path="/">
               <Home />

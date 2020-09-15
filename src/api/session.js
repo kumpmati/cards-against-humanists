@@ -10,8 +10,8 @@ const getName = () => localStorage.getItem("session-name");
 const setLocalSession = (params) => {
   if (!params) return;
   if (params.name) setName(params.name);
-  if (params.session_id) setId(params.session_id);
+  if (params.sid) setId(params.sid);
 };
-const getLocalSession = () => ({ name: getName(), session_id: getId() });
+const getLocalSession = () => ({ name: getName(), sid: getId() });
 
 module.exports = { getLocalSession, setLocalSession };
