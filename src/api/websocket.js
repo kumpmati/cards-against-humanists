@@ -11,6 +11,10 @@ function useWebSocketApi(socket) {
   const queue = new Map();
   const listeners = new Set();
 
+  socket.on("room-update", (d) => {
+    listeners.forEach((listener) => listener(d));
+  });
+
   // handle incoming data
   socket.on("data", (incomingData) => {
     if (validData(incomingData) && queue.has(incomingData.id)) {
@@ -20,8 +24,6 @@ function useWebSocketApi(socket) {
       // remove id from the queue after callback
       queue.delete(id);
     }
-    // always call each listener with the data
-    listeners.forEach((listener) => listener(incomingData));
   });
 
   function request({ type, data }, callback) {

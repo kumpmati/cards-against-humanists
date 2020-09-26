@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
@@ -10,6 +10,13 @@ function Test() {
 
   const [response, setResponse] = useState("");
   const [session, setSession] = useState();
+  const [gameData, setGameData] = useState(null);
+
+  useEffect(() => {
+    ws.addListener((d) => {
+      setGameData(d);
+    });
+  }, []);
 
   async function testAuth() {
     const authRes = await api.authenticate();
@@ -30,7 +37,7 @@ function Test() {
   async function testJoinRoom() {
     setResponse(
       await api.join({
-        room_name: prompt("room name"),
+        room_id: prompt("room id"),
         room_password: prompt("room password"),
         sid: session ? session.sid : "a",
       })
@@ -64,6 +71,7 @@ function Test() {
 
   return (
     <div>
+      <p>{JSON.stringify(gameData)}</p>
       <button onClick={() => localStorage.clear()}>Clear localstorage</button>
       <button onClick={() => testAuth()}>Authenticate</button>
       <br></br>

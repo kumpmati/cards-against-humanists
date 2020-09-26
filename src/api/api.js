@@ -11,6 +11,7 @@ import {
   SendAction,
 } from "./types/message";
 
+// helper to check if an object is a valid session object
 const isValidSession = (s) => !!s && !!s.sid && !!s.name;
 
 // game api
@@ -44,16 +45,20 @@ function useGameApi({ requestAsync }) {
       ? customSession
       : getLocalSession();
 
+    // request the backend to validate the stored session
     const localSessionRes = await validateSession(session);
-    // request a new session if local is invalid
+
     if (!isValidSession(localSessionRes)) {
       let nickname = session.name;
+
       // get new name from callback if provided
       if (typeof newNicknameCallback === "function") {
         nickname = newNicknameCallback();
       }
-      // create new session
+
+      // request a new session from the backend
       const newSessionRes = await newSession(nickname);
+
       // return new session if session was successfully created
       if (isValidSession(newSessionRes)) {
         setLocalSession(newSessionRes);
@@ -74,11 +79,11 @@ function useGameApi({ requestAsync }) {
   }
 
   // join a room
-  function join({ room_name, room_password, sid }) {
+  function join({ room_id, room_password, sid }) {
     return requestAsync({
       type: JoinRoom,
       data: {
-        room_name,
+        room_id,
         room_password,
         sid,
       },
