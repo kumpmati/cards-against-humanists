@@ -2,8 +2,19 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import connect from "socket.io-client";
 
+/*
+ * Websocket API
+ */
 import WSContext, { useWebSocketApi } from "./api/websocket";
 
+/*
+ * Css
+ */
+import "./App.css";
+
+/*
+ * Pages
+ */
 import Home from "./pages/Home";
 import Room from "./pages/Room";
 import NewRoom from "./pages/New";
@@ -11,13 +22,19 @@ import Join from "./pages/Join";
 
 import Test from "./pages/Test";
 
+// connect to different places depending on node env
+const url =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_WS_URL
+    : process.env.REACT_APP_WS_URL_DEV;
+
 function App() {
   // connect to backend using socket.io
-  const io = connect(process.env.REACT_APP_WS_URL);
+  const io = connect(url);
   // provide socket.io connection to the websocket interface
   const WSConnection = useWebSocketApi(io);
   return (
-    <main>
+    <main id="App">
       <WSContext.Provider value={WSConnection}>
         <Router>
           <Switch>

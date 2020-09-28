@@ -1,0 +1,67 @@
+.card {
+  font-size: 0.9em;
+
+  position: relative;
+  width: 10em;
+  height: 14em;
+
+  padding: 0.75em;
+  margin: 0.75em;
+
+  font-weight: bold;
+  box-sizing: border-box;
+
+  color: rgb(10, 10, 10);
+  background-color: white;
+
+  border-radius: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  cursor: pointer;
+  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+
+  transition: margin 150ms, transform 150ms, box-shadow 150ms;
+
+  user-select: none;
+}
+
+.card.question {
+  color: white;
+  background-color: rgb(27, 27, 27);
+}
+
+.card:hover {
+  transform: translateY(-0.3em);
+  box-shadow: 0px 0.3em 0.5em rgba(0, 0, 0, 0.2);
+}
+
+.card.selected {
+  border: 2px solid rgb(42, 90, 153);
+  margin-left: 2.5em;
+  margin-right: 3em;
+}
+
+/*
+* Number in the top left when card is selected
+*/
+.selection-number {
+  font-size: 1.25em;
+  display: grid;
+
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
+
+  margin: 0;
+  padding: 0;
+
+  width: 1.75em;
+  height: 1.75em;
+
+  place-content: center;
+
+  border-radius: 100%;
+
+  color: white;
+  background-color: rgb(42, 90, 153);
+}
