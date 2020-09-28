@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 
 import WSContext from "../api/websocket";
-import useGameApi from "../api/game";
+import useGameApi from "../api/api";
 
 function NewRoom() {
   const { requestAsync } = useContext(WSContext);
