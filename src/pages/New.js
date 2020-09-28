@@ -1,33 +1,43 @@
-import React, { useContext, useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import WSContext from "../api/websocket";
+import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
 
 function NewRoom() {
-  const { requestAsync } = useContext(WSContext);
-  const api = useGameApi({ requestAsync });
-  const [roomName, setRoomName] = useState("");
+  // websocket api
+  const ws = useContext(WSApiContext);
+  const api = useGameApi(ws);
+
+  const [roomId, setRoomId] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
   const [infoMsg, setInfoMsg] = useState("");
+  const [userInfo, setUserInfo] = useState();
+
+  useEffect(() => {
+    (async () => {
+      const session = await api.authenticate(null, () =>
+        prompt("Choose a nickname:")
+      );
+      setUserInfo(session);
+    })();
+  }, []);
 
   async function createRoom(e) {
     // prevent page refresh
     e.preventDefault();
-    // create room
-    const r = await api.create({
-      room_name: roomName,
+
+    // request backend to create a new room
+    const created = await api.create({
+      room_name: roomId,
       room_password: roomPassword,
+      sid: userInfo ? userInfo.sid : "-",
     });
-    // handle errors
-    if (r.error === "INVALID_ACTION") {
-      setInfoMsg(r.data);
-    } else if (r.error === "MISSING_PARAMS") {
-      setInfoMsg("please enter a room name");
-    } else {
-      // successful room creation, redirect
-      setInfoMsg(<Redirect to={`/room/${r.room_name}`} />);
-    }
+
+    // show error msg
+    if (!!created.error) setInfoMsg(created.data);
+
+    console.log(created);
   }
 
   return (
@@ -35,12 +45,12 @@ function NewRoom() {
       <h1>New Game</h1>
       <Link to="/">Back</Link>
       <form name="room-info">
-        <h2>Name:</h2>
+        <h2>ID:</h2>
         <input
           type="text"
-          placeholder="TheBestRoom"
-          value={roomName}
-          onChange={(e) => setRoomName(e.target.value)}
+          placeholder="abc123"
+          value={roomId}
+          onChange={(e) => setRoomId(e.target.value)}
         />
         <h2>Password (optional):</h2>
         <input

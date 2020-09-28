@@ -5,29 +5,33 @@ import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
 
 function Join() {
-  const { roomName: paramsRoomName } = useParams();
+  const { roomName: paramsRoomId } = useParams();
 
   // websocket api
   const ws = useContext(WSApiContext);
   const api = useGameApi(ws);
 
-  const [roomName, setRoomName] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
   const [infoMsg, setInfoMsg] = useState("");
 
-  async function joinRoom(room) {
-    // authenticate first
+  async function joinRoom(room_id, room_password) {
+    // authenticate
     const session = await api.authenticate(null, () => prompt("Nickname"));
+
+    // request to join the room
     const r = await api.join({
-      room_name: room,
-      session,
+      room_id,
+      room_password,
+      sid: session ? session.sid : "-",
     });
 
-    if (r.room_name) {
-      setInfoMsg(`Joining ${r.room_name}...`);
+    // switch to room if joining is successful
+    if (r.current_room) {
+      setInfoMsg(`Joining ${r.current_room}...`);
       setTimeout(() => {
         clearTimeout();
-        setInfoMsg(<Redirect to={`/room/${r.room_name}`} />);
+        setInfoMsg(<Redirect to={`/room/${r.current_room}`} />);
       }, 500);
     } else {
       setInfoMsg(r.data);
@@ -35,8 +39,8 @@ function Join() {
   }
 
   // redirect to parameter-defined room
-  if (!!paramsRoomName) {
-    joinRoom(paramsRoomName);
+  if (!!paramsRoomId) {
+    joinRoom(paramsRoomId);
   }
 
   return (
@@ -44,12 +48,12 @@ function Join() {
       <h1>Join Game</h1>
       <Link to="/">Back</Link>
       <form name="room-info">
-        <h2>Name:</h2>
+        <h2>ID:</h2>
         <input
           type="text"
           placeholder="TheBestRoom"
-          value={roomName}
-          onChange={(e) => setRoomName(e.target.value)}
+          value={roomId}
+          onChange={(e) => setRoomId(e.target.value)}
         />
         <h2>Password (optional):</h2>
         <input
@@ -62,7 +66,7 @@ function Join() {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            joinRoom(roomName);
+            joinRoom(roomId, roomPassword);
           }}
         />
         <p>{infoMsg}</p>
