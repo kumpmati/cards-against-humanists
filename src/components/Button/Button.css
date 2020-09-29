@@ -8,12 +8,18 @@
   border: 1px solid transparent;
   border-radius: 1.5em;
   cursor: pointer;
+
+  user-select: none;
 }
 
 .button:hover {
   color: rgb(50, 50, 50);
   background-color: rgb(235, 235, 235);
   border-color: white;
+}
+
+.button:active {
+  filter: brightness(0.75);
 }
 
 .button * {

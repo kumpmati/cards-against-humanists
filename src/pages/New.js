@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
@@ -12,32 +12,33 @@ function NewRoom() {
   const [roomId, setRoomId] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
   const [infoMsg, setInfoMsg] = useState("");
-  const [userInfo, setUserInfo] = useState();
 
+  /*
+   * Authenticate on page load
+   */
   useEffect(() => {
-    (async () => {
-      const session = await api.authenticate(null, () =>
-        prompt("Choose a nickname:")
-      );
-      setUserInfo(session);
-    })();
+    (async () => {})();
   }, []);
 
   async function createRoom(e) {
     // prevent page refresh
     e.preventDefault();
 
+    const session = await api.authenticate(null, () =>
+      prompt("Choose a nickname:")
+    );
+
     // request backend to create a new room
     const created = await api.create({
       room_name: roomId,
       room_password: roomPassword,
-      sid: userInfo ? userInfo.sid : "-",
+      sid: session ? session.sid : "-",
     });
 
     // show error msg
     if (!!created.error) setInfoMsg(created.data);
 
-    console.log(created);
+    setInfoMsg(<Redirect to={`/room/${created.room_id}`} />);
   }
 
   return (

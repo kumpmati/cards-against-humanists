@@ -31,14 +31,12 @@
 }
 
 .card:hover {
-  transform: translateY(-0.3em);
   box-shadow: 0px 0.3em 0.5em rgba(0, 0, 0, 0.2);
 }
 
 .card.selected {
   border: 2px solid rgb(42, 90, 153);
-  margin-left: 2.5em;
-  margin-right: 3em;
+  transform: translateY(-0.3em);
 }
 
 /*

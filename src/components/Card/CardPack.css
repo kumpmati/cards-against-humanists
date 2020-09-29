@@ -1,0 +1,8 @@
+.card-pack {
+  display: flex;
+}
+
+.card-pack > .card {
+  margin-left: 0;
+  margin-right: -5em;
+}

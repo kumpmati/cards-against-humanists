@@ -1,0 +1,13 @@
+#cards {
+  display: grid;
+  place-content: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+#confirm-cards {
+  position: absolute;
+  right: -5em;
+  bottom: 7em;
+  transform: translateY(-50%);
+}
