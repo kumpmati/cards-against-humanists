@@ -16,7 +16,7 @@ function Test() {
     ws.addListener((d) => {
       setGameData(d);
     });
-  }, []);
+  }, [ws]);
 
   async function testAuth() {
     const authRes = await api.authenticate();

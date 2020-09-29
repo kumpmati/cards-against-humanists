@@ -19,7 +19,7 @@ export default {
   // cards in hand
   cards: [
     { text: "Unit tests" },
-    { text: "Crying" },
+    { text: "Not testing" },
     { text: "console.log" },
     { text: "Debugger" },
   ],

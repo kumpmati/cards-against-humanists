@@ -1,0 +1,15 @@
+#submitted-cards {
+  font-size: 0.75em;
+  display: flex;
+  gap: 5em;
+}
+
+#submitted-cards.spread {
+  font-size: 1em;
+  gap: 0.5em;
+  background-color: red;
+}
+
+#submitted-cards.spread > .list > .card {
+  margin-right: 0.25em;
+}
