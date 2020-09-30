@@ -1,13 +1,17 @@
 #cards {
-  display: grid;
-  place-content: center;
-  position: relative;
-  margin: 0 auto;
+	display: grid;
+	place-content: center;
+	position: relative;
+	margin: 0 auto;
+}
+
+#card-list.no-select {
+	opacity: 0.5;
 }
 
 #confirm-cards {
-  position: absolute;
-  right: -5em;
-  bottom: 7em;
-  transform: translateY(-50%);
+	position: absolute;
+	right: -5em;
+	bottom: 7em;
+	transform: translateY(-50%);
 }

@@ -1,43 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Game.css";
+
+/*
+ * API
+ */
+import WSApiContext from "../../api/websocket";
+import useGameApi from "../../api/api";
 
 import PlayerList from "../PlayerList";
 import Table from "../Table";
 import Hand from "../Hand";
+import {
+	compareValues,
+	parseHandData,
+	parsePlayerData,
+	parseTableData,
+} from "./util";
 
 /*
  * Game renderer
  */
-function GameRenderer({ data, sendAction }) {
-  const {
-    players,
-    cards,
-    current_question,
-    current_czar,
-    game_status,
-    submitted_cards,
-  } = data || {}; // default to empty object to prevent destructuring error
+function GameRenderer({ userInfo }) {
+	const { name, sid } = userInfo || {};
 
-  return (
-    <div id="game">
-      <PlayerList
-        players={players}
-        current_czar={current_czar}
-        game_status={game_status}
-      />
-      <Table
-        current_question={current_question}
-        cards={submitted_cards}
-        game_status={game_status}
-      />
-      <Hand
-        cards={cards}
-        sendAction={sendAction}
-        requiredCards={current_question && current_question.required_cards}
-        gameStatus={game_status}
-      />
-    </div>
-  );
+	// websocket api
+	const ws = useContext(WSApiContext);
+	const api = useGameApi(ws);
+
+	// function to send data to server
+	const sendFunc = async (data) => {
+		const r = await api.sendAction({ data, sid });
+		console.log(r);
+	};
+
+	/*
+	 * Store state of each section independently
+	 */
+	const [playerData, setPlayerData] = useState({});
+	const [tableData, setTableData] = useState({});
+	const [handData, setHandData] = useState({});
+
+	/* Listen for game updates */
+	useEffect(() => {
+		const listener = (d) => {
+			const newPlayerData = parsePlayerData(d);
+			const newTableData = parseTableData(d);
+			const newHandData = parseHandData(d);
+
+			// only update if values have changed
+			!compareValues(newPlayerData, playerData) && setPlayerData(newPlayerData);
+
+			!compareValues(newTableData, tableData) && setTableData(newTableData);
+
+			!compareValues(newHandData, handData) && setHandData(newHandData);
+		};
+		ws.addListener(listener);
+
+		// remove listener when unmounting
+		return () => ws.removeListener(listener);
+	}, [ws]);
+
+	return (
+		<div id="game">
+			<PlayerList {...playerData} me={name} />
+			<Table {...tableData} send={sendFunc} />
+			<Hand
+				{...handData}
+				send={sendFunc}
+				disabled={handData.current_czar === name}
+			/>
+		</div>
+	);
 }
 
 export default GameRenderer;

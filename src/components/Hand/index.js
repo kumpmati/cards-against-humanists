@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toggleInList } from "./util";
 import "./Hand.css";
+
 /*
  * Components
  */
@@ -8,39 +9,52 @@ import Button from "../Button";
 import Card from "../Card";
 import List from "../List";
 import CardListStyle from "./CardList.css";
+import { compareValues } from "../GameRenderer/util";
 
 /*
  * Card list
  */
-function CardList({ cards, sendAction, requiredCards }) {
-  const [selectedCards, setSelectedCards] = useState([]);
+function Hand({ cards, current_question, disabled, send }) {
+	const [currentCards, setCurrentCards] = useState(cards);
+	const [selectedCards, setSelectedCards] = useState([]);
 
-  const submitCards = async () => {
-    await sendAction(selectedCards);
-    setSelectedCards([]);
-  };
+	// on submit send submission request to server
+	const submitCards = () => send({ submit: selectedCards });
 
-  return (
-    <section id="cards">
-      <List
-        id="card-list"
-        style={CardListStyle}
-        items={cards}
-        Component={Card}
-        isSelected={(item) => selectedCards.indexOf(item) + 1}
-        itemOnClick={(item) => {
-          setSelectedCards(toggleInList(item, selectedCards, requiredCards));
-        }}
-      />
+	// get number of required cards
+	const requiredCards =
+		current_question && !disabled ? current_question.required_cards : 0;
 
-      {/* Show confirmation button when a card/cards are selected */}
-      <div id="confirm-cards">
-        {selectedCards.length ? (
-          <Button text="✓" onClick={submitCards} big inverse outline />
-        ) : null}
-      </div>
-    </section>
-  );
+	useEffect(() => {
+		// unselect cards if they are updated
+		if (!compareValues(cards, currentCards)) {
+			setCurrentCards(cards);
+			setSelectedCards([]);
+		}
+	}, [cards]);
+
+	return (
+		<section id="cards">
+			<List
+				id="card-list"
+				className={disabled ? "no-select" : ""}
+				style={CardListStyle}
+				items={currentCards}
+				Component={Card}
+				isSelected={(item) => selectedCards.indexOf(item) + 1}
+				itemOnClick={(item) => {
+					setSelectedCards(toggleInList(item, selectedCards, requiredCards));
+				}}
+			/>
+
+			{/* Show confirmation button when a card/cards are selected */}
+			<div id="confirm-cards">
+				{selectedCards.length ? (
+					<Button text="✓" onClick={submitCards} big inverse outline />
+				) : null}
+			</div>
+		</section>
+	);
 }
 
-export default CardList;
+export default Hand;
