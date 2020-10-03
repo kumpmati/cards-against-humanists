@@ -1,0 +1,20 @@
+#Home {
+  text-align: center;
+  margin-top: 30vh;
+}
+
+.link {
+  background-color: grey;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  -webkit-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+}
+
+.link:hover {
+  background-color: rgb(73, 70, 70);
+}
