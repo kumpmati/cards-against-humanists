@@ -15,6 +15,7 @@ export const parsePlayerData = (data) =>
 		players: data.players,
 		current_czar: data.game.current_czar,
 		game_status: data.game.game_status,
+		host: data.game.host
 	});
 
 /*

@@ -9,7 +9,7 @@ import stateMessages from "./stateMessages";
 /*
  * Player list
  */
-function PlayerList({ players, current_czar, game_status, userId }) {
+function PlayerList({ players, current_czar, game_status, host, userId }) {
 	const currentMessage = stateMessages[game_status] || (() => null);
 
 	return (
@@ -20,13 +20,7 @@ function PlayerList({ players, current_czar, game_status, userId }) {
 				<h1>{currentMessage(userId === current_czar)}</h1>
 			</div>
 			<div>
-				<List
-					id="player-list"
-					style={PlayerListStyle}
-					items={players}
-					Component={Player}
-					isSelected={(item) => item.id === current_czar}
-				/>
+				{players ? players.map(p => <Player data={p} isHost={host === p.id} isCzar={current_czar === p.id} />) : null}
 			</div>
 		</section>
 	);
