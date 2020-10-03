@@ -1,9 +1,6 @@
-#game {
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+#game-room{
+	display: flex;
 	height: 100vh;
-	margin: 0;
-	padding: 0;
 }
 
 #toggle-players {

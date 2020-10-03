@@ -60,16 +60,20 @@ function GameRenderer({ userInfo }) {
 		return () => ws.removeListener(listener);
 	}, [ws]);
 
-	return (
-		<div id="game">
-			<Table {...tableData} send={sendFunc} />
-			<Hand
-				{...handData}
-				send={sendFunc}
-				disabled={handData.current_czar === name}
-			/>
+  return (
+	<div id='game-room'>
+		<div>
 			<PlayerList {...playerData} me={name} />
 		</div>
+		<div id="game">
+			<Table {...tableData} send={sendFunc} />
+				<Hand
+					{...handData}
+					send={sendFunc}
+					disabled={handData.current_czar === name}
+			/>
+		</div>
+	</div>
 	);
 }
 
