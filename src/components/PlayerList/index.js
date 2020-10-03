@@ -9,17 +9,15 @@ import stateMessages from "./stateMessages";
 /*
  * Player list
  */
-function PlayerList({ players, current_czar, game_status, me }) {
-
+function PlayerList({ players, current_czar, game_status, userId }) {
 	const currentMessage = stateMessages[game_status] || (() => null);
-	const isCzar = me === current_czar;
 
 	return (
 		<section id="players">
 			<div id="nav-info">
 				<div id="toggle-players">
 				</div>
-				<h1>{currentMessage(isCzar)}</h1>
+				<h1>{currentMessage(userId === current_czar)}</h1>
 			</div>
 			<div>
 				<List
@@ -27,7 +25,7 @@ function PlayerList({ players, current_czar, game_status, me }) {
 					style={PlayerListStyle}
 					items={players}
 					Component={Player}
-					isSelected={(item) => item.name === current_czar}
+					isSelected={(item) => item.id === current_czar}
 				/>
 			</div>
 		</section>

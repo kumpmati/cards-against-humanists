@@ -55,22 +55,25 @@ function GameRenderer({ userInfo }) {
 			!compareValues(newHandData, handData) && setHandData(newHandData);
 		};
 		ws.addListener(listener);
-
+ 
 		// remove listener when unmounting
 		return () => ws.removeListener(listener);
 	}, [ws]);
+	
+	// first 4 characters of SID is the ID used to identify players
+	const userId = sid ? sid.slice(0,4) : "";
 
   return (
 	<div id='game-room'>
 		<div>
-			<PlayerList {...playerData} me={name} />
+			<PlayerList {...playerData} userId={userId} />
 		</div>
 		<div id="game">
 			<Table {...tableData} send={sendFunc} />
-				<Hand
-					{...handData}
-					send={sendFunc}
-					disabled={handData.current_czar === name}
+			<Hand
+				{...handData}
+				send={sendFunc}
+				disabled={handData.current_czar === userId}
 			/>
 		</div>
 	</div>
