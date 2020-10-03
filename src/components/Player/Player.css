@@ -1,0 +1,11 @@
+.player {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.czar,
+.host {
+  font-size: 1.2em;
+}

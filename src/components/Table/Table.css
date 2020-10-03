@@ -1,22 +1,29 @@
 #table {
-	display: grid;
-	max-width: 800px;
-	width: 100%;
-	margin: 0 auto;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#current-question {
+  margin: 1em;
+  margin-right: 0;
+  font-size: 1.25em;
 }
 
 #submitted-cards {
-	font-size: 0.75em;
-	display: flex;
-	gap: 5em;
+  font-size: 0.9em;
+  display: grid;
+  grid-auto-flow: column;
+  padding: 0;
+  gap: 2em;
 }
 
 #submitted-cards.spread {
-	font-size: 1em;
-	gap: 0.5em;
-	background-color: red;
+  font-size: 1em;
+  gap: 0.5em;
+  background-color: red;
 }
 
 #submitted-cards.spread > .list > .card {
-	margin-right: 0.25em;
+  margin-right: 0.25em;
 }
