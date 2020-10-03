@@ -4,6 +4,8 @@ import { Link, Redirect } from "react-router-dom";
 import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
 
+import "./NewJoin.css";
+
 function NewRoom() {
   // websocket api
   const ws = useContext(WSApiContext);
@@ -42,25 +44,33 @@ function NewRoom() {
   }
 
   return (
-    <div>
-      <h1>New Game</h1>
-      <Link to="/">Back</Link>
+    <div className="join-a-room">
+      <div id="join-a-room-header">
+        <div>
+          <h1>Uusi peli</h1>
+        </div>
+        <div>
+          <Link className="back-link" to="/">
+            Takaisin
+          </Link>
+        </div>
+      </div>
       <form name="room-info">
         <h2>ID:</h2>
         <input
           type="text"
-          placeholder="abc123"
+          placeholder="name"
           value={roomId}
-          onChange={(e) => setRoomId(e.target.value)}
+          onChange={e => setRoomId(e.target.value)}
         />
-        <h2>Password (optional):</h2>
+        <h2>Salasana (valinnainen):</h2>
         <input
           type="password"
-          placeholder="1234"
+          placeholder="password"
           value={roomPassword}
-          onChange={(e) => setRoomPassword(e.target.value)}
+          onChange={e => setRoomPassword(e.target.value)}
         />
-        <input type="submit" onClick={(e) => createRoom(e)} />
+        <input type="submit" onClick={e => createRoom(e)} />
         <p>{infoMsg}</p>
       </form>
     </div>

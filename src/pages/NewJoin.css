@@ -1,0 +1,44 @@
+.join-a-room {
+  color: white;
+  width: 30%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20vh;
+  background-color: rgb(155, 155, 155);
+  -webkit-box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.join-a-room input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+.join-a-room h1 {
+  width: 50%;
+}
+
+.join-a-room-header {
+  display: flex;
+  height: 50%;
+}
+
+.back-link {
+  background-color: grey;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  -webkit-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+}
+
+.back-link:hover {
+  background-color: rgb(73, 70, 70);
+}

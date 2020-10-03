@@ -4,6 +4,8 @@ import { useParams, Redirect, Link } from "react-router-dom";
 import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
 
+import "./NewJoin.css";
+
 function Join() {
   const { roomName: paramsRoomId } = useParams();
 
@@ -44,27 +46,29 @@ function Join() {
   }
 
   return (
-    <div>
-      <h1>Join Game</h1>
-      <Link to="/">Back</Link>
+    <div className="join-a-room">
+      <Link className="back-link" to="/">
+        Takaisin
+      </Link>
+      <h1>Liity peliin</h1>
       <form name="room-info">
         <h2>ID:</h2>
         <input
           type="text"
-          placeholder="TheBestRoom"
+          placeholder="room name"
           value={roomId}
-          onChange={(e) => setRoomId(e.target.value)}
+          onChange={e => setRoomId(e.target.value)}
         />
-        <h2>Password (optional):</h2>
+        <h2>Salasana (valinnainen):</h2>
         <input
           type="password"
-          placeholder="1234"
+          placeholder="password"
           value={roomPassword}
-          onChange={(e) => setRoomPassword(e.target.value)}
+          onChange={e => setRoomPassword(e.target.value)}
         />
         <input
           type="submit"
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault();
             joinRoom(roomId, roomPassword);
           }}
