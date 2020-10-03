@@ -6,31 +6,6 @@
 	padding: 0;
 }
 
-#players {
-	display: flex;
-	flex-direction: column;
-
-	position: fixed;
-
-	left: 0;
-	top: 0;
-
-	width: 100%;
-	height: auto;
-
-	overflow: hidden;
-
-	padding-left: 0.75em;
-	box-sizing: border-box;
-
-	border-bottom-right-radius: 50%;
-
-	z-index: 100;
-
-	background-color: rgb(24, 24, 24);
-	color: white;
-}
-
 #toggle-players {
 	display: flex;
 	flex-direction: row;

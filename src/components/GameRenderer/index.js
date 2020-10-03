@@ -62,13 +62,13 @@ function GameRenderer({ userInfo }) {
 
 	return (
 		<div id="game">
-			<PlayerList {...playerData} me={name} />
 			<Table {...tableData} send={sendFunc} />
 			<Hand
 				{...handData}
 				send={sendFunc}
 				disabled={handData.current_czar === name}
 			/>
+			<PlayerList {...playerData} me={name} />
 		</div>
 	);
 }

@@ -1,20 +1,4 @@
-#nav-info {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-}
 
-#player-list {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  height: 80vh;
-  transition: height 300ms;
-  font-size: 0.9em;
-}
-
-#player-list.hidden {
-  height: 0;
+#players {
+  list-style: none;
 }
