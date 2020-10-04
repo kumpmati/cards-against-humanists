@@ -51,9 +51,10 @@ function NewRoom() {
       </Link>
       <h1>Luo huone</h1>
       <h2>luo oma huoneesi!</h2>
-      <form className="form">
+      <form className="form" autoComplete="off">
         <fieldset className="form-fieldset ui-input __first">
           <input
+            name="test"
             type="text"
             id="huoneen-nimi"
             vvalue={roomId}
@@ -66,6 +67,7 @@ function NewRoom() {
 
         <fieldset className="form-fieldset ui-input __second">
           <input
+            name="test"
             type="password"
             id="salasana"
             value={roomPassword}
@@ -80,6 +82,7 @@ function NewRoom() {
 
         <fieldset className="form-fieldset ui-input __third">
           <input
+            name="test"
             type="text"
             id="käyttäjänimi"
             value={username}

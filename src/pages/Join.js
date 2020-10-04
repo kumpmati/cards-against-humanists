@@ -22,7 +22,7 @@ function Join() {
   async function joinRoom(room_id, room_password) {
     // authenticate
     const session = await api.newSession(username);
-    setLocalSession(username);
+    setLocalSession(session);
     // request to join the room
     const r = await api.join({
       room_id,
@@ -54,7 +54,7 @@ function Join() {
       </Link>
       <h1>Liity peliin</h1>
       <h2>liity toisen henkilön luomaan peliin...</h2>
-      <form className="form">
+      <form className="form" autoComplete="off">
         <fieldset className="form-fieldset ui-input __first">
           <input
             type="text"
