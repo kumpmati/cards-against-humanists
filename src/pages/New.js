@@ -89,7 +89,7 @@ function NewRoom() {
             onChange={({ target }) => setUsername(target.value)}
           />
           <label htmlFor="käyttäjänimi">
-            <span data-text="Käytäjänimi">Käyttäjänimi</span>
+            <span data-text="Käyttäjänimi">Käyttäjänimi</span>
           </label>
         </fieldset>
 
