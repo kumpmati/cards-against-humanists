@@ -2,14 +2,16 @@
  * Messages based on game status
  */
 export default {
-  WAITING_FOR_PLAYERS: () => "Waiting for players...",
-  START_GAME: () => "Starting game",
-  SHOW_WINNER: () => "Winner:",
-  GAME_LOOP: () => "New round...",
+  WAITING_FOR_PLAYERS: () => "Odotetaan pelaajia...",
+  START_GAME: () => "Aloitetaan peli...",
+  SHOW_WINNER: () => "Voittaja:",
+  GAME_LOOP: () => "Uusi kierros...",
 
-  CZAR_CHOOSES_WINNER: (isCzar) =>
-    isCzar ? "Choose a winner" : "The Czar is choosing a winner",
+  CZAR_CHOOSES_WINNER: isCzar =>
+    isCzar ? "Valitse paras kortti" : "Czar valitsee voittajaa...",
 
-  PLAYERS_SUBMIT_ANSWERS: (isCzar) =>
-    isCzar ? "Wait for players to submit their cards" : "Submit your card(s)",
+  PLAYERS_SUBMIT_ANSWERS: isCzar =>
+    isCzar
+      ? "Odota, että muut pelaajat pelaavat korttinsa..."
+      : "Pelaa korttisi...",
 };
