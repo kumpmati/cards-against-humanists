@@ -11,73 +11,68 @@ import PlayerList from "../PlayerList";
 import Table from "../Table";
 import Hand from "../Hand";
 import {
-	compareValues,
-	parseHandData,
-	parsePlayerData,
-	parseTableData,
+  compareValues,
+  parseHandData,
+  parsePlayerData,
+  parseTableData,
 } from "./util";
 
 /*
  * Game renderer
  */
 function GameRenderer({ userInfo }) {
-	const { name, sid } = userInfo || {};
+  const { name, sid } = userInfo || {};
 
-	// websocket api
-	const ws = useContext(WSApiContext);
-	const api = useGameApi(ws);
+  // websocket api
+  const ws = useContext(WSApiContext);
+  const api = useGameApi(ws);
 
-	// function to send data to server
-	const sendFunc = async (data) => {
-		const r = await api.sendAction({ data, sid });
-		console.log(r);
-	};
+  // function to send data to server
+  const sendFunc = async data => await api.sendAction({ data, sid });
 
-	/*
-	 * Store state of each section independently
-	 */
-	const [playerData, setPlayerData] = useState({});
-	const [tableData, setTableData] = useState({});
-	const [handData, setHandData] = useState({});
+  /*
+   * Store state of each section independently
+   */
+  const [playerData, setPlayerData] = useState({});
+  const [tableData, setTableData] = useState({});
+  const [handData, setHandData] = useState({});
 
-	/* Listen for game updates */
-	useEffect(() => {
-		const listener = (d) => {
-			const newPlayerData = parsePlayerData(d);
-			const newTableData = parseTableData(d);
-			const newHandData = parseHandData(d);
+  /* Listen for game updates */
+  useEffect(() => {
+    const listener = d => {
+      const newPlayerData = parsePlayerData(d);
+      const newTableData = parseTableData(d);
+      const newHandData = parseHandData(d);
 
-			// only update if values have changed
-			!compareValues(newPlayerData, playerData) && setPlayerData(newPlayerData);
+      // only update if values have changed
+      !compareValues(newPlayerData, playerData) && setPlayerData(newPlayerData);
+      !compareValues(newTableData, tableData) && setTableData(newTableData);
+      !compareValues(newHandData, handData) && setHandData(newHandData);
+    };
+    ws.addListener(listener);
 
-			!compareValues(newTableData, tableData) && setTableData(newTableData);
+    // remove listener when unmounting
+    return () => ws.removeListener(listener);
+  }, [ws]);
 
-			!compareValues(newHandData, handData) && setHandData(newHandData);
-		};
-		ws.addListener(listener);
- 
-		// remove listener when unmounting
-		return () => ws.removeListener(listener);
-	}, [ws]);
-	
-	// first 4 characters of SID is the ID used to identify players
-	const userId = sid ? sid.slice(0,4) : "";
+  // first 4 characters of SID is the ID used to identify players
+  const userId = sid ? sid.slice(0, 4) : "";
 
   return (
-	<div id='game-room'>
-		<div>
-			<PlayerList {...playerData} userId={userId} />
-		</div>
-		<div id="game">
-			<Table {...tableData} send={sendFunc} />
-			<Hand
-				{...handData}
-				send={sendFunc}
-				disabled={handData.current_czar === userId}
-			/>
-		</div>
-	</div>
-	);
+    <div id="game-room">
+      <div>
+        <PlayerList {...playerData} userId={userId} />
+      </div>
+      <div id="game">
+        <Table {...tableData} send={sendFunc} />
+        <Hand
+          {...handData}
+          send={sendFunc}
+          disabled={handData.current_czar === userId}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default GameRenderer;
