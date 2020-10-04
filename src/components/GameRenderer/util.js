@@ -25,6 +25,7 @@ export const parseTableData = data =>
   safe(data, {
     current_question: data.table.current_question,
     submitted_cards: data.table.submitted_cards,
+    current_czar: data.game.current_czar,
     game_status: data.game.game_status,
   });
 
@@ -36,5 +37,5 @@ export const parseHandData = data =>
     cards: data.table.cards,
     current_question: data.table.current_question,
     current_czar: data.game.current_czar,
-    gameStatus: data.game.game_status,
+    game_status: data.game.game_status,
   });

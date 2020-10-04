@@ -3,15 +3,13 @@
  */
 export default {
   WAITING_FOR_PLAYERS: () => "Odotetaan pelaajia...",
-  START_GAME: () => "Aloitetaan peli...",
+  START_GAME: () => "Aloitetaan peliä...",
   SHOW_WINNER: () => "Voittaja:",
-  GAME_LOOP: () => "Uusi kierros...",
+  GAME_LOOP: () => "Uusi kierros",
 
   CZAR_CHOOSES_WINNER: isCzar =>
-    isCzar ? "Valitse paras kortti" : "Czar valitsee voittajaa...",
+    isCzar ? "Valitse voittaja" : "Czar valitsee voittajaa...",
 
   PLAYERS_SUBMIT_ANSWERS: isCzar =>
-    isCzar
-      ? "Odota, että muut pelaajat pelaavat korttinsa..."
-      : "Pelaa korttisi...",
+    isCzar ? "Odota, että pelaajat pelaavat korttinsa" : "Pelaa korttisi",
 };

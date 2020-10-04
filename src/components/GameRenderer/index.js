@@ -21,7 +21,7 @@ import {
  * Game renderer
  */
 function GameRenderer({ userInfo }) {
-  const { name, sid } = userInfo || {};
+  const { sid } = userInfo || {};
 
   // websocket api
   const ws = useContext(WSApiContext);
@@ -29,7 +29,6 @@ function GameRenderer({ userInfo }) {
 
   // function to send data to server
   const sendFunc = async data => await api.sendAction({ data, sid });
-
   /*
    * Store state of each section independently
    */
@@ -60,16 +59,10 @@ function GameRenderer({ userInfo }) {
 
   return (
     <div id="game-room">
-      <div>
-        <PlayerList {...playerData} userId={userId} />
-      </div>
+      <PlayerList {...playerData} userId={userId} />
       <div id="game">
-        <Table {...tableData} send={sendFunc} />
-        <Hand
-          {...handData}
-          send={sendFunc}
-          disabled={handData.current_czar === userId}
-        />
+        <Table {...tableData} userId={userId} send={sendFunc} />
+        <Hand {...handData} userId={userId} send={sendFunc} />
       </div>
     </div>
   );

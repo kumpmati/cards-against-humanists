@@ -15,6 +15,7 @@
   display: grid;
   grid-auto-flow: column;
   padding: 0;
+  margin-top: 1.66em;
   gap: 2em;
 }
 

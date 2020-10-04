@@ -1,24 +1,25 @@
 import React from "react";
 import "./Card.css";
 
+const isFunc = f => typeof f === "function";
+
 /*
  * Card
  */
-function Card({ data, onClick, isSelected }) {
-	const { text, required_cards } = data;
+function Card({ data, onClick, selectionNum }) {
+  const { text, required_cards } = data;
 
-	const cardType = required_cards > 0 ? "card question" : "card";
-	const selected = typeof isSelected === "function" && isSelected();
+  const cardType = required_cards > 0 ? "card question" : "card";
 
-	return (
-		<div
-			className={selected ? cardType + " selected" : cardType}
-			onClick={onClick}
-		>
-			{selected ? <p className="selection-number">{selected}</p> : ""}
-			<p>{text}</p>
-		</div>
-	);
+  return (
+    <div
+      className={selectionNum ? cardType + " selected" : cardType}
+      onClick={isFunc(onClick) ? () => onClick(data) : () => null}
+    >
+      {selectionNum ? <p className="selection-number">{selectionNum}</p> : ""}
+      <p>{text}</p>
+    </div>
+  );
 }
 
 export default Card;

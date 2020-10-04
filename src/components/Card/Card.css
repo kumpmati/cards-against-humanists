@@ -25,7 +25,7 @@
 
 .card.question {
   color: white;
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(25, 25, 25);
 }
 
 .card:hover {
@@ -33,7 +33,7 @@
 }
 
 .card.selected {
-  border: 2px solid rgb(42, 90, 153);
+  border: 2px solid rgb(25, 25, 25);
   transform: translateY(-0.3em);
 }
 

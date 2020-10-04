@@ -12,6 +12,17 @@
   user-select: none;
 }
 
+.button.disabled,
+.button.disabled:hover,
+.button.disabled:active {
+  opacity: 0.5;
+}
+
+.padded {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .button:hover {
   color: rgb(50, 50, 50);
   background-color: rgb(235, 235, 235);

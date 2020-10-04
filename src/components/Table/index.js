@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Table.css";
 
 /*
@@ -6,28 +6,71 @@ import "./Table.css";
  */
 import Card from "../Card";
 import CardPack from "../CardPack";
-import List from "../List";
+import Button from "../Button";
+import { compareValues } from "../GameRenderer/util";
 
 /*
  * Table
  */
-function Table({ current_question, submitted_cards, game_status, send }) {
-  const spreadCards = game_status === "CZAR_CHOOSES_ANSWER";
+function Table({
+  current_question,
+  submitted_cards,
+  current_czar,
+  game_status,
+  userId,
+  send,
+}) {
+  // card selection
+  const [currentCards, setCurrentCards] = useState([]);
+  const [selectedCards, setSelectedCards] = useState();
+  const selectPack = pack =>
+    setSelectedCards(selectedCards === pack ? null : pack);
+
+  const canSelectWinner =
+    userId === current_czar && game_status === "CZAR_CHOOSES_WINNER";
+
+  useEffect(() => {
+    // unselect cards if they are updated or disabled
+    if (!compareValues(submitted_cards, currentCards) || !canSelectWinner) {
+      setCurrentCards(submitted_cards);
+      setSelectedCards(null);
+    }
+  }, [submitted_cards, canSelectWinner]);
+
+  // function to send winner to server
+  const submitWinner = () => {
+    send({ winner: selectedCards });
+    setSelectedCards(null);
+  };
 
   return (
     <section id="table">
       <div id="current-question">
         {current_question && <Card data={current_question} />}
+
+        {/* Confirmation button */}
+        {selectedCards && canSelectWinner ? (
+          <Button
+            text="Vahvista voittaja"
+            onClick={submitWinner}
+            inverse
+            outline
+            padded
+          />
+        ) : null}
       </div>
 
-      <List
-        id="submitted-cards"
-        className={spreadCards ? "spread" : ""}
-        items={submitted_cards}
-        Component={CardPack}
-        // submit the clicked item as the winner
-        itemOnClick={item => send({ winner: item })}
-      />
+      <div id="submitted-cards">
+        {submitted_cards &&
+          submitted_cards.map((pack, i) => (
+            <CardPack
+              key={i}
+              data={pack}
+              onClick={selectPack}
+              isSelected={pack === selectedCards && canSelectWinner}
+            />
+          ))}
+      </div>
     </section>
   );
 }

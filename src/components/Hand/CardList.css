@@ -1,5 +1,11 @@
 #card-list {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: 0.9em;
+  width: 100%;
 }
 
 #card-list > .card:hover {

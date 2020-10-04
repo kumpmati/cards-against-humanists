@@ -5,10 +5,12 @@ import WSApiContext from "../api/websocket";
 import useGameApi from "../api/api";
 
 import "./NewJoin.css";
-import { setLocalSession } from "../api/session";
+import { getLocalSession, setLocalSession } from "../api/session";
 
 function Join() {
   const { roomName: paramsRoomId } = useParams();
+
+  const localSession = getLocalSession();
 
   // websocket api
   const ws = useContext(WSApiContext);
@@ -21,8 +23,10 @@ function Join() {
 
   async function joinRoom(room_id, room_password) {
     // authenticate
-    const session = await api.newSession(username);
+    const session = await api.authenticate(null, username);
     setLocalSession(session);
+    console.log(session);
+    setUsername(session.name);
     // request to join the room
     const r = await api.join({
       room_id,
@@ -62,7 +66,7 @@ function Join() {
             vvalue={roomId}
             onChange={e => setRoomId(e.target.value)}
           />
-          <label for="huoneen nimi">
+          <label htmlFor="huoneen nimi">
             <span data-text="Huoneen nimi">Huoneen nimi</span>
           </label>
         </fieldset>
@@ -74,7 +78,7 @@ function Join() {
             value={roomPassword}
             onChange={e => setRoomPassword(e.target.value)}
           />
-          <label for="salasana">
+          <label htmlFor="salasana">
             <span data-text="Salasana (valinnainen)">
               Salasana (valinnainen)
             </span>
@@ -93,7 +97,7 @@ function Join() {
           </label>
         </fieldset>
 
-        <fieldset class="form-fieldset ui-input __fourth">
+        <fieldset className="form-fieldset ui-input __fourth">
           <input
             id="submit-request"
             type="submit"
