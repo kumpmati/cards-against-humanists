@@ -11,7 +11,7 @@
 }
 
 #submitted-cards {
-  font-size: 0.9em;
+  font-size: 0.95em;
   display: grid;
   grid-auto-flow: column;
   padding: 0;

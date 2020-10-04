@@ -40,7 +40,6 @@
 
   color: white;
   background-color: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(0.05em);
   z-index: 10;
 
   animation: fade-in 200ms;

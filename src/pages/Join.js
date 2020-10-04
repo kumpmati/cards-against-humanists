@@ -10,8 +10,6 @@ import { getLocalSession, setLocalSession } from "../api/session";
 function Join() {
   const { roomName: paramsRoomId } = useParams();
 
-  const localSession = getLocalSession();
-
   // websocket api
   const ws = useContext(WSApiContext);
   const api = useGameApi(ws);
@@ -25,8 +23,6 @@ function Join() {
     // authenticate
     const session = await api.authenticate(null, username);
     setLocalSession(session);
-    console.log(session);
-    setUsername(session.name);
     // request to join the room
     const r = await api.join({
       room_id,
