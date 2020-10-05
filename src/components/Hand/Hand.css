@@ -1,46 +1,49 @@
 @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 #cards {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  position: relative;
+	background-color: rgb(128, 128, 128, 0.2);
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	position: relative;
 }
 
 #confirm-cards {
-  margin: 1em;
-  width: min-content;
+	display: grid;
+	place-content: center;
+	width: max-content;
+	padding: 2em;
+	height: 100%;
 }
 
 #card-disable-message {
-  display: grid;
-  place-content: center;
+	display: grid;
+	place-content: center;
 
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
 
-  text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+	text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
 
-  color: white;
-  background-color: rgba(0, 0, 0, 0.35);
-  z-index: 10;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.35);
+	z-index: 10;
 
-  animation: fade-in 200ms;
+	animation: fade-in 200ms;
 }

@@ -1,26 +1,30 @@
 #card-list {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  padding-left: 2em;
-  padding-right: 2em;
-  font-size: 0.9em;
-  width: 100%;
+	display: grid;
+	font-size: 0.9em;
+
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+
+	margin: 0 auto;
+	padding: 2.5em;
+	padding-bottom: 0;
+
+	overflow-x: auto;
 }
 
 #card-list > .card:hover {
-  margin-left: -1.5em;
-  margin-right: 1.5em;
-  transform: translateY(-0.5em);
-  z-index: 1;
+	margin-left: -1.5em;
+	margin-right: 1.5em;
+	transform: translateY(-0.5em);
+	z-index: 1;
 }
 
 #card-list > .card:not(:hover) {
-  margin-left: -2em;
-  z-index: 1;
+	margin-left: -2em;
+	z-index: 1;
 }
 
 #card-list > .card.selected {
-  transform: translateY(-2em);
-  margin-right: 1.5em;
+	transform: translateY(-2em);
+	margin-right: 1.5em;
 }

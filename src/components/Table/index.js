@@ -13,66 +13,66 @@ import { compareValues } from "../GameRenderer/util";
  * Table
  */
 function Table({
-  current_question,
-  submitted_cards,
-  current_czar,
-  game_status,
-  userId,
-  send,
+	current_question,
+	submitted_cards,
+	current_czar,
+	game_status,
+	userId,
+	send,
 }) {
-  // card selection
-  const [currentCards, setCurrentCards] = useState([]);
-  const [selectedCards, setSelectedCards] = useState();
-  const selectPack = pack =>
-    setSelectedCards(selectedCards === pack ? null : pack);
+	// card selection
+	const [currentCards, setCurrentCards] = useState([]);
+	const [selectedCards, setSelectedCards] = useState();
+	const selectPack = (pack) =>
+		setSelectedCards(selectedCards === pack ? null : pack);
 
-  const canSelectWinner =
-    userId === current_czar && game_status === "CZAR_CHOOSES_WINNER";
+	const canSelectWinner =
+		userId === current_czar && game_status === "CZAR_CHOOSES_WINNER";
+	const userIsCzar = userId === current_czar;
 
-  useEffect(() => {
-    // unselect cards if they are updated or disabled
-    if (!compareValues(submitted_cards, currentCards) || !canSelectWinner) {
-      setCurrentCards(submitted_cards);
-      setSelectedCards(null);
-    }
-  }, [submitted_cards, canSelectWinner]);
+	useEffect(() => {
+		// unselect cards if they are updated or disabled
+		if (!compareValues(submitted_cards, currentCards) || !canSelectWinner) {
+			setCurrentCards(submitted_cards);
+			setSelectedCards(null);
+		}
+	}, [submitted_cards, canSelectWinner]);
 
-  // function to send winner to server
-  const submitWinner = () => {
-    send({ winner: selectedCards });
-    setSelectedCards(null);
-  };
+	// function to send winner to server
+	const submitWinner = () => {
+		send({ winner: selectedCards });
+		setSelectedCards(null);
+	};
 
-  return (
-    <section id="table">
-      <div id="current-question">
-        {current_question && <Card data={current_question} />}
+	return (
+		<section id="table">
+			<div id="current-question">
+				{current_question && <Card data={current_question} />}
 
-        {/* Confirmation button */}
-        {selectedCards && canSelectWinner ? (
-          <Button
-            text="Vahvista voittaja"
-            onClick={submitWinner}
-            inverse
-            outline
-            padded
-          />
-        ) : null}
-      </div>
+				{/* Confirmation button */}
+				{userIsCzar ? (
+					<Button
+						text="Vahvista voittaja"
+						padded
+						onClick={submitWinner}
+						disabled={!selectedCards || !canSelectWinner}
+					/>
+				) : null}
+			</div>
 
-      <div id="submitted-cards">
-        {submitted_cards &&
-          submitted_cards.map((pack, i) => (
-            <CardPack
-              key={i}
-              data={pack}
-              onClick={selectPack}
-              isSelected={pack === selectedCards && canSelectWinner}
-            />
-          ))}
-      </div>
-    </section>
-  );
+			<div id="submitted-cards">
+				{submitted_cards &&
+					submitted_cards.map((pack, i) => (
+						<CardPack
+							key={i}
+							data={pack}
+							onClick={selectPack}
+							isSelected={pack === selectedCards && canSelectWinner}
+						/>
+					))}
+			</div>
+		</section>
+	);
 }
 
 export default Table;

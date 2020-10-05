@@ -1,20 +1,22 @@
 #Home {
-  text-align: center;
-  margin-top: 30vh;
+	margin: 0 auto;
+	padding: 2em;
+
+	width: 20em;
+	margin-top: 50vh;
+	transform: translateY(-50%);
+	text-align: center;
+
+	border-radius: 0.5em;
+	color: white;
+	background-color: rgb(25, 25, 25);
 }
 
 .link {
-  background-color: grey;
-  margin: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: white;
-  -webkit-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+	text-decoration: none;
 }
 
-.link:hover {
-  background-color: rgb(73, 70, 70);
+#nav {
+	display: flex;
+	gap: 2em;
 }
