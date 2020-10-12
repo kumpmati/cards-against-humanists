@@ -26,7 +26,7 @@ function Player({ data, isHost, isCzar, isSelf }) {
       {isHost ? (
         <h2 className="host" title="Huoneen tekijä">
           <span role="img" aria-label="host">
-            🤴
+            🎉
           </span>
         </h2>
       ) : null}

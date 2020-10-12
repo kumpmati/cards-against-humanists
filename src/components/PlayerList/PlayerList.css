@@ -1,4 +1,10 @@
 #player-list li {
-	list-style: none;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  list-style: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#nav-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

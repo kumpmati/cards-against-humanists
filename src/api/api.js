@@ -28,6 +28,7 @@ function useGameApi({ requestAsync }) {
 
   // requests a new session from the server
   function newSession(name) {
+    localStorage.clear(); // remove any previous sessions
     return requestAsync({
       type: NewSession,
       data: {
