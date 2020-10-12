@@ -28,7 +28,7 @@ function PlayerList({
     if (!timer_end_date) return;
 
     const secondsLeft = ~~((new Date(timer_end_date) - new Date()) / 1000);
-    setTimer(secondsLeft + 1);
+    setTimer(secondsLeft);
     const t = setInterval(() => setTimer(s => s - 1), 1000);
     // remove timer on refresh
     return () => clearInterval(t);
@@ -36,9 +36,11 @@ function PlayerList({
 
   return (
     <section id="players">
-      <div id="nav-info">
-        <h1>{currentMessage(userId === current_czar)}</h1>
-        <h2>{timer > 0 ? timer : "-"}</h2>
+      <div>
+        <div id="nav-info">
+          <h1>{currentMessage(userId === current_czar)}</h1>
+          <h2>{timer > 0 ? timer : null}</h2>
+        </div>
         {userIsHost && inLobby ? (
           <Button
             padded
