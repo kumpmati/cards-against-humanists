@@ -1,3 +1,14 @@
+@keyframes card-spin {
+  from {
+    opacity: 0;
+    transform: rotate(5deg) scaleX(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scaleX(1);
+  }
+}
+
 .card {
   font-size: 0.9em;
 
@@ -22,6 +33,10 @@
   cursor: pointer;
 
   transition: margin 150ms, transform 150ms, box-shadow 150ms;
+
+  transform-origin: bottom;
+  animation-fill-mode: backwards;
+  animation: card-spin 300ms;
 }
 
 .card.question {
@@ -35,7 +50,7 @@
 
 .card.selected {
   border-color: rgb(25, 25, 25);
-  transform: translateY(-0.3em);
+  transform: translateY(-0.2em);
 }
 
 /*

@@ -39,7 +39,7 @@ function PlayerList({
       <div>
         <div id="nav-info">
           <h1>{currentMessage(userId === current_czar)}</h1>
-          <h2>{timer > 0 ? timer : null}</h2>
+          <h2 title="jäljellä oleva aika">{timer > 0 ? timer : null}</h2>
         </div>
         {userIsHost && inLobby ? (
           <Button
