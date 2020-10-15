@@ -54,6 +54,7 @@ function CardSubmit() {
 					<section>
 						<label htmlFor="card-text">Text</label>
 						<input
+							autoComplete="off"
 							id="card-text"
 							type="text"
 							value={cardText}
@@ -86,8 +87,9 @@ function CardSubmit() {
 					</section>
 					<input
 						type="submit"
+						disabled={!cardText.length}
 						onClick={createCard}
-						value={isQuestion ? "Create question" : "Create answer"}
+						value={isQuestion ? "Create question card" : "Create answer card"}
 					/>
 				</form>
 				<section>
