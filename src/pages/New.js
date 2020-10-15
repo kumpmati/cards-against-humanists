@@ -7,8 +7,6 @@ import useGameApi from "../api/api";
 import "./NewJoin.css";
 import { setLocalSession } from "../api/session";
 
-import Button from "../components/Button";
-
 function NewRoom() {
 	// websocket api
 	const ws = useContext(WSApiContext);

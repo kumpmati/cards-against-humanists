@@ -1,0 +1,37 @@
+.container.wide {
+	min-width: 40em;
+	width: 50vw;
+	text-align: left;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.5em;
+}
+
+#cards {
+	display: grid;
+	border-radius: 0.25em;
+	grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+	min-height: 16em;
+}
+
+#card-form {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	min-width: 18em;
+}
+
+#question {
+	display: flex;
+	flex-direction: row !important;
+	gap: 1em;
+}
+
+#card-form section {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1em;
+}
