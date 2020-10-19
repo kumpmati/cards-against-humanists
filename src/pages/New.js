@@ -16,14 +16,14 @@ function NewRoom() {
   const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
+  const [roomOptions, setRoomOptions] = useState({
+    czarTime: -1,
+    answerTime: 90,
+    winnerShowTime: 5,
+    cardsInHand: 7,
+    packs: ["all"],
+  });
   const [infoMsg, setInfoMsg] = useState("");
-
-  /*
-   * Authenticate on page load
-   */
-  useEffect(() => {
-    (async () => {})();
-  }, []);
 
   async function createRoom(e) {
     // prevent page refresh
@@ -35,6 +35,7 @@ function NewRoom() {
     const created = await api.create({
       room_name: roomId,
       room_password: roomPassword,
+      room_options: roomOptions,
       sid: session ? session.sid : "-",
     });
     // show error msg
@@ -42,63 +43,117 @@ function NewRoom() {
       setInfoMsg(created.data);
       return;
     }
+
+    // redirect to newly created room
     setInfoMsg(<Redirect to={`/room/${created.room_id}`} />);
   }
 
   return (
-    <div className="container">
+    <div className="container wide">
       <Link className="back-link" to="/">
         Takaisin
       </Link>
       <h1>Luo huone</h1>
-      <form className="form" autoComplete="off">
-        <fieldset className="form-fieldset ui-input __first">
-          <input
-            name="test"
-            type="text"
-            id="huoneen-nimi"
-            vvalue={roomId}
-            onChange={e => setRoomId(e.target.value)}
-          />
-          <label htmlFor="huoneen-nimi">
-            <span data-text="Huoneen nimi">Huoneen nimi</span>
-          </label>
-        </fieldset>
+      <div id="grid">
+        <form className="form" autoComplete="off">
+          <h2>Tiedot</h2>
+          <fieldset className="form-fieldset ui-input __first">
+            <input
+              name="test"
+              type="text"
+              id="huoneen-nimi"
+              value={roomId}
+              onChange={e => setRoomId(e.target.value)}
+            />
+            <label htmlFor="huoneen-nimi">
+              <span data-text="Huoneen nimi">Huoneen nimi</span>
+            </label>
+          </fieldset>
 
-        <fieldset className="form-fieldset ui-input __second">
-          <input
-            name="test"
-            type="password"
-            id="salasana"
-            value={roomPassword}
-            onChange={e => setRoomPassword(e.target.value)}
-          />
-          <label htmlFor="salasana">
-            <span data-text="Salasana (valinnainen)">
-              Salasana (valinnainen)
-            </span>
-          </label>
-        </fieldset>
+          <fieldset className="form-fieldset ui-input __second">
+            <input
+              name="test"
+              type="password"
+              id="salasana"
+              value={roomPassword}
+              onChange={e => setRoomPassword(e.target.value)}
+            />
+            <label htmlFor="salasana">
+              <span data-text="Salasana (valinnainen)">
+                Salasana (valinnainen)
+              </span>
+            </label>
+          </fieldset>
 
-        <fieldset className="form-fieldset ui-input __third">
-          <input
-            name="test"
-            type="text"
-            id="käyttäjänimi"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-          />
-          <label htmlFor="käyttäjänimi">
-            <span data-text="Käyttäjänimi">Käyttäjänimi</span>
-          </label>
-        </fieldset>
+          <fieldset className="form-fieldset ui-input __third">
+            <input
+              name="test"
+              type="text"
+              id="käyttäjänimi"
+              value={username}
+              onChange={({ target }) => setUsername(target.value)}
+            />
+            <label htmlFor="käyttäjänimi">
+              <span data-text="Käyttäjänimi">Käyttäjänimi</span>
+            </label>
+          </fieldset>
 
-        <fieldset className="form-fieldset ui-input __fourth">
-          <br></br>
-          <Button text="Luo huone" onClick={createRoom} />
-        </fieldset>
-        <p>{infoMsg}</p>
-      </form>
+          <fieldset className="form-fieldset ui-input __fourth">
+            <br></br>
+            <Button text="Luo huone" onClick={createRoom} />
+          </fieldset>
+          <p>{infoMsg}</p>
+        </form>
+        <form className="form">
+          <h2>Asetukset</h2>
+          <fieldset className="form-fieldset ui-input __first">
+            <input
+              name="answer-time"
+              type="number"
+              id="vastausaika"
+              min={5}
+              value={roomOptions.answerTime}
+              onChange={e =>
+                setRoomOptions({ answerTime: parseInt(e.target.value) })
+              }
+            />
+            <label htmlFor="answer-time">
+              <span data-text="Vastausaika">Vastausaika</span>
+            </label>
+          </fieldset>
+          <fieldset className="form-fieldset ui-input __second">
+            <input
+              name="czar-time"
+              type="number"
+              id="czar-aika"
+              min={-1}
+              value={roomOptions.czarTime}
+              onChange={e =>
+                setRoomOptions({ czarTime: parseInt(e.target.value) })
+              }
+            />
+            <label htmlFor="czar-time">
+              <span data-text="Czarin valinta-aika">Czarin valinta-aika</span>
+            </label>
+          </fieldset>
+          <fieldset className="form-fieldset ui-input __third">
+            <input
+              name="cards-in-hand"
+              type="number"
+              id="cards-in-hand"
+              min={1}
+              max={10}
+              value={roomOptions.cardsInHand}
+              onChange={e =>
+                setRoomOptions({ cardsInHand: parseInt(e.target.value) })
+              }
+            />
+            <label htmlFor="cards-in-hand">
+              <span data-text="Kortteja kädessä">Kortteja kädessä</span>
+            </label>
+          </fieldset>
+        </form>
+      </div>
     </div>
   );
 }

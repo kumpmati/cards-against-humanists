@@ -25,13 +25,19 @@ function PlayerList({
 
   // setup timer
   useEffect(() => {
-    if (!timer_end_date) return;
+    if (!timer_end_date) setTimer(0);
 
     const secondsLeft = ~~((new Date(timer_end_date) - new Date()) / 1000);
     setTimer(secondsLeft);
-    const t = setInterval(() => setTimer(s => s - 1), 1000);
-    // remove timer on refresh
-    return () => clearInterval(t);
+
+    // start timer to update time left every second
+    const updater = setInterval(() => {
+      const s = ~~((new Date(timer_end_date) - new Date()) / 1000);
+      setTimer(s);
+    }, 1000);
+
+    // clear old interval when timer is updated
+    return () => clearInterval(updater);
   }, [timer_end_date]);
 
   return (

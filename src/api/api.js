@@ -100,10 +100,10 @@ function useGameApi({ requestAsync }) {
   }
 
   // create a new room
-  function create({ room_name, room_password, sid }) {
+  function create({ room_name, room_password, room_options, sid }) {
     return requestAsync({
       type: CreateRoom,
-      data: { room_name, room_password, game_type: "cah", sid },
+      data: { room_name, room_password, room_options, sid },
     });
   }
 

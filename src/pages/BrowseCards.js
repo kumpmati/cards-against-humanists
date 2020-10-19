@@ -35,7 +35,7 @@ function BrowseCards() {
       <h1>Selaa pelattavia kortteja</h1>
       <div id="active-cards">
         <section id="questions">
-          <h2>Kysymyskortit</h2>
+          <h2>Kysymykset</h2>
           <ul className="card-list">
             {activeCards.questions.map(c => (
               <li>{c.text || " "}</li>
@@ -43,7 +43,7 @@ function BrowseCards() {
           </ul>
         </section>
         <section id="answers">
-          <h2>Vastauskortit</h2>
+          <h2>Vastaukset</h2>
           <ul className="card-list">
             {activeCards.answers.map(c => (
               <li>{c.text}</li>
