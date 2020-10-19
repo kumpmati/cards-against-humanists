@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./CardSubmit.css";
 
@@ -31,7 +31,8 @@ function CardSubmit() {
       setCards([]);
       setInfoText("");
     } else if (r.error) {
-      setInfoText(r.data || "Jotain meni pieleen");
+      console.error(r.data);
+      //setInfoText(r.data || "Jotain meni pieleen");
     }
   };
 
@@ -115,7 +116,6 @@ function CardSubmit() {
             ) : null}
           </section>
           <Button disabled={!cardText.length} onClick={createCard} text="Luo" />
-
           <p>{infoText}</p>
         </form>
         <section>
@@ -129,6 +129,7 @@ function CardSubmit() {
           <Button
             inverse
             padded
+            disabled={cards.length === 0}
             text="Lähetä arvioitavaksi"
             onClick={sendCards}
           />

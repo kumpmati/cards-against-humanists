@@ -12,4 +12,5 @@ module.exports = {
   Heartbeat: "HEARTBEAT", // debug
 
   CardSubmission: "CARD_SUBMISSION",
+  GetData: "GET_DATA",
 };

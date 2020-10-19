@@ -1,0 +1,20 @@
+#active-cards {
+  display: flex;
+  gap: 2em;
+}
+
+.card-list {
+  height: 25em;
+  text-align: inherit;
+  list-style-type: none;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.card-list li {
+  margin-bottom: 0.5em;
+  min-height: 2em;
+  padding: 0.25em;
+  display: flex;
+  align-items: center;
+}

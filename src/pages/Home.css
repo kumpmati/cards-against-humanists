@@ -20,7 +20,7 @@
   text-decoration: none;
 }
 
-#nav {
+.section {
   display: flex;
   flex-direction: column;
   gap: 2em;

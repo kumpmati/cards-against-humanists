@@ -9,7 +9,7 @@ function Home() {
       <h1 id="site-title">Cards Against Humanists</h1>
       <section>
         <h2>Huone</h2>
-        <div id="nav">
+        <div className="section">
           <Link className="link" to="/new">
             <Button padded text="Luo" />
           </Link>
@@ -20,9 +20,12 @@ function Home() {
       </section>
       <section>
         <h2>Kortit</h2>
-        <div>
+        <div className="section">
           <Link className="link" to="/submit">
             <Button text="Luo kortteja" />
+          </Link>
+          <Link className="link" to="/browse">
+            <Button text="Selaa kortteja" />
           </Link>
         </div>
       </section>
