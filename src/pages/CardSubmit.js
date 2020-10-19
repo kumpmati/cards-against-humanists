@@ -1,108 +1,141 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./CardSubmit.css";
 
+import WSApiContext from "../api/websocket";
+
 import Card from "../components/Card";
+import Button from "../components/Button";
+import types from "../api/types/message";
 
 function CardSubmit() {
-	const [cards, setCards] = useState([]);
+  // websocket api
+  const ws = useContext(WSApiContext);
 
-	const [cardText, setCardText] = useState("");
-	const [isQuestion, setIsQuestion] = useState(false);
-	const [cardNum, setCardNum] = useState(1);
+  const [cards, setCards] = useState([]);
 
-	/*
-	 * Create a card based on input
-	 */
-	const createCard = e => {
-		e.preventDefault();
+  // input fields
+  const [cardText, setCardText] = useState("");
+  const [cardPack, setCardPack] = useState("");
+  const [isQuestion, setIsQuestion] = useState(false);
+  const [cardNum, setCardNum] = useState(1);
+  const [infoText, setInfoText] = useState("");
 
-		const newCard = { text: cardText };
-		if (isQuestion) newCard.required_cards = cardNum;
-		setCards([...cards, newCard]);
+  // sends cards to server
+  const sendCards = async () => {
+    const r = await ws.requestAsync({
+      type: types.CardSubmission,
+      data: { cards },
+    });
+    if (r.success) {
+      setCards([]);
+      setInfoText("");
+    } else if (r.error) {
+      setInfoText(r.data || "Jotain meni pieleen");
+    }
+  };
 
-		resetFields();
-	};
+  /*
+   * Create a card based on input
+   */
+  const createCard = e => {
+    e.preventDefault();
 
-	/*
-	 * Remove card at index
-	 */
-	const removeCard = i => {
-		const _cards = [...cards];
-		_cards.splice(i, 1);
-		setCards(_cards);
-	};
+    const newCard = { text: cardText };
+    if (isQuestion) newCard.required_cards = cardNum;
+    if (cardPack.length) newCard.pack = cardPack;
+    setCards([...cards, newCard]);
 
-	/*
-	 * Reset inputs to defaults
-	 */
-	const resetFields = () => {
-		setCardText("");
-		setIsQuestion(false);
-		setCardNum(1);
-	};
+    resetFields();
+  };
 
-	return (
-		<div className="container wide">
-			<Link className="back-link" to="/">
-				Takaisin
-			</Link>
-			<h1>Submit new cards</h1>
-			<div className="grid">
-				<form id="card-form">
-					<h2>Create new cards</h2>
-					<section>
-						<label htmlFor="card-text">Text</label>
-						<input
-							autoComplete="off"
-							id="card-text"
-							type="text"
-							value={cardText}
-							onChange={e => setCardText(e.target.value)}
-						/>
-					</section>
-					<section id="question">
-						<div>
-							<label htmlFor="card-question">Question</label>
-							<input
-								id="card-question"
-								type="checkbox"
-								checked={isQuestion}
-								onClick={() => setIsQuestion(q => !q)}
-							/>
-						</div>
-						{isQuestion ? (
-							<div>
-								<label htmlFor="card-num">Required Cards</label>
-								<input
-									id="card-num"
-									type="number"
-									min="1"
-									max="5"
-									value={cardNum}
-									onChange={e => setCardNum(e.target.value)}
-								/>
-							</div>
-						) : null}
-					</section>
-					<input
-						type="submit"
-						disabled={!cardText.length}
-						onClick={createCard}
-						value={isQuestion ? "Create question card" : "Create answer card"}
-					/>
-				</form>
-				<section>
-					<h2>Your cards</h2>
-					<div id="cards">
-						{cards.map((c, i) => (
-							<Card data={c} onClick={() => removeCard(i)} />
-						))}
-					</div>
-				</section>
-			</div>
-		</div>
-	);
+  /*
+   * Remove card at index
+   */
+  const removeCard = i => {
+    const _cards = [...cards];
+    _cards.splice(i, 1);
+    setCards(_cards);
+  };
+
+  /*
+   * Reset inputs to defaults
+   */
+  const resetFields = () => {
+    setCardText("");
+    setCardPack("");
+    setIsQuestion(false);
+    setCardNum(1);
+  };
+
+  return (
+    <div className="container wide">
+      <Link className="back-link" to="/">
+        Takaisin
+      </Link>
+      <h1>Luo uusia kortteja</h1>
+      <div className="grid">
+        <form id="card-form">
+          <h2>Luo kortti</h2>
+          <section>
+            <fieldset className="form-fieldset ui-input __first">
+              <input
+                type="text"
+                id="card-text"
+                value={cardText}
+                onChange={e => setCardText(e.target.value)}
+              />
+              <label htmlFor="card-text">
+                <span data-text="Teksti">Teksti</span>
+              </label>
+            </fieldset>
+          </section>
+          <section id="question">
+            <div>
+              <label htmlFor="card-question">Kysymys</label>
+              <input
+                id="card-question"
+                type="checkbox"
+                checked={isQuestion}
+                onClick={() => setIsQuestion(q => !q)}
+              />
+            </div>
+            {isQuestion ? (
+              <div>
+                <label htmlFor="card-num">Tarvittavat kortit</label>
+                <input
+                  id="card-num"
+                  type="number"
+                  min="1"
+                  max="5"
+                  value={cardNum}
+                  onChange={e => setCardNum(e.target.value)}
+                />
+              </div>
+            ) : null}
+          </section>
+          <Button disabled={!cardText.length} onClick={createCard} text="Luo" />
+
+          <p>{infoText}</p>
+        </form>
+        <section>
+          <h2>Korttisi</h2>
+          <div id="cards">
+            {cards.map((c, i) => (
+              <Card data={c} onClick={() => removeCard(i)} />
+            ))}
+          </div>
+          <br></br>
+          <Button
+            inverse
+            padded
+            text="Lähetä arvioitavaksi"
+            onClick={sendCards}
+          />
+        </section>
+      </div>
+    </div>
+  );
 }
 
 export default CardSubmit;

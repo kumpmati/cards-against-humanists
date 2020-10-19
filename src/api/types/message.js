@@ -10,4 +10,6 @@ module.exports = {
   GetState: "GET_STATE",
   SendAction: "SEND_ACTION",
   Heartbeat: "HEARTBEAT", // debug
+
+  CardSubmission: "CARD_SUBMISSION",
 };

@@ -1,22 +1,28 @@
 #Home {
-	margin: 0 auto;
-	padding: 2em;
+  margin: 0 auto;
+  padding: 2em;
 
-	width: 20em;
-	margin-top: 50vh;
-	transform: translateY(-50%);
-	text-align: center;
+  display: flex;
+  flex-direction: column;
 
-	border-radius: 0.5em;
-	color: white;
-	background-color: rgb(25, 25, 25);
+  width: 20em;
+  margin-top: 50vh;
+  height: 35em;
+  transform: translateY(-50%);
+  gap: 1.5em;
+
+  border-radius: 0.75em;
+  color: white;
+  background-color: rgb(25, 25, 25);
 }
 
 .link {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #nav {
-	display: flex;
-	gap: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: space-evenly;
 }
