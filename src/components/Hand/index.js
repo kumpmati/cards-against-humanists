@@ -34,7 +34,7 @@ function Hand({
   const canSelectCards =
     !userIsCzar &&
     numSelectableCards > 0 &&
-    game_status !== "CZAR_CHOOSES_WINNER";
+    game_status === "PLAYERS_SUBMIT_ANSWERS";
 
   // show message
   let disabledMessage;
