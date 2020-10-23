@@ -27,6 +27,9 @@ function Home() {
           <Link className="link" to="/browse">
             <Button text="Selaa kortteja" />
           </Link>
+          <Link className="link" to="/format">
+            <Button inverse text="Muotoiluohjeet" />
+          </Link>
         </div>
       </section>
     </div>

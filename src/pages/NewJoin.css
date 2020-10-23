@@ -1,6 +1,6 @@
 #grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 1em;
 }
 
@@ -15,8 +15,10 @@
   top: 50vh;
   padding: 1.25em;
   transform: translateY(-50%);
-  max-height: 80vh;
+  max-height: 75vh;
   text-align: center;
+
+  overflow-y: auto;
 }
 
 .container h1 {

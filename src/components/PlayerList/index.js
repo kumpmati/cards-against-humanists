@@ -15,6 +15,7 @@ function PlayerList({
   timer_end_date,
   host,
   userId,
+  roomId,
   send,
 }) {
   const [timer, setTimer] = useState(0);
@@ -56,6 +57,12 @@ function PlayerList({
           />
         ) : null}
       </div>
+      {inLobby ? (
+        <div id="join-link">
+          <h2>Liittymislinkki:</h2>
+          <p>https://cards-against-humanist.xyz/join/{roomId}</p>
+        </div>
+      ) : null}
       <br></br>
       <div id="player-list">
         {players.map(p => (

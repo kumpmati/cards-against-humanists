@@ -15,14 +15,14 @@ function Join() {
   const ws = useContext(WSApiContext);
   const api = useGameApi(ws);
 
-  const [roomId, setRoomId] = useState("");
+  const [roomId, setRoomId] = useState(paramsRoomId);
   const [username, setUsername] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
   const [infoMsg, setInfoMsg] = useState("");
 
   async function joinRoom(room_id, room_password) {
     // authenticate
-    const session = await api.authenticate(null, username);
+    const session = await api.authenticate(null, () => username);
     setLocalSession(session);
     // request to join the room
     const r = await api.join({
@@ -33,7 +33,7 @@ function Join() {
 
     // switch to room if joining is successful
     if (r.current_room) {
-      setInfoMsg(`Joining ${r.current_room}...`);
+      setInfoMsg(`Liitytään huoneeseen ${r.current_room}...`);
       setTimeout(() => {
         clearTimeout();
         setInfoMsg(<Redirect to={`/room/${r.current_room}`} />);
@@ -41,11 +41,6 @@ function Join() {
     } else {
       setInfoMsg(r.data);
     }
-  }
-
-  // redirect to parameter-defined room
-  if (!!paramsRoomId) {
-    joinRoom(paramsRoomId);
   }
 
   return (
@@ -59,12 +54,12 @@ function Join() {
         <fieldset className="form-fieldset ui-input __first">
           <input
             type="text"
-            id="huoneen nimi"
-            vvalue={roomId}
+            id="huoneen-nimi"
+            value={roomId}
             onChange={e => setRoomId(e.target.value)}
           />
-          <label htmlFor="huoneen nimi">
-            <span data-text="Huoneen nimi">Huoneen nimi</span>
+          <label htmlFor="huoneen-nimi">
+            <span data-text="Huoneen ID">Huoneen ID</span>
           </label>
         </fieldset>
 

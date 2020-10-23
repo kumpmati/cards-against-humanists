@@ -57,7 +57,7 @@ function Room() {
     })();
   }, [paramsRoomId]);
 
-  return <GameRenderer userInfo={userInfo} />;
+  return <GameRenderer userInfo={userInfo} roomId={paramsRoomId} />;
 }
 
 export default Room;

@@ -17,6 +17,7 @@ import NewRoom from "./pages/New";
 import Join from "./pages/Join";
 import CardSubmit from "./pages/CardSubmit";
 import BrowseCards from "./pages/BrowseCards";
+import FormatHelp from "./pages/FormatHelp";
 
 // connect to different places depending on node env
 const url =
@@ -49,6 +50,9 @@ function App() {
             </Route>
             <Route path="/browse">
               <BrowseCards />
+            </Route>
+            <Route path="/format">
+              <FormatHelp />
             </Route>
             <Route path="/">
               <Home />

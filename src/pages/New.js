@@ -13,7 +13,6 @@ function NewRoom() {
   const ws = useContext(WSApiContext);
   const api = useGameApi(ws);
 
-  const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
   const [roomPassword, setRoomPassword] = useState("");
   const [roomOptions, setRoomOptions] = useState({
@@ -33,7 +32,6 @@ function NewRoom() {
     setLocalSession(session);
     // request backend to create a new room
     const created = await api.create({
-      room_name: roomId,
       room_password: roomPassword,
       room_options: roomOptions,
       sid: session ? session.sid : "-",
@@ -56,21 +54,8 @@ function NewRoom() {
       <h1>Luo huone</h1>
       <div id="grid">
         <form className="form" autoComplete="off">
-          <h2>Tiedot</h2>
+          <h2>Huoneen tiedot</h2>
           <fieldset className="form-fieldset ui-input __first">
-            <input
-              name="test"
-              type="text"
-              id="huoneen-nimi"
-              value={roomId}
-              onChange={e => setRoomId(e.target.value)}
-            />
-            <label htmlFor="huoneen-nimi">
-              <span data-text="Huoneen nimi">Huoneen nimi</span>
-            </label>
-          </fieldset>
-
-          <fieldset className="form-fieldset ui-input __second">
             <input
               name="test"
               type="password"
@@ -98,10 +83,7 @@ function NewRoom() {
             </label>
           </fieldset>
 
-          <fieldset className="form-fieldset ui-input __fourth">
-            <br></br>
-            <Button text="Luo huone" onClick={createRoom} />
-          </fieldset>
+          <fieldset className="form-fieldset ui-input __fourth"></fieldset>
           <p>{infoMsg}</p>
         </form>
         <form className="form">
@@ -133,7 +115,9 @@ function NewRoom() {
               }
             />
             <label htmlFor="czar-time">
-              <span data-text="Czarin valinta-aika">Czarin valinta-aika</span>
+              <span data-text="Vastausten lukemisaika">
+                Vastausten lukemisaika
+              </span>
             </label>
           </fieldset>
           <fieldset className="form-fieldset ui-input __third">
@@ -153,6 +137,8 @@ function NewRoom() {
             </label>
           </fieldset>
         </form>
+        <br></br>
+        <Button text="Luo huone" onClick={createRoom} />
       </div>
     </div>
   );

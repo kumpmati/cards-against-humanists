@@ -11,63 +11,68 @@ import PlayerList from "../PlayerList";
 import Table from "../Table";
 import Hand from "../Hand";
 import {
-	compareValues,
-	parseHandData,
-	parsePlayerData,
-	parseTableData,
+  compareValues,
+  parseHandData,
+  parsePlayerData,
+  parseTableData,
 } from "./util";
 
 /*
  * Game renderer
  */
-function GameRenderer({ userInfo }) {
-	const { sid } = userInfo || {};
+function GameRenderer({ userInfo, roomId }) {
+  const { sid } = userInfo || {};
 
-	// websocket api
-	const ws = useContext(WSApiContext);
-	const api = useGameApi(ws);
+  // websocket api
+  const ws = useContext(WSApiContext);
+  const api = useGameApi(ws);
 
-	// function to send data to server
-	const sendFunc = async data => await api.sendAction({ data, sid });
-	/*
-	 * Store state of each section independently
-	 */
-	const [playerData, setPlayerData] = useState({});
-	const [tableData, setTableData] = useState({});
-	const [handData, setHandData] = useState({});
+  // function to send data to server
+  const sendFunc = async data => await api.sendAction({ data, sid });
+  /*
+   * Store state of each section independently
+   */
+  const [playerData, setPlayerData] = useState({});
+  const [tableData, setTableData] = useState({});
+  const [handData, setHandData] = useState({});
 
-	/* Listen for game updates */
-	useEffect(() => {
-		const listener = d => {
-			const newPlayerData = parsePlayerData(d);
-			const newTableData = parseTableData(d);
-			const newHandData = parseHandData(d);
+  /* Listen for game updates */
+  useEffect(() => {
+    const listener = d => {
+      const newPlayerData = parsePlayerData(d);
+      const newTableData = parseTableData(d);
+      const newHandData = parseHandData(d);
 
-			// only update if values have changed
-			!compareValues(newPlayerData, playerData) && setPlayerData(newPlayerData);
-			!compareValues(newTableData, tableData) && setTableData(newTableData);
-			!compareValues(newHandData, handData) && setHandData(newHandData);
-		};
-		ws.addListener(listener);
+      // only update if values have changed
+      !compareValues(newPlayerData, playerData) && setPlayerData(newPlayerData);
+      !compareValues(newTableData, tableData) && setTableData(newTableData);
+      !compareValues(newHandData, handData) && setHandData(newHandData);
+    };
+    ws.addListener(listener);
 
-		// remove listener when unmounting
-		return () => ws.removeListener(listener);
-	}, [ws]);
+    // remove listener when unmounting
+    return () => ws.removeListener(listener);
+  }, [ws]);
 
-	// first 4 characters of SID is the ID used to identify players
-	const userId = sid ? sid.slice(0, 4) : "";
+  // first 4 characters of SID is the ID used to identify players
+  const userId = sid ? sid.slice(0, 4) : "";
 
-	return (
-		<div id="game-room">
-			<div id="left-nav">
-				<PlayerList {...playerData} userId={userId} send={sendFunc} />
-			</div>
-			<div id="game">
-				<Table {...tableData} userId={userId} send={sendFunc} />
-				<Hand {...handData} userId={userId} send={sendFunc} />
-			</div>
-		</div>
-	);
+  return (
+    <div id="game-room">
+      <div id="left-nav">
+        <PlayerList
+          {...playerData}
+          userId={userId}
+          roomId={roomId}
+          send={sendFunc}
+        />
+      </div>
+      <div id="game">
+        <Table {...tableData} userId={userId} send={sendFunc} />
+        <Hand {...handData} userId={userId} send={sendFunc} />
+      </div>
+    </div>
+  );
 }
 
 export default GameRenderer;

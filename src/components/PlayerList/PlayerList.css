@@ -8,3 +8,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+#join-link {
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}

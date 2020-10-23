@@ -1,5 +1,7 @@
 #active-cards {
+  width: 100%;
   display: flex;
+  justify-content: space-evenly;
   gap: 2em;
 }
 

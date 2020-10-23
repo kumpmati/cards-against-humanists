@@ -5,8 +5,10 @@
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   width: 20em;
-  margin-top: 50vh;
+  top: 50vh;
   height: 35em;
   transform: translateY(-50%);
   gap: 1.5em;
@@ -18,6 +20,11 @@
 
 .link {
   text-decoration: none;
+  color: rgb(161, 185, 250);
+}
+
+.link:hover {
+  filter: brightness(1.1);
 }
 
 .section {
