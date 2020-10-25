@@ -18,6 +18,7 @@ import Join from "./pages/Join";
 import CardSubmit from "./pages/CardSubmit";
 import BrowseCards from "./pages/BrowseCards";
 import FormatHelp from "./pages/FormatHelp";
+import Test from "./pages/Test";
 
 // connect to different places depending on node env
 const url =
@@ -27,7 +28,7 @@ const url =
 
 function App() {
   // connect to backend using socket.io
-  const io = connect(url);
+  const io = connect(`${url}/game`);
   // provide socket.io connection to the websocket interface
   const WSConnection = useWebSocketApi(io);
 
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path="/format">
               <FormatHelp />
+            </Route>
+            <Route path="/test/:roomID?">
+              <Test io={io} />
             </Route>
             <Route path="/">
               <Home />
