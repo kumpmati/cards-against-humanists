@@ -1,13 +1,14 @@
 export const toggleInList = (item, list, maxLength) => {
-	const newList = [...list];
-	const i = newList.indexOf(item);
+  const newList = [...list];
+  const indexInList = newList.indexOf(item);
 
-	// item is not in the list yet
-	if (i === -1) {
-		// make sure the length doesn't exceed maximum
-		if (newList.length < maxLength) newList.push(item);
-	} else {
-		newList.splice(i, 1);
-	}
-	return newList;
+  if (indexInList === -1) {
+    // item is not in the list yet, so add it or replace the last item with it
+    if (newList.length < maxLength) newList.push(item);
+    else newList[newList.length - 1] = item;
+  } else {
+    // item is in the list, so remove it
+    newList.splice(indexInList, 1);
+  }
+  return newList;
 };

@@ -31,12 +31,13 @@ function Hand({
   const numSelectableCards = current_question
     ? current_question.required_cards
     : 0;
+
   const canSelectCards =
     !userIsCzar &&
     numSelectableCards > 0 &&
     game_status === "PLAYERS_SUBMIT_ANSWERS";
 
-  // show message
+  // reason why the cards are disabled
   let disabledMessage;
   if (userIsCzar) disabledMessage = "Czar ei voi pelata kortteja";
   else if (!canSelectCards) disabledMessage = "Odota seuraavaa kierrosta";
