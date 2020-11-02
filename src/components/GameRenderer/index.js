@@ -8,6 +8,7 @@ import WSApiContext from "../../api/websocket";
 import useGameApi from "../../api/api";
 
 import PlayerList from "../PlayerList";
+import stateMessages from "../PlayerList/stateMessages";
 import Table from "../Table";
 import Hand from "../Hand";
 import {
@@ -37,6 +38,10 @@ function GameRenderer({ userInfo, roomId }) {
   const [playerData, setPlayerData] = useState({});
   const [tableData, setTableData] = useState({});
   const [handData, setHandData] = useState({});
+  const [currentMessage, setCurrentMessage] = useState("");
+
+  // first 4 characters of SID is the ID used to identify players
+  const userId = sid ? sid.slice(0, 4) : "";
 
   /* Listen for game updates */
   useEffect(() => {
@@ -56,13 +61,13 @@ function GameRenderer({ userInfo, roomId }) {
     return () => ws.removeListener(listener);
   }, [ws]);
 
-  // first 4 characters of SID is the ID used to identify players
-  const userId = sid ? sid.slice(0, 4) : "";
+  const message = stateMessages[playerData.game_status] || (() => null);
 
   return (
     <div id="game-room">
-      <div id="mobile-button">
+      <div id="mobile-nav">
         <Button text="☰" padded onClick={() => setNavVisible(v => !v)} />
+        <p>{message(userId === playerData.current_czar)}</p>
       </div>
       <div id="left-nav" className={navVisible ? "visible" : ""}>
         <PlayerList
