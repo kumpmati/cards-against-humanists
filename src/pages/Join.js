@@ -22,7 +22,7 @@ function Join() {
 
   async function joinRoom(room_id, room_password) {
     // authenticate
-    const session = await api.authenticate(null, () => username);
+    const session = await api.newSession(username);
     setLocalSession(session);
     // request to join the room
     const r = await api.join({

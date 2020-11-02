@@ -50,6 +50,8 @@ function Hand({
     }
   }, [cards]);
 
+  if (game_status === "WAITING_FOR_PLAYERS") return <></>;
+
   return (
     <section id="cards">
       {/* Show confirmation button when a card/cards are selected */}

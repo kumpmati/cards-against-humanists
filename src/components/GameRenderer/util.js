@@ -16,21 +16,23 @@ const getCurrentQuestion = d => get(d, "table", "current_question");
  */
 export const parsePlayerData = d => ({
   players: get(d, "players"),
-  host: get(d, "game", "host"),
   timer_end_date: get(d, "game", "timer_end_date"),
   current_czar: getCurrentCzar(d),
   game_status: getGameStatus(d),
+  host: get(d, "game", "host"),
 });
 
 /*
  * Parse data needed for Table component from game data
  */
 export const parseTableData = d => ({
+  players: get(d, "players"),
   submitted_cards: get(d, "table", "submitted_cards"),
   winning_cards: get(d, "table", "winning_cards"),
   current_question: getCurrentQuestion(d),
   current_czar: getCurrentCzar(d),
   game_status: getGameStatus(d),
+  host: get(d, "game", "host"),
 });
 
 /*

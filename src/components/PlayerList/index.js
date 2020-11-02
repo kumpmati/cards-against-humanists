@@ -15,14 +15,9 @@ function PlayerList({
   timer_end_date,
   host,
   userId,
-  roomId,
-  send,
 }) {
   const [timer, setTimer] = useState(0);
   const currentMessage = stateMessages[game_status] || (() => null);
-
-  const userIsHost = host === userId;
-  const inLobby = game_status === "WAITING_FOR_PLAYERS";
 
   // setup timer
   useEffect(() => {
@@ -48,21 +43,7 @@ function PlayerList({
           <h1>{currentMessage(userId === current_czar)}</h1>
           <h2 title="jäljellä oleva aika">{timer > 0 ? timer : null}</h2>
         </div>
-        {userIsHost && inLobby ? (
-          <Button
-            padded
-            disabled={players.length < 2}
-            text="Aloita Peli"
-            onClick={() => send({ vote: "start-game" })}
-          />
-        ) : null}
       </div>
-      {inLobby ? (
-        <div id="join-link">
-          <h2>Liittymislinkki:</h2>
-          <p>https://cards-against-humanist.xyz/join/{roomId}</p>
-        </div>
-      ) : null}
       <br></br>
       <div id="player-list">
         {players.map(p => (

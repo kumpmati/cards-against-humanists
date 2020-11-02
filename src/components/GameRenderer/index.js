@@ -38,7 +38,6 @@ function GameRenderer({ userInfo, roomId }) {
   const [playerData, setPlayerData] = useState({});
   const [tableData, setTableData] = useState({});
   const [handData, setHandData] = useState({});
-  const [currentMessage, setCurrentMessage] = useState("");
 
   // first 4 characters of SID is the ID used to identify players
   const userId = sid ? sid.slice(0, 4) : "";
@@ -70,15 +69,10 @@ function GameRenderer({ userInfo, roomId }) {
         <p>{message(userId === playerData.current_czar)}</p>
       </div>
       <div id="left-nav" className={navVisible ? "visible" : ""}>
-        <PlayerList
-          {...playerData}
-          userId={userId}
-          roomId={roomId}
-          send={sendFunc}
-        />
+        <PlayerList {...playerData} userId={userId} />
       </div>
       <div id="game">
-        <Table {...tableData} userId={userId} send={sendFunc} />
+        <Table {...tableData} userId={userId} send={sendFunc} roomId={roomId} />
         <Hand {...handData} userId={userId} send={sendFunc} />
       </div>
     </div>

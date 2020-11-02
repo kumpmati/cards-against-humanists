@@ -20,6 +20,9 @@ function Table({
   game_status,
   userId,
   send,
+  roomId,
+  host,
+  players,
 }) {
   // card selection
   const [currentCards, setCurrentCards] = useState([]);
@@ -28,6 +31,8 @@ function Table({
     setSelectedCards(selectedCards === pack ? null : pack);
 
   const userIsCzar = userId === current_czar;
+  const userIsHost = userId === host;
+  const inLobby = game_status === "WAITING_FOR_PLAYERS";
   const canSelectWinner = userIsCzar && game_status === "CZAR_CHOOSES_WINNER";
 
   useEffect(() => {
@@ -44,7 +49,7 @@ function Table({
     setSelectedCards(null);
   };
 
-  const isWinningCards = pack =>
+  const isWinningCardPack = pack =>
     pack &&
     winning_cards &&
     pack.length === winning_cards.length &&
@@ -52,6 +57,21 @@ function Table({
 
   return (
     <section id="table">
+      {inLobby ? (
+        <div id="join-link">
+          <p>Liittymislinkki:</p>
+          <h2>cahum.xyz/join/{roomId}</h2>
+          <br></br>
+          {userIsHost ? (
+            <Button
+              padded
+              disabled={players.length < 2}
+              text="Aloita Peli"
+              onClick={() => send({ vote: "start-game" })}
+            />
+          ) : null}
+        </div>
+      ) : null}
       <div id="current-question">
         {current_question && <Card data={current_question} />}
 
@@ -74,7 +94,7 @@ function Table({
               data={pack}
               onClick={selectPack}
               isSelected={canSelectWinner && pack === selectedCards}
-              selectionText={isWinningCards(pack) && "👑"}
+              selectionText={isWinningCardPack(pack) && "👑"}
             />
           ))}
       </div>

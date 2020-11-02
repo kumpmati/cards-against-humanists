@@ -31,3 +31,21 @@
 #submitted-cards.spread > .list > .card {
   margin-right: 0.25em;
 }
+
+#join-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 0;
+  height: min-content;
+
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#join-link > * {
+  margin: 0.25em;
+}
