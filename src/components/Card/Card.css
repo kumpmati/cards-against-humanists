@@ -1,87 +1,87 @@
 @keyframes card-spin {
-	from {
-		opacity: 0;
-		transform: rotate(5deg) scaleX(0.5);
-	}
-	to {
-		opacity: 1;
-		transform: rotate(0) scaleX(1);
-	}
+  from {
+    opacity: 0;
+    transform: rotate(5deg) scaleX(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scaleX(1);
+  }
 }
 
 .card {
-	font-size: 0.9em;
+  font-size: 0.9em;
 
-	position: relative;
-	width: 10em;
-	height: 14em;
+  position: relative;
+  width: 10em;
+  height: 14em;
 
-	text-align: left;
-	padding: 0.75em;
-	margin: 0.75em;
+  text-align: left;
+  padding: 0.75em;
+  margin: 0.75em;
 
-	word-wrap: break-word;
-	font-weight: bold;
-	color: rgb(10, 10, 10);
-	background-color: white;
+  word-wrap: break-word;
+  font-weight: bold;
+  color: rgb(10, 10, 10);
+  background-color: white;
 
-	box-sizing: border-box;
-	border-radius: 0.5em;
-	border: 2px solid transparent;
-	box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  border: 2px solid transparent;
+  box-shadow: 0px 0.1em 0.2em rgba(0, 0, 0, 0.2);
 
-	user-select: none;
-	cursor: pointer;
+  user-select: none;
+  cursor: pointer;
 
-	transition: margin 150ms, transform 150ms, box-shadow 150ms;
+  transition: margin 150ms, transform 150ms, box-shadow 150ms;
 
-	transform-origin: bottom;
-	animation-fill-mode: backwards;
-	animation: card-spin 300ms;
+  transform-origin: bottom;
+  animation-fill-mode: backwards;
+  animation: card-spin 300ms;
 }
 
 .card.question {
-	color: white;
-	background-color: rgb(25, 25, 25);
+  color: white;
+  background-color: rgb(25, 25, 25);
 }
 
 .card:hover {
-	box-shadow: 0px 0.3em 0.5em rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0.3em 0.5em rgba(0, 0, 0, 0.2);
 }
 
 .card.selected {
-	border-color: rgb(25, 25, 25);
-	transform: translateY(-0.2em);
+  border-color: rgb(25, 25, 25);
+  transform: translateY(-0.2em);
 }
 
 /*
 * Number in the top left when card is selected
 */
 .selection-number {
-	font-size: 1.25em;
-	display: grid;
+  font-size: 1.25em;
+  display: grid;
 
-	position: absolute;
-	top: -0.5em;
-	left: -0.5em;
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
 
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 
-	width: 1.75em;
-	height: 1.75em;
+  width: 1.75em;
+  height: 1.75em;
 
-	place-content: center;
+  place-content: center;
 
-	border-radius: 100%;
+  border-radius: 100%;
 
-	color: white;
-	background-color: rgb(25, 25, 25);
+  color: white;
+  background-color: rgb(25, 25, 25);
 }
 
 .required-num {
-	font-size: 0.8em;
-	position: absolute;
-	bottom: 0;
-	right: 1em;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 0;
+  right: 1em;
 }

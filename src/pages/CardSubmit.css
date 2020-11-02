@@ -10,7 +10,7 @@
   gap: 1em;
 }
 
-#cards {
+#ready-cards {
   display: grid;
   border-radius: 0.25em;
   grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));

@@ -16,12 +16,14 @@ import {
   parsePlayerData,
   parseTableData,
 } from "./util";
+import Button from "../Button";
 
 /*
  * Game renderer
  */
 function GameRenderer({ userInfo, roomId }) {
   const { sid } = userInfo || {};
+  const [navVisible, setNavVisible] = useState(false);
 
   // websocket api
   const ws = useContext(WSApiContext);
@@ -59,7 +61,10 @@ function GameRenderer({ userInfo, roomId }) {
 
   return (
     <div id="game-room">
-      <div id="left-nav">
+      <div id="mobile-button">
+        <Button text="☰" padded onClick={() => setNavVisible(v => !v)} />
+      </div>
+      <div id="left-nav" className={navVisible ? "visible" : ""}>
         <PlayerList
           {...playerData}
           userId={userId}

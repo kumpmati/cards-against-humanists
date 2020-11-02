@@ -11,12 +11,13 @@
 
 #cards {
   background-color: rgb(128, 128, 128, 0.2);
-  width: 100%;
-  position: fixed;
+  width: auto;
+  position: relative;
   bottom: 0;
+  width: 100%;
+  height: 30vh;
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 #confirm-cards {
@@ -24,14 +25,15 @@
   place-content: center;
   width: max-content;
   padding: 0 2em;
-  height: 100%;
+  position: fixed;
+  z-index: 5;
 }
 
 #card-disable-message {
   display: grid;
   place-content: center;
 
-  width: 100%;
+  width: 100vw;
   height: 100%;
 
   position: absolute;

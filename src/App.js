@@ -28,7 +28,7 @@ const url =
 
 function App() {
   // connect to backend using socket.io
-  const io = connect(`${url}/game`);
+  const io = connect(url);
   // provide socket.io connection to the websocket interface
   const WSConnection = useWebSocketApi(io);
 

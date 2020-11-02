@@ -62,12 +62,11 @@ function Hand({
         />
       </div>
 
+      {/* Message */}
+      {disabledMessage ? (
+        <h1 id="card-disable-message">{disabledMessage}</h1>
+      ) : null}
       <div id="card-list">
-        {/* Message */}
-        {disabledMessage ? (
-          <h1 id="card-disable-message">{disabledMessage}</h1>
-        ) : null}
-
         {/* Cards */}
         {currentCards &&
           currentCards.map(card => (

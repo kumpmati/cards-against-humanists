@@ -145,7 +145,7 @@ function CardSubmit() {
         </form>
         <section>
           <h2>Korttisi (max {maxCards} kerrallaan)</h2>
-          <div id="cards">
+          <div id="ready-cards">
             {cards.map((c, i) => (
               <Card data={c} onClick={() => removeCard(i)} />
             ))}
