@@ -104,7 +104,7 @@ function CardSubmit() {
                 type="text"
                 id="card-text"
                 value={cardText}
-                maxLength={50}
+                maxLength={100}
                 onChange={e => setCardText(e.target.value)}
               />
               <label htmlFor="card-text">
