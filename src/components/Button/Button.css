@@ -32,13 +32,13 @@
 }
 
 .button:hover {
-  color: rgb(50, 50, 50);
-  background-color: rgb(235, 235, 235);
-  border-color: white;
+  color: rgb(70, 80, 107);
+  border-color: rgb(175, 182, 202);
 }
 
 .button:active {
-  filter: brightness(0.75);
+  background-color: rgb(203, 211, 233);
+  color: rgb(46, 51, 66);
 }
 
 .button * {

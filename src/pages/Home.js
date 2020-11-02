@@ -7,6 +7,11 @@ function Home() {
   return (
     <div id="Home">
       <h1 id="site-title">Cards Against Humanists</h1>
+      <div id="splash">
+        <p>
+          nyt <b>cahum.xyz</b>
+        </p>
+      </div>
       <section>
         <h2>Huone</h2>
         <div className="section">
