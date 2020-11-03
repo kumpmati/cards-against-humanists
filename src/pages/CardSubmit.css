@@ -7,7 +7,10 @@
 .grid {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1em;
+}
+
+.grid > * {
+  margin-right: 1.5em;
 }
 
 #ready-cards {
@@ -36,14 +39,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1em;
 }
 
 #card-form section {
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
-  gap: 0.5em;
 }
 
 #card-form section input {

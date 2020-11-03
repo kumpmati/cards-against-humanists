@@ -65,7 +65,12 @@ function GameRenderer({ userInfo, roomId }) {
   return (
     <div id="game-room">
       <div id="mobile-nav">
-        <Button text="☰" padded onClick={() => setNavVisible(v => !v)} />
+        <Button
+          text="☰"
+          padded
+          inverse
+          onClick={() => setNavVisible(v => !v)}
+        />
         <p>{message(userId === playerData.current_czar)}</p>
       </div>
       <div id="left-nav" className={navVisible ? "visible" : ""}>

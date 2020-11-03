@@ -119,7 +119,7 @@ function CardSubmit() {
                 id="card-question"
                 type="checkbox"
                 checked={isQuestion}
-                onClick={() => setIsQuestion(q => !q)}
+                onChange={() => setIsQuestion(q => !q)}
               />
             </div>
             {isQuestion ? (

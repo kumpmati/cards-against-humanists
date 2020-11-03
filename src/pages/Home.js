@@ -14,10 +14,10 @@ function Home() {
           </p>
         </div>
         <section>
-          <h2>Huone</h2>
+          <h2>Peli</h2>
           <div className="section">
             <Link className="link" to="/new">
-              <Button padded text="Luo" />
+              <Button padded text="Uusi" />
             </Link>
             <Link className="link" to="/join">
               <Button padded text="Liity" />

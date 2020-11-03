@@ -60,7 +60,7 @@ function Table({
       {inLobby ? (
         <div id="join-link">
           <p>Liittymislinkki:</p>
-          <h2>cahum.xyz/join/{roomId}</h2>
+          <h2>https://cahum.xyz/join/{roomId}</h2>
           <br></br>
           {userIsHost ? (
             <Button

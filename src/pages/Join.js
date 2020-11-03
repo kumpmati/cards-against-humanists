@@ -44,12 +44,12 @@ function Join() {
   }
 
   return (
-    <div className="container">
+    <div id="Home">
       <Link className="back-link" to="/">
         Takaisin
       </Link>
       <h1>Liity peliin</h1>
-      <h2>liity toisen henkilön luomaan peliin...</h2>
+      <p>liity toisen henkilön luomaan peliin...</p>
       <form className="form" autoComplete="off">
         <fieldset className="form-fieldset ui-input __first">
           <input
@@ -62,7 +62,7 @@ function Join() {
             <span data-text="Huoneen ID">Huoneen ID</span>
           </label>
         </fieldset>
-
+        {/*
         <fieldset className="form-fieldset ui-input __second">
           <input
             type="password"
@@ -76,6 +76,7 @@ function Join() {
             </span>
           </label>
         </fieldset>
+        */}
 
         <fieldset className="form-fieldset ui-input __third">
           <input

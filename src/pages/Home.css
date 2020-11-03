@@ -10,13 +10,20 @@
 
   width: 20em;
   top: 50vh;
-  min-height: 35em;
   transform: translateY(-50%);
-  gap: 1.5em;
 
   border-radius: 0.75em;
   color: white;
   background-color: rgb(25, 25, 25);
+}
+
+#Home h2 {
+  color: lightgray;
+  font-weight: normal;
+}
+
+#Home > p {
+  color: gray;
 }
 
 #splash {
@@ -64,6 +71,9 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: 2em;
   justify-content: space-evenly;
+}
+
+.section > * {
+  margin-bottom: 2em;
 }

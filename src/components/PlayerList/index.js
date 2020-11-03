@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./PlayerList.css";
 
 import Player from "../Player";
-import Button from "../Button";
 import stateMessages from "./stateMessages";
 
 /*

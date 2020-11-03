@@ -37,16 +37,16 @@ function BrowseCards() {
         <section id="questions">
           <h2>Kysymykset</h2>
           <ul className="card-list">
-            {activeCards.questions.map(c => (
-              <li>{c.text || " "}</li>
+            {activeCards.questions.map((c, i) => (
+              <li key={i}>{c.text || " "}</li>
             ))}
           </ul>
         </section>
         <section id="answers">
           <h2>Vastaukset</h2>
           <ul className="card-list">
-            {activeCards.answers.map(c => (
-              <li>{c.text}</li>
+            {activeCards.answers.map((c, i) => (
+              <li key={i}>{c.text}</li>
             ))}
           </ul>
         </section>

@@ -14,7 +14,6 @@ function NewRoom() {
   const api = useGameApi(ws);
 
   const [username, setUsername] = useState("");
-  const [roomPassword, setRoomPassword] = useState("");
   const [roomOptions, setRoomOptions] = useState({
     czarTime: -1,
     answerTime: 90,
@@ -23,6 +22,7 @@ function NewRoom() {
     packs: ["all"],
   });
   const [infoMsg, setInfoMsg] = useState("");
+  const [showSettings, setShowSettings] = useState(false);
 
   async function createRoom(e) {
     // prevent page refresh
@@ -30,9 +30,10 @@ function NewRoom() {
 
     const session = await api.newSession(username);
     setLocalSession(session);
+
     // request backend to create a new room
     const created = await api.create({
-      room_password: roomPassword,
+      room_password: "", // no password for now
       room_options: roomOptions,
       sid: session ? session.sid : "-",
     });
@@ -47,29 +48,14 @@ function NewRoom() {
   }
 
   return (
-    <div className="container wide">
+    <div id="Home">
       <Link className="back-link" to="/">
         Takaisin
       </Link>
-      <h1>Luo huone</h1>
+      <h1>Uusi peli</h1>
+      <p>Luo uusi peli ja kutsu kavereita pelaamaan!</p>
       <div id="grid">
         <form className="form" autoComplete="off">
-          <h2>Huoneen tiedot</h2>
-          <fieldset className="form-fieldset ui-input __first">
-            <input
-              name="test"
-              type="password"
-              id="salasana"
-              value={roomPassword}
-              onChange={e => setRoomPassword(e.target.value)}
-            />
-            <label htmlFor="salasana">
-              <span data-text="Salasana (valinnainen)">
-                Salasana (valinnainen)
-              </span>
-            </label>
-          </fieldset>
-
           <fieldset className="form-fieldset ui-input __third">
             <input
               name="test"
@@ -86,8 +72,15 @@ function NewRoom() {
           <fieldset className="form-fieldset ui-input __fourth"></fieldset>
           <p>{infoMsg}</p>
         </form>
-        <form className="form">
-          <h2>Asetukset</h2>
+        <Button
+          text="Asetukset"
+          inverse
+          onClick={() => setShowSettings(s => !s)}
+        />
+        <br></br>
+        <form
+          className={`form ${showSettings ? "visible" : ""}`}
+          id="game-settings">
           <fieldset className="form-fieldset ui-input __first">
             <input
               name="answer-time"
@@ -96,7 +89,10 @@ function NewRoom() {
               min={5}
               value={roomOptions.answerTime}
               onChange={e =>
-                setRoomOptions({ answerTime: parseInt(e.target.value) })
+                setRoomOptions({
+                  ...roomOptions,
+                  answerTime: parseInt(e.target.value),
+                })
               }
             />
             <label htmlFor="answer-time">
@@ -105,21 +101,24 @@ function NewRoom() {
           </fieldset>
           <fieldset className="form-fieldset ui-input __second">
             <input
+              title="Aika sekunteina, -1 tarkoittaa ei aikarajaa"
               name="czar-time"
               type="number"
-              id="czar-aika"
+              id="czar-time"
               min={-1}
               value={roomOptions.czarTime}
               onChange={e =>
-                setRoomOptions({ czarTime: parseInt(e.target.value) })
+                setRoomOptions({
+                  ...roomOptions,
+                  czarTime: parseInt(e.target.value),
+                })
               }
             />
             <label htmlFor="czar-time">
-              <span data-text="Vastausten lukemisaika">
-                Vastausten lukemisaika
-              </span>
+              <span data-text="Lukemisaika">Lukemisaika</span>
             </label>
           </fieldset>
+
           <fieldset className="form-fieldset ui-input __third">
             <input
               name="cards-in-hand"
@@ -129,7 +128,10 @@ function NewRoom() {
               max={10}
               value={roomOptions.cardsInHand}
               onChange={e =>
-                setRoomOptions({ cardsInHand: parseInt(e.target.value) })
+                setRoomOptions({
+                  ...roomOptions,
+                  cardsInHand: parseInt(e.target.value),
+                })
               }
             />
             <label htmlFor="cards-in-hand">
@@ -137,8 +139,9 @@ function NewRoom() {
             </label>
           </fieldset>
         </form>
-        <br></br>
-        <Button text="Luo huone" onClick={createRoom} />
+        <div className="last-item">
+          <Button text="Luo" onClick={createRoom} />
+        </div>
       </div>
     </div>
   );
