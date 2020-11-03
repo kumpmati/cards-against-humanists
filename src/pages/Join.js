@@ -59,7 +59,7 @@ function Join() {
             onChange={e => setRoomId(e.target.value)}
           />
           <label htmlFor="huoneen-nimi">
-            <span data-text="Huoneen ID">Huoneen ID</span>
+            <span data-text="Huoneen koodi">Huoneen koodi</span>
           </label>
         </fieldset>
         {/*
@@ -89,7 +89,6 @@ function Join() {
             <span data-text="Käyttäjänimi">Käyttäjänimi</span>
           </label>
         </fieldset>
-
         <fieldset className="form-fieldset ui-input __fourth">
           <br></br>
           <Button text="Liity" onClick={() => joinRoom(roomId, roomPassword)} />

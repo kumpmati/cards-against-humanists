@@ -7,12 +7,12 @@ function Home() {
   return (
     <div>
       <div id="Home">
-        <h1 id="site-title">Cards Against Humanists</h1>
         <div id="splash">
           <p>
             <b>v1.0</b>
           </p>
         </div>
+        <h1 id="site-title">Cards Against Humanists</h1>
         <section>
           <h2>Peli</h2>
           <div className="section">

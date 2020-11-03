@@ -69,15 +69,8 @@ function NewRoom() {
             </label>
           </fieldset>
 
-          <fieldset className="form-fieldset ui-input __fourth"></fieldset>
           <p>{infoMsg}</p>
         </form>
-        <Button
-          text="Asetukset"
-          inverse
-          onClick={() => setShowSettings(s => !s)}
-        />
-        <br></br>
         <form
           className={`form ${showSettings ? "visible" : ""}`}
           id="game-settings">
@@ -119,7 +112,7 @@ function NewRoom() {
             </label>
           </fieldset>
 
-          <fieldset className="form-fieldset ui-input __third">
+          <fieldset className="form-fieldset ui-input __second">
             <input
               name="cards-in-hand"
               type="number"
@@ -139,9 +132,18 @@ function NewRoom() {
             </label>
           </fieldset>
         </form>
-        <div className="last-item">
+        <fieldset className="form-fieldset ui-input __third">
+          <Button
+            text="Asetukset"
+            inverse
+            onClick={() => setShowSettings(s => !s)}
+          />
+        </fieldset>
+        <br></br>
+
+        <fieldset className="form-fieldset ui-input __fourth">
           <Button text="Luo" onClick={createRoom} />
-        </div>
+        </fieldset>
       </div>
     </div>
   );
