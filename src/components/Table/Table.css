@@ -1,51 +1,50 @@
 #table {
-  display: flex;
-  overflow-x: auto;
-  width: 100%;
-  height: 70vh;
-  gap: 1em;
+	display: flex;
+	overflow-x: auto;
+	width: 100%;
+	gap: 1em;
 }
 
 #current-question {
-  position: fixed;
-  margin-top: 2em;
-  margin-left: 1em;
-  z-index: 5;
+	position: fixed;
+	margin-top: 2em;
+	margin-left: 1em;
+	z-index: 5;
 }
 
 #submitted-cards {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 1em;
-  margin-top: 2em;
-  margin-left: 12em;
-  gap: 2em;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 1em;
+	margin-top: 2em;
+	margin-left: 12em;
+	gap: 2em;
 }
 
 #submitted-cards.spread {
-  font-size: 1em;
-  gap: 0.5em;
+	font-size: 1em;
+	gap: 0.5em;
 }
 
 #submitted-cards.spread > .list > .card {
-  margin-right: 0.25em;
+	margin-right: 0.25em;
 }
 
 #join-link {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
 
-  width: 0;
-  height: min-content;
+	width: 0;
+	height: min-content;
 
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #join-link > * {
-  margin: 0.25em;
+	margin: 0.25em;
 }
