@@ -1,0 +1,64 @@
+#container > div + div {
+  margin-top: 4rem;
+}
+
+#container > div > h2 {
+  font-size: 2rem;
+}
+
+#title {
+  font-size: 3.25rem;
+
+  max-width: 10ch;
+
+  color: white;
+}
+
+#slogan {
+  margin: 0;
+  margin-bottom: 4rem;
+
+  padding: 0;
+
+  color: var(--txt-col-3);
+}
+
+#game,
+#other {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+
+  color: var(--txt-col-2);
+}
+
+.section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 0.3rem;
+
+  cursor: pointer;
+}
+
+.section p {
+  color: var(--txt-col-3);
+}
+
+.section > svg {
+  margin-left: 2rem;
+  height: 100%;
+}
+
+.section:hover {
+  color: var(--txt-col-1);
+  background-color: var(--bg-col-2);
+}
+
+.section:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--txt-col-3);
+}

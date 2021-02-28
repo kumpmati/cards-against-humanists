@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  width: max-content;
+
+  padding: 0.5rem;
+
+  border-radius: 0.3rem;
+
+  color: var(--txt-col-2);
+}
+
+.button.right {
+  flex-direction: row-reverse;
+}
+
+.button > * {
+  margin: 0;
+  padding: 0;
+}
+
+.button:hover {
+  color: var(--txt-col-1);
+}
