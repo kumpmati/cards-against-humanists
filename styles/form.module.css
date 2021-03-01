@@ -27,7 +27,6 @@
 
 #submitFieldset {
   display: flex;
-  justify-content: right;
 }
 
 #submit {
@@ -47,15 +46,15 @@
   border: 1px solid transparent;
   border-radius: 0.3rem;
 
-  color: var(--txt-col-2);
-  background-color: var(--bg-col-2);
+  color: var(--txt-col-1);
+  background-color: rgb(21, 99, 119);
 
   transition: box-shadow 200ms;
 }
 
 #submit:hover {
   color: var(--txt-col-1);
-  background-color: var(--bg-col-3);
+  background-color: rgb(26, 118, 141);
 }
 
 #submit:focus-visible {

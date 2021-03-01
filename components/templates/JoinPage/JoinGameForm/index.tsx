@@ -12,7 +12,10 @@ const JoinGameForm: FC<Props> = ({ onSubmit }) => {
   const { handleSubmit } = form;
 
   return (
-    <form id={formStyles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      autoComplete="off"
+      id={formStyles.form}
+      onSubmit={handleSubmit(onSubmit)}>
       <RoomSection form={form} />
       <fieldset id={formStyles.submitFieldset}>
         <input type="submit" value="Join" id={formStyles.submit} />
