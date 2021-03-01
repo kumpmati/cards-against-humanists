@@ -1,13 +1,26 @@
+import Head from "next/head";
 import { ArrowLeft } from "react-feather";
 import Button from "../../elements/Button";
-import styles from "./Create.module.css";
 import CreateGameForm from "./CreateGameForm";
+import styles from "./Create.module.css";
+import axios from "axios";
 
 const CreatePage = () => {
-  const onSubmit = (d: any) => console.log(d);
+  const onSubmit = async (data: any) => {
+    const response = await axios.post(
+      "http://localhost:9000/api/game/create",
+      data
+    );
+
+    console.log(response.data);
+  };
 
   return (
     <main>
+      <Head>
+        <title>Cards Against Humanists | Create game</title>
+      </Head>
+
       <div className="container">
         <Button href="/" text="Back" Icon={ArrowLeft} />
         <div id={styles.header}>

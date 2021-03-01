@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { FC } from "react";
 import { ArrowLeft } from "react-feather";
 import Button from "../../elements/Button";
@@ -10,6 +11,10 @@ const JoinPage: FC = () => {
 
   return (
     <main>
+      <Head>
+        <title>Cards Against Humanists | Join game</title>
+      </Head>
+
       <div className="container">
         <Button href="/" text="Back" Icon={ArrowLeft} />
         <div id={styles.header}>

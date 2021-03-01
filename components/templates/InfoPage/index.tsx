@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { ArrowLeft } from "react-feather";
 import Button from "../../elements/Button";
 import styles from "./Info.module.css";
@@ -5,6 +6,10 @@ import styles from "./Info.module.css";
 const InfoPage = () => {
   return (
     <main>
+      <Head>
+        <title>Cards Against Humanists | Info</title>
+      </Head>
+
       <div className="container">
         <Button href="/" text="Back" Icon={ArrowLeft} />
         <div id={styles.header}>
