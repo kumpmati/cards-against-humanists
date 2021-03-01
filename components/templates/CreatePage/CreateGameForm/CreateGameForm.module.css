@@ -1,0 +1,62 @@
+#form {
+  display: grid;
+  gap: 3rem;
+}
+
+#form > fieldset {
+  display: grid;
+  gap: 1rem;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  color: var(--txt-col-2);
+}
+
+#form > fieldset > h2 {
+  font-size: 1.5rem;
+
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+
+  color: var(--txt-col-1);
+}
+
+#submitFieldset {
+  display: flex;
+  justify-content: right;
+}
+
+#submit {
+  width: 50vw;
+  max-width: 15rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  height: 2.75rem;
+
+  padding: 0 1rem;
+
+  outline: 0;
+
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+
+  color: var(--txt-col-2);
+  background-color: var(--bg-col-2);
+
+  transition: box-shadow 200ms;
+}
+
+#submit:hover {
+  color: var(--txt-col-1);
+  background-color: var(--bg-col-3);
+}
+
+#submit:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--txt-col-2);
+}

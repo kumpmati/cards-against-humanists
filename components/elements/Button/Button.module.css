@@ -11,7 +11,7 @@
 
   color: var(--txt-col-2);
 
-  transition: transform 200ms;
+  transition: transform 200ms, box-shadow 200ms;
 }
 
 .button.right {
@@ -29,4 +29,9 @@
 
 .button:active {
   transform: scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--txt-col-2);
 }

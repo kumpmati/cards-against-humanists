@@ -6,14 +6,6 @@
   font-size: 2rem;
 }
 
-#title {
-  font-size: 3.25rem;
-
-  max-width: 24rem;
-
-  color: white;
-}
-
 #slogan {
   margin: 0;
   margin-bottom: 4rem;
@@ -33,7 +25,6 @@
 }
 
 .section {
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr auto;
 
@@ -43,7 +34,7 @@
 
   cursor: pointer;
 
-  transition: transform 200ms;
+  transition: transform 200ms, box-shadow 200ms;
 }
 
 .section:hover {
@@ -57,7 +48,7 @@
 
 .section:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 2px var(--txt-col-3);
+  box-shadow: 0 0 0 2px var(--txt-col-2);
 }
 
 .section p {

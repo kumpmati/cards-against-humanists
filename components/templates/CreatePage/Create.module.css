@@ -1,0 +1,11 @@
+#header {
+  margin-bottom: 4rem;
+}
+
+#header > p {
+  color: var(--txt-col-3);
+}
+
+#content > p {
+  color: var(--txt-col-3);
+}

@@ -1,0 +1,7 @@
+#header {
+  margin-bottom: 4rem;
+}
+
+#header > p {
+  color: var(--txt-col-3);
+}

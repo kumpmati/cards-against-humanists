@@ -1,5 +1,5 @@
 import { ArrowLeft } from "react-feather";
-import Button from "../elements/Button";
+import Button from "../../elements/Button";
 import styles from "./NotFound.module.css";
 
 const NotFoundPage = () => {
