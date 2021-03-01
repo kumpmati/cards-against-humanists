@@ -9,7 +9,7 @@ const CreatePage = () => {
   return (
     <main>
       <div className="container">
-        <Button href="/" text="Home" Icon={ArrowLeft} />
+        <Button href="/" text="Back" Icon={ArrowLeft} />
         <div id={styles.header}>
           <h1 className="title">Create game</h1>
           <p>Create a fresh game and start inviting people</p>

@@ -6,7 +6,7 @@ const InfoPage = () => {
   return (
     <main>
       <div className="container">
-        <Button href="/" text="Home" Icon={ArrowLeft} />
+        <Button href="/" text="Back" Icon={ArrowLeft} />
         <div id={styles.header}>
           <h1 className="title">Info</h1>
           <p>Information about the game and the website</p>

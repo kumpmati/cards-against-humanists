@@ -5,7 +5,8 @@
 
   width: max-content;
 
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 1.25rem;
 
   border-radius: 0.3rem;
 
@@ -15,6 +16,8 @@
 }
 
 .button.right {
+  padding: 0.5rem 0.75rem;
+  padding-left: 1.25rem;
   flex-direction: row-reverse;
 }
 
@@ -25,10 +28,11 @@
 
 .button:hover {
   color: var(--txt-col-1);
+  background-color: var(--bg-col-2);
 }
 
 .button:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 
 .button:focus-visible {

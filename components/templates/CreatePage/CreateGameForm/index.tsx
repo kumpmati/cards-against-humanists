@@ -3,22 +3,25 @@ import { useForm } from "react-hook-form";
 import CardSettings from "./CardSettings";
 import GameSettings from "./GameSettings";
 import RoomSettings from "./RoomSettings";
-import styles from "./CreateGameForm.module.css";
+import formStyles from "../../../../styles/Form.module.css";
 import { CardPack, FormProps, GameFormData } from "./types";
 
-const cardPacks: CardPack[] = [{ name: "Classic", value: "classic" }];
+const cardPacks: CardPack[] = [
+  { name: "English", value: "english" },
+  { name: "Finnish", value: "finnish" },
+];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
   const form = useForm<GameFormData>();
   const { handleSubmit } = form;
 
   return (
-    <form id={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form id={formStyles.form} onSubmit={handleSubmit(onSubmit)}>
       <RoomSettings form={form} />
       <GameSettings form={form} />
       <CardSettings form={form} packs={cardPacks} />
-      <fieldset id={styles.submitFieldset}>
-        <input type="submit" value="Create" id={styles.submit} />
+      <fieldset id={formStyles.submitFieldset}>
+        <input type="submit" value="Create" id={formStyles.submit} />
       </fieldset>
     </form>
   );
