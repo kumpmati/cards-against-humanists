@@ -1,20 +1,41 @@
 import axios from "axios";
 import Head from "next/head";
-import { FC } from "react";
+import { useRouter } from "next/router";
+import { FC, useState } from "react";
 import { ArrowLeft } from "react-feather";
+import { getToken, isAuthToken, setToken } from "../../../api/auth";
 import Button from "../../elements/Button";
 
 import styles from "./Join.module.css";
 import JoinGameForm from "./JoinGameForm";
 
 const JoinPage: FC = () => {
+  const { push } = useRouter();
+
+  const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+
   const onSubmit = async (data: any) => {
+    const body = { ...data, token: getToken() };
+
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/game/join`,
-      data
+      body
     );
 
     console.log(response.data);
+
+    setError(response.data.error);
+
+    if (response.data.action === "password_needed") {
+      setShowPassword(true);
+      return;
+    }
+
+    if (isAuthToken(response.data)) {
+      setToken(response.data);
+      push("/lobby");
+    }
   };
 
   return (
@@ -32,7 +53,8 @@ const JoinPage: FC = () => {
           <h1 className="title">Join game</h1>
           <p>Join an existing game</p>
         </div>
-        <JoinGameForm onSubmit={onSubmit} />
+        <JoinGameForm showPassword={showPassword} onSubmit={onSubmit} />
+        {error && <p>{error}</p>}
       </div>
     </main>
   );

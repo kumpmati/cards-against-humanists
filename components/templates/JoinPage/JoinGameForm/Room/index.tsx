@@ -18,6 +18,7 @@ export const RoomSection: FC<Props> = ({ form }) => {
   return (
     <fieldset>
       <h2>Room code</h2>
+
       <div>
         <section className="textbox" id={styles.roomCode}>
           <input

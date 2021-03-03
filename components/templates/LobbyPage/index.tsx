@@ -12,6 +12,7 @@ const LobbyPage = () => {
     sendEvent("auth", getToken());
   });
 
+  onEvent("message", console.log);
   onEvent("error", console.error);
 
   return (
@@ -26,6 +27,9 @@ const LobbyPage = () => {
 
       <div className="container">
         <h1>Lobby</h1>
+        <button onClick={() => sendEvent("message", "hello")}>
+          Send Message
+        </button>
       </div>
     </main>
   );
