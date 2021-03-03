@@ -3,9 +3,10 @@ import { UseFormMethods } from "react-hook-form";
 import { FC } from "react";
 
 import styles from "./Room.module.css";
+import { JoinFormData } from "..";
 
 interface Props {
-  form: UseFormMethods<Record<string, any>>;
+  form: UseFormMethods<JoinFormData>;
 }
 
 export const RoomSection: FC<Props> = ({ form }) => {

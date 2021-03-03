@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { io, Socket } from "socket.io-client";
+import { AuthToken } from "./types";
 
 export enum CahumEventTypes {
   Message = "msg",
 }
 
-export const connect = (nsp: string) => {
+export const useAPI = (nsp?: string) => {
   const ws = useRef<Socket>(null);
 
+  const [connected, setConnected] = useState(false);
+
   useEffect(() => {
-    console.log("connecting to:", nsp);
-    ws.current = io(`http://localhost:9000/${nsp}`);
+    ws.current = io(`${process.env.NEXT_PUBLIC_API_URL}/${nsp || ""}`);
+    ws.current.on("connect", () => setConnected(true));
 
     return () => {
-      console.log("disconnecting from:", nsp);
+      setConnected(false);
       ws.current.disconnect();
     };
   }, [nsp]);
@@ -23,7 +26,7 @@ export const connect = (nsp: string) => {
    * @param event Event
    * @param handler Handler
    */
-  const useWebSocket = (event: any, handler: any) => {
+  const onEvent = (event: any, handler: any) => {
     useEffect(() => {
       ws.current.on(event, handler);
 
@@ -33,17 +36,23 @@ export const connect = (nsp: string) => {
     }, [event, handler]);
   };
 
+  const onConnect = (handler: any) => {
+    onEvent("connect", handler);
+  };
+
   /**
    * Sends an event with data through the socket
    * @param event Event
    * @param data Data
    */
   const sendEvent = (event: any, data: any) => {
-    ws.current.emit(event, data);
+    if (ws.current) ws.current.emit(event, data);
   };
 
   return {
-    useWebSocket,
+    onConnect,
+    onEvent,
     sendEvent,
+    connected,
   };
 };

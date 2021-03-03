@@ -7,8 +7,12 @@ interface Props {
   onSubmit: (d: any) => void;
 }
 
+export interface JoinFormData {
+  roomCode: string;
+}
+
 const JoinGameForm: FC<Props> = ({ onSubmit }) => {
-  const form = useForm();
+  const form = useForm<JoinFormData>();
   const { handleSubmit } = form;
 
   return (

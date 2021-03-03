@@ -4,13 +4,23 @@ import Button from "../../elements/Button";
 import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import axios from "axios";
+import { isAuthToken, setToken } from "../../../api/auth";
+import { useRouter } from "next/router";
 
 const CreatePage = () => {
+  const { push } = useRouter();
+
   const onSubmit = async (data: any) => {
     const response = await axios.post(
-      "http://localhost:9000/api/game/create",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/game/create`,
       data
     );
+
+    if (isAuthToken(response.data)) {
+      setToken(response.data);
+      push("/lobby"); // navigate to lobby
+      return;
+    }
 
     console.log(response.data);
   };
@@ -21,8 +31,11 @@ const CreatePage = () => {
         <title>Cards Against Humanists | Create game</title>
       </Head>
 
-      <div className="container">
+      <nav>
         <Button href="/" text="Back" Icon={ArrowLeft} />
+      </nav>
+
+      <div className="container">
         <div id={styles.header}>
           <h1 className="title">Create game</h1>
           <p>Create a fresh game and start inviting people</p>

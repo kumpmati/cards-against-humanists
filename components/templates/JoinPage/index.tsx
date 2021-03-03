@@ -1,3 +1,4 @@
+import axios from "axios";
 import Head from "next/head";
 import { FC } from "react";
 import { ArrowLeft } from "react-feather";
@@ -7,7 +8,14 @@ import styles from "./Join.module.css";
 import JoinGameForm from "./JoinGameForm";
 
 const JoinPage: FC = () => {
-  const onSubmit = (d: any) => console.log(d);
+  const onSubmit = async (data: any) => {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/game/join`,
+      data
+    );
+
+    console.log(response.data);
+  };
 
   return (
     <main>
@@ -15,8 +23,11 @@ const JoinPage: FC = () => {
         <title>Cards Against Humanists | Join game</title>
       </Head>
 
-      <div className="container">
+      <nav>
         <Button href="/" text="Back" Icon={ArrowLeft} />
+      </nav>
+
+      <div className="container">
         <div id={styles.header}>
           <h1 className="title">Join game</h1>
           <p>Join an existing game</p>

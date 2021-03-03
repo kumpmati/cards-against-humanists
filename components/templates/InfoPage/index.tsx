@@ -10,8 +10,11 @@ const InfoPage = () => {
         <title>Cards Against Humanists | Info</title>
       </Head>
 
-      <div className="container">
+      <nav>
         <Button href="/" text="Back" Icon={ArrowLeft} />
+      </nav>
+
+      <div className="container">
         <div id={styles.header}>
           <h1 className="title">Info</h1>
           <p>Information about the game and the website</p>

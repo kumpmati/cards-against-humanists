@@ -27,6 +27,10 @@ a {
   box-sizing: border-box;
 }
 
+nav {
+  padding: 0 0.5rem;
+}
+
 main {
   padding: 2rem 0;
   display: grid;
