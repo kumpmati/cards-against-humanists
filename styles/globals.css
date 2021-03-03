@@ -48,6 +48,10 @@ main {
   background-color: var(--bg-col-1);
 }
 
+.container p {
+  color: var(--txt-col-2);
+}
+
 .title {
   font-size: 3.25rem;
 
@@ -95,8 +99,8 @@ main {
 
 @media all and (max-width: 35rem) {
   .container {
-    width: 95vw;
-    padding: 0.25rem;
+    width: 100vw;
+    padding: 1rem;
   }
 }
 

@@ -3,15 +3,18 @@ import { ArrowLeft } from "react-feather";
 import { useAPI } from "../../../api/websocket";
 import { getToken } from "../../../api/auth";
 import Button from "../../elements/Button";
+import { useState } from "react";
+import { AuthToken } from "../../../api/websocket/types";
 
 const LobbyPage = () => {
+  const [roomCode, setRoomCode] = useState(null);
+
   const api = useAPI("lobby");
   const { onConnect, onEvent, sendEvent } = api;
 
-  onConnect(() => {
-    sendEvent("auth", getToken());
-  });
+  onConnect(() => sendEvent("auth", getToken()));
 
+  onEvent("auth", (d: AuthToken) => setRoomCode(d.gameID));
   onEvent("message", console.log);
   onEvent("error", console.error);
 
@@ -27,9 +30,9 @@ const LobbyPage = () => {
 
       <div className="container">
         <h1>Lobby</h1>
-        <button onClick={() => sendEvent("message", "hello")}>
-          Send Message
-        </button>
+        <div>
+          {roomCode && <p>Join link: https://cahum.xyz/join?code={roomCode}</p>}
+        </div>
       </div>
     </main>
   );
