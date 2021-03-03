@@ -45,7 +45,7 @@ const InfoPage = () => {
             </p>
           </section>
           <section>
-            <h2>About the website</h2>
+            <h2>Website</h2>
             <p>
               This is a passion project by Matias Kumpulainen. Here's his{" "}
               <a href="https://mvkump.dev">Website</a>.
