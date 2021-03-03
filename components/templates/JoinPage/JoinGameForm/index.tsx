@@ -7,6 +7,7 @@ import RoomSection from "./Room";
 interface Props {
   onSubmit: (d: any) => void;
   showPassword: boolean;
+  close: () => void;
 }
 
 export interface JoinFormData {
@@ -14,7 +15,7 @@ export interface JoinFormData {
   password: string;
 }
 
-const JoinGameForm: FC<Props> = ({ onSubmit, showPassword }) => {
+const JoinGameForm: FC<Props> = ({ onSubmit, showPassword, close }) => {
   const form = useForm<JoinFormData>();
   const { handleSubmit } = form;
 
@@ -24,8 +25,7 @@ const JoinGameForm: FC<Props> = ({ onSubmit, showPassword }) => {
       id={formStyles.form}
       onSubmit={handleSubmit(onSubmit)}>
       <RoomSection form={form} />
-
-      {showPassword && <PasswordSection form={form} />}
+      {showPassword && <PasswordSection close={close} form={form} />}
 
       <fieldset id={formStyles.submitFieldset}>
         <input type="submit" value="Join" id={formStyles.submit} />

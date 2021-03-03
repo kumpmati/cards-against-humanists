@@ -6,15 +6,13 @@ import styles from "./Create.module.css";
 import axios from "axios";
 import { isAuthToken, setToken } from "../../../api/auth";
 import { useRouter } from "next/router";
+import { API_CREATE_URL } from "../../../api/constants";
 
 const CreatePage = () => {
   const { push } = useRouter();
 
   const onSubmit = async (data: any) => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/game/create`,
-      data
-    );
+    const response = await axios.post(API_CREATE_URL, data);
 
     if (isAuthToken(response.data)) {
       setToken(response.data);
