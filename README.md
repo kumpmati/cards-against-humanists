@@ -1,8 +1,24 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Setup environment
+
+Create a `.env.local` file in the project root with the following contents:
+
+```
+NEXT_PUBLIC_API_URL=<api url>
+```
+
+The API url should be written without a `/` at the end.
+
+Example:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:9000
+```
+
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
