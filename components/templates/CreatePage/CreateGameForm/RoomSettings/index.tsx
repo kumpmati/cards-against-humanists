@@ -16,6 +16,19 @@ const RoomSettings: FC<Props> = ({ form }) => {
 
       <section id={styles.section}>
         <div className="textbox">
+          <label htmlFor="password">Max players</label>
+          <input
+            ref={register({ required: true })}
+            min={2}
+            max={50}
+            defaultValue={4}
+            type="number"
+            name="maxPlayers"
+            id="maxPlayers"
+          />
+        </div>
+
+        <div className="textbox">
           <label htmlFor="password">Password (optional)</label>
           <input ref={register} type="password" name="password" id="password" />
         </div>

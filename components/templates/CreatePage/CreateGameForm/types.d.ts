@@ -8,6 +8,7 @@ export interface FormProps {
 }
 
 export interface GameFormData {
+  maxPlayers: number;
   password: string;
   czarReveals: boolean;
   shuffleAnswers: boolean;

@@ -3,24 +3,22 @@ import { ArrowLeft } from "react-feather";
 import Button from "../../elements/Button";
 import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
-import axios from "axios";
-import { isAuthToken, setToken } from "../../../api/auth";
 import { useRouter } from "next/router";
-import { API_CREATE_URL } from "../../../api/constants";
+import { createMatch } from "../../../api/lobbyClient";
+import { setMatchID } from "../../../api";
+import { GameFormData } from "./CreateGameForm/types";
 
 const CreatePage = () => {
   const { push } = useRouter();
 
-  const onSubmit = async (data: any) => {
-    const response = await axios.post(API_CREATE_URL, data);
+  const onSubmit = async (data: GameFormData) => {
+    const matchID = await createMatch({
+      numPlayers: data.maxPlayers,
+      setupData: data,
+    });
+    setMatchID(matchID); // save match id into local storage
 
-    if (isAuthToken(response.data)) {
-      setToken(response.data);
-      push("/lobby"); // navigate to lobby
-      return;
-    }
-
-    console.log(response.data);
+    push("/lobby");
   };
 
   return (
