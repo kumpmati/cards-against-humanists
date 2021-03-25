@@ -13,7 +13,7 @@ const HomePage = () => {
         <title>Cards Against Humanists</title>
       </Head>
 
-      <div className="container">
+      <div className="content">
         <h1 className="title">Cards Against Humanists</h1>
         <p id={styles.slogan}>v2.0</p>
         <div>

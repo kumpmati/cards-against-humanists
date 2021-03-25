@@ -28,7 +28,7 @@ const LobbyPage = () => {
         <Button href="/" text="Leave" Icon={ArrowLeft} />
       </nav>
 
-      <div className="container">
+      <div className="content">
         <h1>Lobby</h1>
         <div>
           {roomCode && <p>Join link: https://cahum.xyz/join?code={roomCode}</p>}

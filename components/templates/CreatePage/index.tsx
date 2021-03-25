@@ -4,8 +4,8 @@ import Button from "../../elements/Button";
 import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import { useRouter } from "next/router";
-import { createMatch } from "../../../api/lobbyClient";
-import { setMatchID } from "../../../api";
+import { createMatch, joinMatch } from "../../../api/lobbyClient";
+import { setMatchID, setPlayerToken } from "../../../api";
 import { GameFormData } from "./CreateGameForm/types";
 
 const CreatePage = () => {
@@ -18,7 +18,13 @@ const CreatePage = () => {
     });
     setMatchID(matchID); // save match id into local storage
 
-    push("/lobby");
+    const token = await joinMatch(matchID, {
+      playerID: "0",
+      playerName: "asd",
+    });
+
+    setPlayerToken(token);
+    push("/game");
   };
 
   return (
@@ -31,7 +37,7 @@ const CreatePage = () => {
         <Button href="/" text="Back" Icon={ArrowLeft} />
       </nav>
 
-      <div className="container">
+      <div className="content">
         <div id={styles.header}>
           <h1 className="title">Create game</h1>
           <p>Create a fresh game and start inviting people</p>

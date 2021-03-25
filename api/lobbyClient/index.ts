@@ -14,7 +14,9 @@ export const getMatch = async (opts: GetMatchOptions) => {
   return res.data;
 };
 
-export const joinMatch = async (opts: JoinMatchOptions) => {
-  const res = await axios.post(`${API_URL}/games/cahum/join`, opts);
-  return res.data;
+export const joinMatch = async (id: string, opts: JoinMatchOptions) => {
+  const res = await axios.post(`${API_URL}/games/cahum/${id}/join`, opts);
+
+  const { playerCredentials } = res.data;
+  return playerCredentials;
 };

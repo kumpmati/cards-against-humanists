@@ -37,7 +37,7 @@ main {
   place-content: center;
 }
 
-.container {
+.content {
   width: 90vw;
   max-width: 55rem;
 
@@ -48,7 +48,7 @@ main {
   background-color: var(--bg-col-1);
 }
 
-.container p {
+.content p {
   color: var(--txt-col-2);
 }
 
@@ -98,7 +98,7 @@ main {
 }
 
 @media all and (max-width: 35rem) {
-  .container {
+  .content {
     width: 100vw;
     padding: 1rem;
   }

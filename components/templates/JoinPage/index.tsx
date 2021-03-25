@@ -43,7 +43,7 @@ const JoinPage: FC = () => {
         <Button href="/" text="Back" Icon={ArrowLeft} />
       </nav>
 
-      <div className="container">
+      <div className="content">
         <div id={styles.header}>
           <h1 className="title">Join game</h1>
           <p>Join an existing game</p>

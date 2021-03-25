@@ -14,7 +14,7 @@ const InfoPage = () => {
         <Button href="/" text="Back" Icon={ArrowLeft} />
       </nav>
 
-      <div className="container">
+      <div className="content">
         <div id={styles.header}>
           <h1 className="title">Info</h1>
           <p>Information about the game and the website</p>

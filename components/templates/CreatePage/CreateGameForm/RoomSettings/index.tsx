@@ -18,7 +18,7 @@ const RoomSettings: FC<Props> = ({ form }) => {
         <div className="textbox">
           <label htmlFor="password">Max players</label>
           <input
-            ref={register({ required: true })}
+            ref={register({ required: true, valueAsNumber: true })}
             min={2}
             max={50}
             defaultValue={4}

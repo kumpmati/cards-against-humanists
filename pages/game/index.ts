@@ -1,3 +1,3 @@
-import Debug from "../../components/boardgame/Debug";
+import Debug from "../../components/game/Debug";
 
 export default Debug;
