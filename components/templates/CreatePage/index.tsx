@@ -5,7 +5,7 @@ import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import { useRouter } from "next/router";
 import { createMatch, joinMatch } from "../../../api/lobbyClient";
-import { setMatchID, setPlayerToken } from "../../../api";
+import { setMatchID, setPlayerInfo } from "../../../api";
 import { GameFormData } from "./CreateGameForm/types";
 
 const CreatePage = () => {
@@ -16,14 +16,12 @@ const CreatePage = () => {
       numPlayers: data.maxPlayers,
       setupData: data,
     });
-    setMatchID(matchID); // save match id into local storage
 
-    const token = await joinMatch(matchID, {
-      playerID: "0",
-      playerName: "asd",
+    await joinMatch(matchID, {
+      playerID: "0", // creator always joins as the first player
+      playerName: prompt("Enter name:"),
     });
 
-    setPlayerToken(token);
     push("/game");
   };
 

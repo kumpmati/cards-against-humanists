@@ -5,10 +5,11 @@ import { FC, useState } from "react";
 import { ArrowLeft } from "react-feather";
 import { getToken, isAuthToken, setToken } from "../../../api/auth";
 import { API_JOIN_URL } from "../../../api/constants";
+import { getMatch, joinMatch } from "../../../api/lobbyClient";
 import Button from "../../elements/Button";
 
 import styles from "./Join.module.css";
-import JoinGameForm from "./JoinGameForm";
+import JoinGameForm, { JoinFormData } from "./JoinGameForm";
 
 const JoinPage: FC = () => {
   const { push } = useRouter();
@@ -16,21 +17,23 @@ const JoinPage: FC = () => {
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = async (data: any) => {
-    const body = { ...data, token: getToken() };
-    const response = await axios.post(API_JOIN_URL, body);
+  const onSubmit = async (data: JoinFormData) => {
+    const match = await getMatch({ matchID: data.roomCode });
 
-    setError(response.data.error);
+    const freeSpot = match.players?.find((spot: any) => !spot.isConnected);
 
-    if (response.data.action === "password_needed") {
-      setShowPassword(true);
+    if (!freeSpot) {
+      setError("Game is full");
       return;
     }
 
-    if (isAuthToken(response.data)) {
-      setToken(response.data);
-      push("/lobby");
-    }
+    await joinMatch(data.roomCode, {
+      playerID: freeSpot.id.toString(),
+      playerName: prompt("Enter name:"),
+    });
+
+    setError(null);
+    push("/game");
   };
 
   return (

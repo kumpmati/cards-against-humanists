@@ -3,7 +3,14 @@ export const setMatchID = (id: string) =>
 
 export const getMatchID = () => localStorage.getItem("cahum-match-id");
 
-export const setPlayerToken = (token: string) =>
-  localStorage.setItem("cahum-player-token", token);
+export const setPlayerInfo = (data: PlayerInfo) =>
+  localStorage.setItem("cahum-player-info", JSON.stringify(data));
 
-export const getPlayerToken = () => localStorage.getItem("cahum-player-token");
+export const getPlayerInfo = (): PlayerInfo =>
+  JSON.parse(localStorage.getItem("cahum-player-info"));
+
+export interface PlayerInfo {
+  token: string;
+  playerID: string;
+  playerName: string;
+}
