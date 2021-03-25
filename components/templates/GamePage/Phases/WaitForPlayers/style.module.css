@@ -1,0 +1,26 @@
+.container {
+}
+
+.chat {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.matchInfo {
+  padding: 1em;
+  background-color: var(--bg-col-2);
+}
+
+.roomCode {
+}
+
+.roomCode__input {
+  width: 7ch;
+  font-size: 2em;
+
+  background-color: transparent;
+  color: var(--txt-col-0);
+
+  border: 0;
+}

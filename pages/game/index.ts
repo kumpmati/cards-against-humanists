@@ -1,3 +1,3 @@
-import Debug from "../../components/game/Debug";
+import Game from "../../components/templates/GamePage";
 
-export default Debug;
+export default Game;
