@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { ArrowLeft } from "react-feather";
-import Button from "../../elements/Button";
+import Button from "../../Button";
 import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import { useRouter } from "next/router";

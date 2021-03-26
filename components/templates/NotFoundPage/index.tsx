@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { ArrowLeft } from "react-feather";
-import Button from "../../elements/Button";
+import Button from "../../Button";
 import styles from "./NotFound.module.css";
 
 const NotFoundPage = () => {

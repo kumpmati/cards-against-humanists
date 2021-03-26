@@ -2,7 +2,7 @@ import Head from "next/head";
 import { ArrowLeft } from "react-feather";
 import { useAPI } from "../../../api/websocket";
 import { getToken } from "../../../api/auth";
-import Button from "../../elements/Button";
+import Button from "../../Button";
 import { useState } from "react";
 import { AuthToken } from "../../../api/websocket/types";
 

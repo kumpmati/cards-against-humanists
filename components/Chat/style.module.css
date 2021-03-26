@@ -1,0 +1,32 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 15em;
+
+  padding: 0.5em;
+  background-color: var(--bg-col-0);
+  border-radius: var(--border-radius);
+}
+
+.messages {
+  max-height: 20em;
+  overflow-y: auto;
+
+  margin: 0;
+  padding: 0.5em;
+
+  flex-grow: 1;
+}
+
+.messages__message {
+  margin: 0.25em 0;
+}
+
+.input {
+  display: flex;
+}
+
+.input__text {
+  flex-grow: 1;
+}

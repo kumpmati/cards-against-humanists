@@ -4,7 +4,7 @@ import { JoinFormData } from "..";
 
 import styles from "./Password.module.css";
 import formStyles from "../../../../../styles/Form.module.css";
-import Button from "../../../../elements/Button";
+import Button from "../../../../Button";
 import { X } from "react-feather";
 
 interface Props {

@@ -14,6 +14,8 @@ body {
   --txt-col-2: #bbbbbb;
   --txt-col-3: #8d8d8d;
 
+  --border-radius: 0.3em;
+
   color: var(--txt-col-1);
   background-color: var(--bg-col-1);
 }

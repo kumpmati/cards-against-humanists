@@ -6,7 +6,7 @@ import { ArrowLeft } from "react-feather";
 import { getToken, isAuthToken, setToken } from "../../../api/auth";
 import { API_JOIN_URL } from "../../../api/constants";
 import { getMatch, joinMatch } from "../../../api/lobbyClient";
-import Button from "../../elements/Button";
+import Button from "../../Button";
 
 import styles from "./Join.module.css";
 import JoinGameForm, { JoinFormData } from "./JoinGameForm";
