@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Eye, EyeOff } from "react-feather";
+import { Eye, EyeOff, Users } from "react-feather";
 import Button from "../../../../components/Button";
 import styles from "./style.module.css";
 
@@ -8,7 +8,7 @@ const RoomCode = ({ matchID }) => {
 
   return (
     <div className={styles.matchInfo}>
-      <h1>WAITING FOR PLAYERS</h1>
+      <h1>Waiting for players</h1>
 
       <p>Room code:</p>
       <div className={styles.code}>
