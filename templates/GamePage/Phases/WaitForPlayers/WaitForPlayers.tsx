@@ -6,15 +6,15 @@ import RoomCode from "./RoomCode";
 
 const WaitForPlayers = (props: any) => {
   return (
-    <main className={styles.container}>
+    <div className={styles.container}>
       <section className={styles.main}>
         <RoomCode matchID={props.matchID} />
-        <PlayerList items={props.matchData} />
+        <PlayerList items={props.matchData} noTitle />
       </section>
       <section className={styles.chat}>
         <Chat game={props} />
       </section>
-    </main>
+    </div>
   );
 };
 

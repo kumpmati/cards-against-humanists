@@ -1,5 +1,8 @@
 #section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  display: flex;
   gap: 2em;
+}
+
+.maxPlayers {
+  width: 10ch;
 }

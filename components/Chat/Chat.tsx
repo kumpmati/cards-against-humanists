@@ -29,7 +29,7 @@ const Chat = ({ game }) => {
         ))}
       </ul>
       <div className={styles.input}>
-        <TextInput state={textState} id="input" onPressEnter={send} />
+        <TextInput state={textState} id="chatInput" onPressEnter={send} />
         <Button Icon={Send} onClick={send}>
           Send
         </Button>
@@ -42,9 +42,9 @@ export default Chat;
 
 const ChatMessage = ({ text, sender }) => {
   return (
-    <li>
-      <p className={styles.messages__message}>
-        <b>{sender}</b>: {text}
+    <li className={styles.message}>
+      <p>
+        <b>{sender}</b>: <span className={styles.message__text}>{text}</span>
       </p>
     </li>
   );

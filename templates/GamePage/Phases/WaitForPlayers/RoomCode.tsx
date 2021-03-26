@@ -8,6 +8,8 @@ const RoomCode = ({ matchID }) => {
 
   return (
     <div className={styles.matchInfo}>
+      <h1>WAITING FOR PLAYERS</h1>
+
       <p>Room code:</p>
       <div className={styles.code}>
         <input

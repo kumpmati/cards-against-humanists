@@ -11,7 +11,7 @@
   border-radius: 0.3rem;
 
   color: var(--txt-col-2);
-  background-color: var(--bg-col-1);
+  background-color: transparent;
 
   cursor: pointer;
 
@@ -35,7 +35,7 @@
 
 .button:hover {
   color: var(--txt-col-1);
-  background-color: var(--bg-col-2);
+  background-color: var(--button-bg-col-hover);
 }
 
 .button:active {

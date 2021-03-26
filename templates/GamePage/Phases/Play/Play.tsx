@@ -1,5 +1,9 @@
 const Play = (props: any) => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Play</h1>
+    </div>
+  );
 };
 
 export default Play;

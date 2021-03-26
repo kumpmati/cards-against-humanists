@@ -1,9 +1,10 @@
+import { FC } from "react";
 import styles from "./style.module.css";
 
-const PlayerList = ({ items = [] }) => {
+const PlayerList: FC<Props> = ({ items = [], noTitle }) => {
   return (
     <div className={styles.playerList}>
-      <h2>Players:</h2>
+      {!noTitle && <h2>Players:</h2>}
       <ul className={styles.list}>
         {items
           ?.filter(i => i.isConnected)
@@ -18,3 +19,8 @@ const PlayerList = ({ items = [] }) => {
 };
 
 export default PlayerList;
+
+interface Props {
+  items: any[];
+  noTitle?: boolean;
+}
