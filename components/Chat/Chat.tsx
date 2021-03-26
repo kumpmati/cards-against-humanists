@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Send } from "react-feather";
 import Button from "../Button";
+import TextInput from "../TextInput/TextInput";
 import styles from "./style.module.css";
 
 const Chat = ({ game }) => {
-  const [text, setText] = useState("");
+  const textState = useState("");
+  const [text, setText] = textState;
 
   const getPlayerName = (id: string) =>
     game.matchData.find((p: any) => p.id.toString() === id)?.name;
@@ -27,13 +29,7 @@ const Chat = ({ game }) => {
         ))}
       </ul>
       <div className={styles.input}>
-        <input
-          className={styles.input__text}
-          type="text"
-          value={text}
-          onChange={e => setText(e.target.value)}
-          onKeyDown={e => e.key === "Enter" && send()}
-        />
+        <TextInput state={textState} id="input" onPressEnter={send} />
         <Button Icon={Send} onClick={send}>
           Send
         </Button>
@@ -46,9 +42,11 @@ export default Chat;
 
 const ChatMessage = ({ text, sender }) => {
   return (
-    <p className={styles.messages__message}>
-      <b>{sender}</b>: {text}
-    </p>
+    <li>
+      <p className={styles.messages__message}>
+        <b>{sender}</b>: {text}
+      </p>
+    </li>
   );
 };
 

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { ArrowLeft } from "react-feather";
-import { useAPI } from "../../../api/websocket";
-import { getToken } from "../../../api/auth";
-import Button from "../../Button";
+import { useAPI } from "../../api/websocket";
+import { getToken } from "../../api/auth";
+import Button from "../../components/Button";
 import { useState } from "react";
-import { AuthToken } from "../../../api/websocket/types";
+import { AuthToken } from "../../api/websocket/types";
 
 const LobbyPage = () => {
   const [roomCode, setRoomCode] = useState(null);

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import formStyles from "../../../../styles/Form.module.css";
+import formStyles from "../../../styles/Form.module.css";
 import PasswordSection from "./Password";
 import RoomSection from "./Room";
 

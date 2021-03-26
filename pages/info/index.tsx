@@ -1,3 +1,3 @@
-import InfoPage from "../../components/templates/InfoPage";
+import InfoPage from "../../templates/InfoPage";
 
 export default InfoPage;

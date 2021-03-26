@@ -1,3 +1,3 @@
-import LobbyPage from "../../components/templates/LobbyPage";
+import LobbyPage from "../../templates/LobbyPage";
 
 export default LobbyPage;

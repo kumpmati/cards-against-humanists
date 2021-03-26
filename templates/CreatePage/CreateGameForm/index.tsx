@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import CardSettings from "./CardSettings";
 import GameSettings from "./GameSettings";
 import RoomSettings from "./RoomSettings";
-import formStyles from "../../../../styles/Form.module.css";
+import formStyles from "../../../styles/Form.module.css";
 import { CardPack, FormProps, GameFormData } from "./types";
 
 const cardPacks: CardPack[] = [

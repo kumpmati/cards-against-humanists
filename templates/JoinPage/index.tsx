@@ -3,10 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { ArrowLeft } from "react-feather";
-import { getToken, isAuthToken, setToken } from "../../../api/auth";
-import { API_JOIN_URL } from "../../../api/constants";
-import { getMatch, joinMatch } from "../../../api/lobbyClient";
-import Button from "../../Button";
+import { getToken, isAuthToken, setToken } from "../../api/auth";
+import { API_JOIN_URL } from "../../api/constants";
+import { getMatch, joinMatch } from "../../api/lobbyClient";
+import Button from "../../components/Button";
 
 import styles from "./Join.module.css";
 import JoinGameForm, { JoinFormData } from "./JoinGameForm";
@@ -20,7 +20,7 @@ const JoinPage: FC = () => {
   const onSubmit = async (data: JoinFormData) => {
     const match = await getMatch({ matchID: data.roomCode });
 
-    const freeSpot = match.players?.find((spot: any) => !spot.isConnected);
+    const freeSpot = match.players?.find((spot: any) => !spot.name);
 
     if (!freeSpot) {
       setError("Game is full");

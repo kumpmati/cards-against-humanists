@@ -1,8 +1,8 @@
 import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
 import { useEffect, useState } from "react";
-import { getMatchID, getPlayerInfo, PlayerInfo } from "../../../api";
-import { Cahum } from "../../../game";
+import { getMatchID, getPlayerInfo, PlayerInfo } from "../../api";
+import { Cahum } from "../../game";
 import Board from "./Board";
 
 const Debug = () => {

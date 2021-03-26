@@ -3,8 +3,10 @@
   flex-direction: column;
 
   min-width: 15em;
+  min-height: 20em;
 
   padding: 0.5em;
+
   background-color: var(--bg-col-0);
   border-radius: var(--border-radius);
 }

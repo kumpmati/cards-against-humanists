@@ -1,3 +1,3 @@
-import JoinPage from "../../components/templates/JoinPage";
+import JoinPage from "../../templates/JoinPage";
 
 export default JoinPage;

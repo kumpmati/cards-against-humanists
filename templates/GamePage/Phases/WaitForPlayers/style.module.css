@@ -1,0 +1,45 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1em;
+
+  margin: 0 auto;
+}
+
+.main {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  max-width: 50em;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.matchInfo {
+  display: grid;
+  place-content: center;
+
+  color: var(--txt-col-2);
+}
+
+.code {
+  display: flex;
+
+  color: var(--txt-col-1);
+}
+
+.code__input {
+  font-size: 3.5em;
+  width: 6ch;
+
+  padding: 0.2em;
+
+  text-align: center;
+
+  background-color: transparent;
+  color: var(--txt-col-0);
+
+  border: 0;
+}
