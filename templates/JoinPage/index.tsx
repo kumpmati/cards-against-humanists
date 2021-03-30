@@ -1,11 +1,8 @@
-import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { ArrowLeft } from "react-feather";
-import { getToken, isAuthToken, setToken } from "../../api/auth";
-import { API_JOIN_URL } from "../../api/constants";
-import { getMatch, joinMatch } from "../../api/lobbyClient";
+import { getMatch, joinMatch } from "../../api/lobby";
 import Button from "../../components/Button";
 
 import styles from "./Join.module.css";

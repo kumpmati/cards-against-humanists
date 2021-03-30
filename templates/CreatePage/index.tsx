@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import { useRouter } from "next/router";
-import { createMatch, joinMatch } from "../../api/lobbyClient";
+import { createMatch, joinMatch } from "../../api/lobby";
 import { setMatchID, setPlayerInfo } from "../../api";
 import { GameFormData } from "./CreateGameForm/types";
 
