@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Eye, EyeOff, Users } from "react-feather";
+import { Eye, EyeOff } from "react-feather";
 import Button from "../../../../components/Button";
 import styles from "./style.module.css";
 
@@ -17,11 +17,14 @@ const RoomCode = ({ matchID }) => {
           type={showCode ? "text" : "password"}
           value={matchID}
           readOnly
-          onFocus={e => e.target.select()}
+          onClick={() => {
+            navigator.clipboard.writeText(matchID);
+          }}
+          title="Click to copy to clipboard"
         />
         <Button
           Icon={showCode ? Eye : EyeOff}
-          onClick={() => setShowCode(s => !s)}
+          onClick={() => setShowCode((s) => !s)}
         />
       </div>
     </div>

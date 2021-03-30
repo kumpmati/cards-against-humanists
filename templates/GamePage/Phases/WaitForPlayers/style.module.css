@@ -1,7 +1,10 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1em;
+  grid-template-areas: "host main chat";
+
+  grid-template-columns: auto 1fr auto;
+  grid-auto-rows: 1fr;
+  gap: 0.5em;
 
   margin: 0 auto;
   padding: 0.5em;
@@ -12,27 +15,35 @@
 }
 
 .main {
-  position: relative;
-  top: 15%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 4em;
-
-  width: 100%;
-  max-width: 55em;
+  grid-area: main;
   height: max-content;
 
+  width: 100%;
+
+  display: grid;
+  gap: 2em;
+
   margin: 0 auto;
+
+  border-radius: var(--border-radius);
 }
 
 .chat {
+  grid-area: chat;
   width: 20em;
   height: 90vh;
 
   padding: 0em;
 
   background-color: var(--bg-col-1);
+}
+
+.hostPanel {
+  background-color: var(--bg-col-1);
+
+  padding: 0.25em;
+
+  border-radius: var(--border-radius);
 }
 
 .matchInfo {
@@ -47,7 +58,6 @@
   border-radius: var(--border-radius);
 
   color: var(--txt-col-2);
-  background-color: var(--bg-col-1);
 }
 
 .matchInfo > h1 {
@@ -78,4 +88,6 @@
   color: var(--txt-col-0);
 
   border: 0;
+
+  cursor: pointer;
 }

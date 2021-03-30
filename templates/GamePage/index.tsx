@@ -5,7 +5,7 @@ import { getMatchID, getPlayerInfo, PlayerInfo } from "../../api";
 import { Cahum } from "../../game";
 import Board from "./Board";
 
-const Debug = () => {
+const GameRenderer = () => {
   const [matchID, setMatchID] = useState(null);
   const [playerInfo, setPlayerInfo] = useState<PlayerInfo>(null);
 
@@ -30,4 +30,4 @@ const Debug = () => {
   );
 };
 
-export default Debug;
+export default GameRenderer;
