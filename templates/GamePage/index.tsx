@@ -1,6 +1,6 @@
 import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { getMatchID, getPlayerInfo, PlayerInfo } from "../../api";
 import { Cahum } from "../../game";
 import Board from "./Board";
@@ -9,7 +9,7 @@ const GameRenderer = () => {
   const [matchID, setMatchID] = useState(null);
   const [playerInfo, setPlayerInfo] = useState<PlayerInfo>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMatchID(getMatchID());
     setPlayerInfo(getPlayerInfo());
   }, []);
