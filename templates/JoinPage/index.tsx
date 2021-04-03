@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { AxiosError } from "axios";
 import { FC, useState } from "react";
 import { ArrowLeft } from "react-feather";
 import { getMatch, joinMatch } from "../../api/lobby";
@@ -16,16 +17,13 @@ const JoinPage: FC = () => {
 
   const onSubmit = async (data: JoinFormData) => {
     const match = await getMatch({ matchID: data.roomCode });
+    if (!match) return setError("Game not found");
 
-    const freeSpot = match.players?.find((spot: any) => !spot.name);
-
-    if (!freeSpot) {
-      setError("Game is full");
-      return;
-    }
+    const availableSpot = match.players?.find((spot: any) => !spot.name);
+    if (!availableSpot) return setError("Game is full");
 
     await joinMatch(data.roomCode, {
-      playerID: freeSpot.id.toString(),
+      playerID: availableSpot.id.toString(),
       playerName: prompt("Enter name:"),
     });
 
