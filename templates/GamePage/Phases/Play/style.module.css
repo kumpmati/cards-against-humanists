@@ -18,6 +18,8 @@
 .table {
   grid-area: table;
   background-color: var(--bg-col-2);
+
+  overflow: auto;
 }
 
 .hand {

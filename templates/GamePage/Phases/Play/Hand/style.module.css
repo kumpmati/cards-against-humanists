@@ -5,3 +5,8 @@
 
   padding: 1.5em;
 }
+
+.hand--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

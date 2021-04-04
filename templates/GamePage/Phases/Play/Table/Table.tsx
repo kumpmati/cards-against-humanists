@@ -19,23 +19,25 @@ const Table = () => {
   }`;
 
   return (
-    <div className={tableClassNames}>
-      {isCzar && <h1>You are the Czar</h1>}
-      <div className={questionClassNames}>
-        {question && <Card card={question} />}
+    <>
+      {isCzar && <h1 className={styles.czar}>You are the Czar</h1>}
+      <div className={tableClassNames}>
+        <div className={questionClassNames}>
+          {question && <Card card={question} />}
+        </div>
+        <ul className={styles.answers}>
+          {answers.map((answer, i) => {
+            return (
+              <li key={i}>
+                {answer.map((card) => (
+                  <Card key={card.text} card={card} />
+                ))}
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      <ul className={styles.answers}>
-        {answers.map((answer, i) => {
-          return (
-            <li key={i}>
-              {answer.map((card) => (
-                <Card key={card.text} card={card} />
-              ))}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    </>
   );
 };
 
