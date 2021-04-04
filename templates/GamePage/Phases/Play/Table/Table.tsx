@@ -20,9 +20,6 @@ const Table = () => {
 
   return (
     <>
-      <div className={styles.czar}>
-        <h1>{isCzar ? "You are the Czar" : ""}</h1>
-      </div>
       <div className={tableClassNames}>
         <div className={questionClassNames}>
           {question && <Card card={question} />}
@@ -39,6 +36,12 @@ const Table = () => {
           })}
         </ul>
       </div>
+
+      {isCzar && (
+        <div className={styles.czar}>
+          <h1>You are the Czar</h1>
+        </div>
+      )}
     </>
   );
 };

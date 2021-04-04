@@ -6,12 +6,13 @@ import { PlayContext } from "../Play";
 
 import styles from "./style.module.css";
 
-const Hand = () => {
+const Hand = ({ close }) => {
   const { stage, game, G } = useContext(PlayContext);
   const { hand } = G;
 
   const submitCard = (card: AnswerCard) => {
     game.moves.submitAnswer([card]);
+    close();
   };
 
   const canSubmit = stage === PlayStages.chooseCard;

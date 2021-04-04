@@ -2,7 +2,7 @@
   position: absolute;
   margin: 0.5em;
 
-  z-index: 11;
+  z-index: 100;
 }
 
 .sidebar {
@@ -60,4 +60,29 @@
 .players__item {
   padding: 0.5em;
   color: var(--txt-col-2);
+}
+
+.czar {
+  display: none;
+}
+
+@media screen and (max-width: 40rem) {
+  .czar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    font-size: 0.85em;
+
+    text-align: center;
+
+    z-index: 11;
+    pointer-events: none;
+
+    background-color: var(--blue);
+  }
 }

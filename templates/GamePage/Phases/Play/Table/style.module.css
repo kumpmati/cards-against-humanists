@@ -1,7 +1,6 @@
 .table {
   font-size: 1.1em;
   width: 100%;
-  height: 100%;
 
   display: grid;
   grid-template-areas: "question answers";
@@ -27,13 +26,16 @@
 }
 
 .czar {
-  font-size: 1.5em;
-  margin: 1em;
-  text-align: center;
+  font-size: 1.25em;
+  width: max-content;
+  margin: 0.825em;
+
+  background-color: var(--blue);
+  border-radius: var(--border-radius-small);
 }
 
 .czar > h1 {
-  margin: 0;
+  padding: 0.25em 1em;
 }
 
 .answers {
@@ -44,4 +46,11 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 0.5em;
+}
+
+@media screen and (max-width: 40rem) {
+  .czar {
+    display: none;
+  }
 }

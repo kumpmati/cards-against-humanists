@@ -30,6 +30,10 @@
   overflow-y: auto;
 }
 
+.hand__toggle {
+  display: none;
+}
+
 @media screen and (max-width: 40rem) {
   .container {
     grid-template-areas:
@@ -38,7 +42,32 @@
       "hand";
 
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: auto 1fr max-content;
     grid-auto-flow: row;
+  }
+
+  .hand__toggle {
+    display: block;
+    font-size: 2em;
+
+    position: fixed;
+    bottom: 0.25em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hand {
+    position: absolute;
+
+    width: 100%;
+    bottom: 0;
+
+    height: 0;
+
+    transition: height 200ms;
+  }
+
+  .hand.hand--open {
+    height: calc(100% - 3.5em);
   }
 }

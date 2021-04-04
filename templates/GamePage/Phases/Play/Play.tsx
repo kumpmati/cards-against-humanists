@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 import Hand from "./Hand/Hand";
 import Sidebar from "./Sidebar/Sidebar";
@@ -6,6 +6,8 @@ import Table from "./Table/Table";
 
 import styles from "./style.module.css";
 import { CahumG } from "../../../../game/types";
+import Button from "../../../../components/Button";
+import { ChevronDown, ChevronUp } from "react-feather";
 
 export const PlayContext = createContext<{
   isCzar: boolean;
@@ -20,6 +22,8 @@ export const PlayContext = createContext<{
 });
 
 const Play = (game: any) => {
+  const [handVisible, setHandVisible] = useState(false);
+
   const { playerID, ctx } = game;
   const stage = ctx.activePlayers?.[playerID];
   const isCzar = ctx.currentPlayer == playerID;
@@ -40,9 +44,18 @@ const Play = (game: any) => {
         <section className={styles.table}>
           <Table />
         </section>
-        <section className={styles.hand}>
-          <Hand />
+        <section
+          className={`${styles.hand} ${
+            handVisible ? styles["hand--open"] : ""
+          }`}>
+          <Hand close={() => setHandVisible(false)} />
         </section>
+        <div className={styles.hand__toggle}>
+          <Button
+            Icon={handVisible ? ChevronDown : ChevronUp}
+            onClick={() => setHandVisible((v) => !v)}
+          />
+        </div>
       </div>
     </PlayContext.Provider>
   );

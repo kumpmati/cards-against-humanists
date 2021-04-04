@@ -7,7 +7,7 @@ import styles from "./style.module.css";
 
 export const Sidebar = () => {
   const [visible, setVisible] = useState(false);
-  const { game } = useContext(PlayContext);
+  const { isCzar, game } = useContext(PlayContext);
 
   const containerClassNames = `${styles.sidebar} ${
     visible ? styles["sidebar--visible"] : ""
@@ -27,6 +27,12 @@ export const Sidebar = () => {
           onClick={() => setVisible((v) => !v)}
         />
       </div>
+
+      {isCzar && (
+        <div className={styles.czar}>
+          <h1>You are the Czar</h1>
+        </div>
+      )}
 
       <div className={containerClassNames}>
         <div className={contentClassName}>
