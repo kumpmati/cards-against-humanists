@@ -14,14 +14,15 @@ const CardSettings: FC<Props> = ({ form, packs }) => {
 
   return (
     <fieldset>
-      <h2>Cards</h2>
+      <h2>Card packs</h2>
       <ul id={styles.cardPacks}>
         {packs &&
           packs.map((pack, i) => (
             <li key={i} className="checkbox">
               <input
                 ref={register({
-                  validate: v => !!v.length || "Select at least one card pack",
+                  validate: (v) =>
+                    !!v.length || "Select at least one card pack",
                 })}
                 type="checkbox"
                 name="packs"

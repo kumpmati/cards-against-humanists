@@ -7,8 +7,7 @@ import formStyles from "../../../styles/Form.module.css";
 import { CardPack, FormProps, GameFormData } from "./types";
 
 const cardPacks: CardPack[] = [
-  { name: "English", value: "english" },
-  { name: "Finnish", value: "finnish" },
+  { name: "Cards Against Humanists", value: "Cahum" },
 ];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
