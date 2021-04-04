@@ -1,0 +1,7 @@
+.hand {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  place-content: center;
+
+  padding: 1.5em;
+}

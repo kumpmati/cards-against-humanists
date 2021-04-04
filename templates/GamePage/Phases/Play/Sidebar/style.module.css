@@ -6,8 +6,7 @@
 }
 
 .sidebar {
-  width: 100%;
-  max-width: 20em;
+  width: 4em;
   height: 100%;
 
   display: flex;
@@ -16,7 +15,6 @@
 
   padding-top: 3em;
 
-  width: 0;
   overflow: hidden;
 
   background-color: var(--bg-col-0);
@@ -26,7 +24,7 @@
 }
 
 .sidebar--visible {
-  width: 100vw;
+  width: 20em;
 }
 
 .content {
