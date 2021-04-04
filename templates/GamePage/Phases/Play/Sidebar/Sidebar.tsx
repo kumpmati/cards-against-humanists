@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Menu, Settings, X } from "react-feather";
+import { Menu, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
 
@@ -19,7 +19,9 @@ export const Sidebar = () => {
 
   return (
     <>
-      <div className={styles.hamburger}>
+      <div
+        title={visible ? "Hide sidebar" : "Show sidebar"}
+        className={styles.hamburger}>
         <Button
           Icon={visible ? X : Menu}
           onClick={() => setVisible((v) => !v)}
@@ -28,10 +30,6 @@ export const Sidebar = () => {
 
       <div className={containerClassNames}>
         <div className={contentClassName}>
-          <div className={styles.settings}>
-            <Button Icon={Settings} />
-          </div>
-
           <h3>Players</h3>
           <ul className={styles.players}>
             {game.matchData.map((player: any) => {

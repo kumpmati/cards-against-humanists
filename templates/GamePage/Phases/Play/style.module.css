@@ -25,4 +25,20 @@
 .hand {
   grid-area: hand;
   background-color: var(--bg-col-1);
+
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 40rem) {
+  .container {
+    grid-template-areas:
+      "sidebar"
+      "table"
+      "hand";
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    grid-auto-flow: row;
+  }
 }
