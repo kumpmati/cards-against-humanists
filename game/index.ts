@@ -29,7 +29,7 @@ export const Cahum: Game = {
   },
 
   // Function that allows you to tailor the game state to a specific player.
-  playerView: (G, ctx, playerID) => {},
+  //playerView: (G, ctx, playerID) => {},
 
   // The seed used by the pseudo-random number generator.
   seed: "teekkarilakki",
