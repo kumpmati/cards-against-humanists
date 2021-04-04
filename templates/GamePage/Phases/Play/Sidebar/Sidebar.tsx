@@ -9,8 +9,6 @@ export const Sidebar = () => {
   const [visible, setVisible] = useState(false);
   const { game } = useContext(PlayContext);
 
-  const players = game.matchData?.map((p: any) => p.name);
-
   const containerClassNames = `${styles.sidebar} ${
     visible ? styles["sidebar--visible"] : ""
   }`;
@@ -29,12 +27,12 @@ export const Sidebar = () => {
       </div>
       <div className={containerClassNames}>
         <div className={contentClassName}>
-          <h2>Players</h2>
+          <h3>Players</h3>
           <ul className={styles.players}>
-            {players.map((player) => {
+            {game.matchData.map((player: any) => {
               return (
-                <li className={styles.players__item} key={player}>
-                  {player}
+                <li key={player.id} className={styles.players__item}>
+                  {player.name}
                 </li>
               );
             })}

@@ -1,10 +1,13 @@
 .hamburger {
   position: absolute;
   margin: 0.5em;
+
+  z-index: 11;
 }
 
 .sidebar {
   width: 100%;
+  max-width: 20em;
   height: 100%;
 
   display: flex;
@@ -18,16 +21,19 @@
 
   background-color: var(--bg-col-0);
 
+  z-index: 10;
   transition: width 150ms, opacity 100ms;
 }
 
 .sidebar--visible {
-  width: 20vw;
+  width: 100vw;
 }
 
 .content {
   padding: 1em;
   opacity: 0;
+
+  width: 100vw;
 }
 
 .content--visible {
