@@ -68,6 +68,6 @@
   }
 
   .hand.hand--open {
-    height: calc(100% - 3.5em);
+    height: calc(66%);
   }
 }
