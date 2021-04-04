@@ -5,13 +5,14 @@ import CreateGameForm from "./CreateGameForm";
 import styles from "./Create.module.css";
 import { useRouter } from "next/router";
 import { createMatch, joinMatch } from "../../api/lobby";
-import { setMatchID, setPlayerInfo } from "../../api";
 import { GameFormData } from "./CreateGameForm/types";
 
 const CreatePage = () => {
   const { push } = useRouter();
 
   const onSubmit = async (data: GameFormData) => {
+    if (!Array.isArray(data.packs)) data.packs = [data.packs]; // quick fix
+
     const matchID = await createMatch({
       numPlayers: data.maxPlayers,
       setupData: data,
