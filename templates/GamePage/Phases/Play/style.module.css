@@ -17,9 +17,16 @@
 
 .table {
   grid-area: table;
+  background-color: var(--bg-col-2);
 }
 
 .hand {
   grid-area: hand;
-  background-color: var(--bg-col-2);
+  background-color: var(--bg-col-1);
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  place-content: center;
+
+  padding: 1.5em;
 }

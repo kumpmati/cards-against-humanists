@@ -1,0 +1,38 @@
+.card {
+  position: relative;
+
+  text-align: left;
+
+  font-size: 0.8em;
+  font-weight: bold;
+
+  padding: 1em;
+
+  width: 11em;
+  height: 16em;
+
+  border-radius: 0.3em;
+
+  color: var(--card-txt);
+  background-color: var(--card-bg);
+}
+
+.card__number {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+
+  opacity: 0.9;
+
+  margin: 0;
+}
+
+.card--question {
+  color: var(--card-txt-question);
+  background-color: var(--card-bg-question);
+}
+
+.card--clickable {
+  cursor: pointer;
+}

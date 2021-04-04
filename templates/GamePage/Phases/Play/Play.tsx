@@ -5,15 +5,23 @@ import Sidebar from "./Sidebar/Sidebar";
 import Table from "./Table/Table";
 
 import styles from "./style.module.css";
+import { CahumG } from "../../../../game/types";
+
+interface GameI {
+  moves: any;
+  events: any;
+  isActive: boolean;
+  G: CahumG;
+}
 
 export const PlayContext = createContext<{
   isCzar: boolean;
   stage: string;
-  game: any;
+  game: GameI;
 }>({
   isCzar: false,
   stage: "",
-  game: {},
+  game: null,
 });
 
 const Play = (game: any) => {

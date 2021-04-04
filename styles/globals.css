@@ -18,6 +18,11 @@ body {
 
   --button-bg-col-hover: rgba(255, 255, 255, 0.075);
 
+  --card-txt: black;
+  --card-txt-question: white;
+  --card-bg: white;
+  --card-bg-question: black;
+
   color: var(--txt-col-1);
   background-color: var(--bg-col-1);
 }
