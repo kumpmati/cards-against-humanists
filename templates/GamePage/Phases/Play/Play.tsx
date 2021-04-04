@@ -7,20 +7,15 @@ import Table from "./Table/Table";
 import styles from "./style.module.css";
 import { CahumG } from "../../../../game/types";
 
-interface GameI {
-  moves: any;
-  events: any;
-  isActive: boolean;
-  G: CahumG;
-}
-
 export const PlayContext = createContext<{
   isCzar: boolean;
   stage: string;
-  game: GameI;
+  G: CahumG;
+  game: any;
 }>({
   isCzar: false,
   stage: "",
+  G: null,
   game: null,
 });
 
@@ -32,6 +27,7 @@ const Play = (game: any) => {
   const state = {
     stage,
     isCzar,
+    G: game.G,
     game,
   };
 
