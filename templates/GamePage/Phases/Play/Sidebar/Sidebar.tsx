@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Menu, X } from "react-feather";
+import { Menu, Settings, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
 
@@ -25,8 +25,13 @@ export const Sidebar = () => {
           onClick={() => setVisible((v) => !v)}
         />
       </div>
+
       <div className={containerClassNames}>
         <div className={contentClassName}>
+          <div className={styles.settings}>
+            <Button Icon={Settings} />
+          </div>
+
           <h3>Players</h3>
           <ul className={styles.players}>
             {game.matchData.map((player: any) => {

@@ -5,7 +5,17 @@
   z-index: 11;
 }
 
+.settings {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  margin: 0.5em;
+}
+
 .sidebar {
+  position: relative;
+
   width: 4em;
   height: 100%;
 
