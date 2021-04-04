@@ -16,3 +16,17 @@ export interface CardPack {
   questions: QuestionCard[];
   answers: AnswerCard[];
 }
+
+export type CahumG = Omit<CahumGServer, "serverOnly">;
+
+type CahumGServer = {
+  table: {};
+  hands: {};
+
+  serverOnly: {
+    cards: {
+      answers: AnswerCard[];
+      questions: QuestionCard[];
+    };
+  };
+};
