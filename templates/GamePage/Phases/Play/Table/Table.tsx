@@ -5,10 +5,12 @@ import { PlayContext } from "../Play";
 import styles from "./style.module.css";
 
 const Table = () => {
-  const { isCzar, G } = useContext(PlayContext);
+  const { isCzar, G, game } = useContext(PlayContext);
 
   const { question, answers } = G.table;
-  const hasAnswers = answers.length > 0;
+
+  const numPossibleAnswers = Object.keys(game.ctx.activePlayers).length - 1;
+  const hasAnswers = answers.length >= numPossibleAnswers;
 
   const tableClassNames = `${styles.table} ${
     hasAnswers ? styles["table--answers"] : ""
