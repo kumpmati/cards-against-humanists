@@ -21,7 +21,7 @@ const RoomSettings: FC<Props> = ({ form }) => {
             ref={register({ required: true, valueAsNumber: true })}
             min={2}
             max={50}
-            defaultValue={4}
+            defaultValue={3}
             type="number"
             name="maxPlayers"
             id="maxPlayers"

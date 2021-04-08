@@ -13,7 +13,7 @@ export const Cahum: Game<CahumG> = {
   seed: "teekkarilakki",
 
   phases: {
-    waitForPlayers: waitForPlayers,
+    waitForPlayers,
     play: play,
   },
 };

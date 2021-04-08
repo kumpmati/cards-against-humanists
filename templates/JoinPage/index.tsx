@@ -23,8 +23,8 @@ const JoinPage: FC = () => {
     if (!availableSpot) return setError("Game is full");
 
     await joinMatch(data.roomCode, {
-      playerID: availableSpot.id.toString(),
-      playerName: prompt("Enter name:"),
+      playerID: availableSpot?.id.toString(),
+      playerName: "abcde"[availableSpot?.id],
     });
 
     setError(null);

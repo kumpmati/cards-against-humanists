@@ -7,6 +7,7 @@ export interface QuestionCard {
 }
 
 export interface AnswerCard {
+  id?: string;
   text: string;
   pack: string;
 }
@@ -18,10 +19,22 @@ export interface CardPack {
 }
 
 type CahumG = {
+  currentStage: PlayStages.submitAnswer | PlayStages.chooseWinner;
   table: {
     question: QuestionCard;
-    answers: AnswerCard[][];
+    answers: AnswerCard[];
+    revealed: AnswerCard[];
   };
   hand: AnswerCard[];
   packs: string[];
+};
+
+export type CahumG = {
+  table: {
+    question: QuestionCard;
+    answers: AnswerCard[];
+    revealed: AnswerCard[];
+  };
+  hands: Record<string, AnswerCard[]>;
+  settings: SetupData;
 };

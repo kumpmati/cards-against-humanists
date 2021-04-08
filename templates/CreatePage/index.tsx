@@ -20,7 +20,7 @@ const CreatePage = () => {
 
     await joinMatch(matchID, {
       playerID: "0", // creator always joins as the first player
-      playerName: prompt("Enter name:"),
+      playerName: "a",
     });
 
     push("/game");

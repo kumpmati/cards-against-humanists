@@ -1,8 +1,11 @@
 import { PhaseConfig } from "boardgame.io";
+import { chooseWinner, revealCard, submitAnswer } from "./moves";
 
 export enum PlayStages {
   submitAnswer = "submitAnswer",
   waitForAnswers = "waitForAnswers",
+
+  czarReveals = "czarReveals",
 
   waitForCzar = "waitForCzar",
   chooseWinner = "chooseWinner",
@@ -16,16 +19,17 @@ const play: PhaseConfig = {
     stages: {
       // players other than the Czar submit their answers
       [PlayStages.submitAnswer]: {
-        moves: {
-          submitAnswer: () => {},
-        },
+        moves: { submitAnswer },
       },
 
       // Czar picks the winner
       [PlayStages.chooseWinner]: {
-        moves: {
-          chooseWinner: () => {},
-        },
+        moves: { chooseWinner },
+      },
+
+      // Czar reveals answers one by one
+      [PlayStages.czarReveals]: {
+        moves: { revealCard },
       },
 
       [PlayStages.waitForAnswers]: {

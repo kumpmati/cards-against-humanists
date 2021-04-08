@@ -1,12 +1,12 @@
 import { PhaseConfig } from "boardgame.io";
-import { startGame } from "../moves";
+import { startGame } from "./moves";
 
 // Winner choosing phase
 const waitForPlayers: PhaseConfig = {
   start: true,
 
   moves: {
-    startGame: startGame,
+    startGame,
   },
 
   turn: {},
