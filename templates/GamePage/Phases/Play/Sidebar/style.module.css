@@ -50,10 +50,6 @@
   color: var(--txt-col-2);
 }
 
-.czar {
-  display: none;
-}
-
 @media screen and (max-width: 40rem) {
   .sidebar {
     width: 100%;
@@ -67,29 +63,5 @@
   .sidebar--visible {
     height: 100%;
     position: absolute;
-  }
-
-  .czar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 100%;
-    height: 3em;
-
-    z-index: 11;
-    pointer-events: none;
-
-    background-color: var(--blue);
-  }
-
-  .czar > h1 {
-    font-size: 1em;
-    margin: 0;
   }
 }

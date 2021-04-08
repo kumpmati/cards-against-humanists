@@ -51,6 +51,25 @@
 
 @media screen and (max-width: 40rem) {
   .czar {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+
+    width: 100%;
+    height: 3em;
+
+    pointer-events: none;
+
+    background-color: var(--blue);
+  }
+
+  .czar > h1 {
+    font-size: 1em;
+    margin: 0;
   }
 }

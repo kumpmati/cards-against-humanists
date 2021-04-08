@@ -30,8 +30,15 @@ const Table = () => {
     return null;
   };
 
+  const czarText = () => {
+    if (canReveal) return <h1>Reveal the cards</h1>;
+    if (canChooseWinner) return <h1>Choose a winner</h1>;
+    return <h1>You are the Czar</h1>;
+  };
+
   return (
     <>
+      {isCzar && <div className={styles.czar}>{czarText()}</div>}
       <div className={tableClassNames}>
         <div className={questionClassNames}>
           {question && <Card card={question} />}
@@ -44,16 +51,6 @@ const Table = () => {
           ))}
         </ul>
       </div>
-
-      {isCzar && (
-        <div className={styles.czar}>
-          <h1>
-            {canChooseWinner
-              ? "Choose the winning card(s)"
-              : "You are the Czar"}
-          </h1>
-        </div>
-      )}
     </>
   );
 };
