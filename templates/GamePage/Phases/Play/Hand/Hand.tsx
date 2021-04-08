@@ -23,8 +23,12 @@ const Hand = ({ close }) => {
 
   return (
     <div className={handClassNames}>
-      {hand.map((card: AnswerCard) => (
-        <Card key={card.text} card={card} onClick={() => submitCard(card)} />
+      {hand.map((card: AnswerCard, i: number) => (
+        <Card
+          key={card.text + i}
+          card={card}
+          onClick={() => submitCard(card)}
+        />
       ))}
     </div>
   );
