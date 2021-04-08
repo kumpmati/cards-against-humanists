@@ -11,7 +11,7 @@ const GameSettings: FC<Props> = ({ form }) => {
 
   return (
     <fieldset>
-      <h2>Game</h2>
+      <h2>Settings</h2>
 
       <section>
         <div className="checkbox">

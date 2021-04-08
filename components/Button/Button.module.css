@@ -44,5 +44,5 @@
 
 .button:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 2px var(--txt-col-2);
+  box-shadow: 0 0 0 2px var(--blue);
 }
