@@ -1,24 +1,26 @@
 import { useContext } from "react";
 import Card from "../../../../../components/Card/Card";
+import { PlayStages } from "../../../../../game/phases/play";
 import { PlayContext } from "../Play";
 
 import styles from "./style.module.css";
 
 const Table = () => {
-  const { isCzar, G, game } = useContext(PlayContext);
-
+  const { stage, isCzar, G, game } = useContext(PlayContext);
   const { question, answers } = G.table;
 
-  const numPossibleAnswers = Object.keys(game.ctx.activePlayers).length - 1;
-  const hasAnswers = answers.length >= numPossibleAnswers;
+  const canChooseWinner = isCzar && stage === PlayStages.chooseWinner;
+  const shrinkQuestion = canChooseWinner || stage === PlayStages.waitForCzar;
 
   const tableClassNames = `${styles.table} ${
-    hasAnswers ? styles["table--answers"] : ""
+    shrinkQuestion ? styles["table--answers"] : ""
   }`;
 
   const questionClassNames = `${styles.question} ${
-    hasAnswers ? styles["question--small"] : ""
+    shrinkQuestion ? styles["question--small"] : ""
   }`;
+
+  const submit = (card: any) => game.moves.chooseWinner(card.id);
 
   return (
     <>
@@ -31,7 +33,11 @@ const Table = () => {
             return (
               <li key={i}>
                 {answer.map((card) => (
-                  <Card key={card.text} card={card} />
+                  <Card
+                    key={card.text}
+                    card={card}
+                    onClick={canChooseWinner ? () => submit(card) : null}
+                  />
                 ))}
               </li>
             );
@@ -41,7 +47,11 @@ const Table = () => {
 
       {isCzar && (
         <div className={styles.czar}>
-          <h1>You are the Czar</h1>
+          <h1>
+            {canChooseWinner
+              ? "Choose the winning card(s)"
+              : "You are the Czar"}
+          </h1>
         </div>
       )}
     </>

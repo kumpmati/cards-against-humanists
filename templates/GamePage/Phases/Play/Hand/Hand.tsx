@@ -15,7 +15,7 @@ const Hand = ({ close }) => {
     close();
   };
 
-  const canSubmit = stage === PlayStages.chooseCard;
+  const canSubmit = stage === PlayStages.submitAnswer;
 
   const handClassNames = `${styles.hand} ${
     !canSubmit ? styles["hand--disabled"] : ""

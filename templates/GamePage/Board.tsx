@@ -12,6 +12,9 @@ const Board = (props: any) => {
 
     case "play":
       return <Play {...props} />;
+
+    case "choose":
+      return <h1>choose</h1>;
   }
 };
 

@@ -19,7 +19,7 @@ const GameRenderer = () => {
     game: Cahum,
     board: Board,
     multiplayer: SocketIO({ server: url }),
-    debug: false,
+    debug: true, // TODO: set to false
   });
 
   return (
