@@ -12,11 +12,11 @@
   bottom: 0;
 
   box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.25);
-  transition: bottom 200ms, box-shadow 200ms;
+  transition: transform 100ms, box-shadow 100ms;
 }
 
 .hand > *:hover {
-  bottom: 0.5em;
+  transform: scale(1.075);
 
   box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.25);
   z-index: 10;
