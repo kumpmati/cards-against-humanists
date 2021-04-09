@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { UseFormMethods } from "react-hook-form";
 import { GameFormData } from "../types";
-import { CardPack } from "../types";
 import styles from "./CardSettings.module.css";
 
 interface Props {
   form: UseFormMethods<GameFormData>;
-  packs: CardPack[];
+  packs: any[];
 }
 
 const CardSettings: FC<Props> = ({ form, packs }) => {
