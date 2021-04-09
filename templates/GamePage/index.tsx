@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getMatchID, getPlayerInfo, PlayerInfo } from "../../api";
 import { Cahum } from "../../game";
 import Board from "./Board";
+import GameLoading from "../../components/GameLoading/GameLoading";
 
 const GameRenderer = () => {
   const [matchID, setMatchID] = useState(null);
@@ -19,6 +20,7 @@ const GameRenderer = () => {
     game: Cahum,
     board: Board,
     multiplayer: SocketIO({ server: url }),
+    loading: GameLoading,
     debug: false, // TODO: set to false
   });
 
