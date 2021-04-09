@@ -112,6 +112,11 @@ main {
   padding: 0.5rem;
 }
 
+.checkbox > input,
+.checkbox > label {
+  cursor: pointer;
+}
+
 .checkbox > input[type="checkbox"] {
   appearance: none;
   display: block;
@@ -145,7 +150,7 @@ main {
 
 .checkbox > input[type="checkbox"]:checked::before {
   content: "x";
-  font-size: 1.25em;
+  font-size: 1.4em;
 
   display: grid;
   place-content: center;
