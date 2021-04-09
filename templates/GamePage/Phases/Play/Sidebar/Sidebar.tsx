@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import { Menu, X } from "react-feather";
+import { Menu, WifiOff, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
+import InGamePlayerList from "./InGamePlayerList";
 
 import styles from "./style.module.css";
 
@@ -10,6 +11,7 @@ export const Sidebar = () => {
   const { game, G, ctx } = useContext(PlayContext);
   const round = G.state.round;
   const points = G.points;
+  const players = game.matchData as any[];
 
   const containerClassNames = `${styles.sidebar} ${
     visible ? styles["sidebar--visible"] : ""
@@ -38,29 +40,7 @@ export const Sidebar = () => {
             </p>
           </div>
           <h2>Players</h2>
-          <ul className={styles.players}>
-            {game.matchData.map((player: any) => {
-              const isYou = game?.playerID == player.id;
-              const playerPoints = points[player.id] ?? 0;
-              const playerIsCzar = ctx.currentPlayer == player.id;
-
-              const playerClassNames = `${styles.player} ${
-                playerIsCzar ? styles["player--czar"] : ""
-              }`;
-
-              return (
-                <li
-                  title={playerIsCzar ? "Czar" : ""}
-                  key={player.id}
-                  className={playerClassNames}>
-                  <p className={styles.player__name}>
-                    {player.name} {isYou ? "(You)" : ""}
-                  </p>
-                  <p className={styles.player__points}>Score: {playerPoints}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <InGamePlayerList />
         </div>
       </div>
     </>
