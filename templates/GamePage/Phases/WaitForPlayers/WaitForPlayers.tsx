@@ -7,8 +7,6 @@ import HostPanel from "./HostPanel/HostPanel";
 
 const WaitForPlayers = (props: any) => {
   const userIsHost = props.playerID == 0;
-
-  console.log(props);
   const isPrivate = props.G?.settings?.private;
 
   return (
