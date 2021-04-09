@@ -8,10 +8,13 @@ import HostPanel from "./HostPanel/HostPanel";
 const WaitForPlayers = (props: any) => {
   const userIsHost = props.playerID == 0;
 
+  console.log(props);
+  const isPrivate = props.G?.settings?.private;
+
   return (
     <div className={styles.container}>
       <section className={styles.main}>
-        <RoomCode matchID={props.matchID} />
+        <RoomCode hideCode={isPrivate} matchID={props.matchID} />
         <div className={styles.playerList}>
           <PlayerList items={props.matchData} noTitle />
         </div>

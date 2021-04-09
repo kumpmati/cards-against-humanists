@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Eye, EyeOff } from "react-feather";
 import Button from "../../../../components/Button";
 import styles from "./style.module.css";
 
-const RoomCode = ({ matchID }) => {
-  const [showCode, setShowCode] = useState(true);
+const RoomCode = ({ matchID, hideCode }) => {
+  const [showCode, setShowCode] = useState(!hideCode);
 
   return (
     <div className={styles.matchInfo}>
