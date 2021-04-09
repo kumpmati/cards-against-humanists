@@ -23,13 +23,15 @@ const Hand = ({ close }) => {
 
   return (
     <div className={handClassNames}>
-      {hand.map((card: AnswerCard, i: number) => (
-        <Card
-          key={card.text + i}
-          card={card}
-          onClick={() => submitCard(card)}
-        />
-      ))}
+      <div className={styles.hand__inner}>
+        {hand.map((card: AnswerCard, i: number) => (
+          <Card
+            key={card.text + i}
+            card={card}
+            onClick={() => submitCard(card)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

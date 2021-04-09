@@ -50,10 +50,16 @@
     display: block;
     font-size: 2em;
 
+    z-index: 6;
+
     position: fixed;
     bottom: 0.25em;
     left: 50%;
     transform: translateX(-50%);
+
+    border-radius: var(--border-radius-small);
+
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .hand {
