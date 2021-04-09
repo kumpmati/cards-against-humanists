@@ -46,7 +46,9 @@ const Table = () => {
         </div>
         <ul className={styles.answers}>
           {answers.map((card) => (
-            <li key={card.id}>
+            <li
+              key={card.id}
+              className={canReveal ? styles["card__reveal"] : ""}>
               <Card card={card} onClick={cardOnClick(card)} />
             </li>
           ))}

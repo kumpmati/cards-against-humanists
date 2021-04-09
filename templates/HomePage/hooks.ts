@@ -12,7 +12,7 @@ export const useJoinPrompt = () => {
       const matchID = getMatchID();
       const onGoingMatch = await getMatch({ matchID });
 
-      const playerIsInGame = onGoingMatch.players.find(
+      const playerIsInGame = onGoingMatch?.players.find(
         (player) =>
           player.id == playerInfo.playerID &&
           player.name == playerInfo.playerName &&
