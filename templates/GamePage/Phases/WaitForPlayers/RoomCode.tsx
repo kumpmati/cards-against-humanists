@@ -4,7 +4,7 @@ import Button from "../../../../components/Button";
 import styles from "./style.module.css";
 
 const RoomCode = ({ matchID }) => {
-  const [showCode, setShowCode] = useState(false);
+  const [showCode, setShowCode] = useState(true);
 
   return (
     <div className={styles.matchInfo}>

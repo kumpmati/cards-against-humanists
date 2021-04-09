@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Menu, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
-import { PlayContextI } from "../types";
 
 import styles from "./style.module.css";
 
