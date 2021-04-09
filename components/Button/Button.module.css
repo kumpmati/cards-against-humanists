@@ -18,6 +18,11 @@
   transition: transform 100ms, box-shadow 100ms;
 }
 
+.button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .button.right {
   padding: 0.5rem 0.75rem;
   padding-left: 1.25rem;

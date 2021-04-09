@@ -15,16 +15,16 @@ const RoomSettings: FC<Props> = ({ form }) => {
       <h2>Room</h2>
 
       <section id={styles.section}>
-        <div className={"textbox " + styles.maxPlayers}>
-          <label htmlFor="password">Max players</label>
+        <div className={"textbox " + styles.numPlayers}>
+          <label htmlFor="password">Number of players</label>
           <input
             ref={register({ required: true, valueAsNumber: true })}
             min={2}
             max={50}
-            defaultValue={3}
+            defaultValue={2}
             type="number"
-            name="maxPlayers"
-            id="maxPlayers"
+            name="numPlayers"
+            id="numPlayers"
           />
         </div>
 

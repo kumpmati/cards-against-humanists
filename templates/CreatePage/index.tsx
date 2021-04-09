@@ -14,7 +14,7 @@ const CreatePage = () => {
     if (!Array.isArray(data.packs)) data.packs = [data.packs]; // quick fix
 
     const matchID = await createMatch({
-      numPlayers: data.maxPlayers,
+      numPlayers: data.numPlayers,
       setupData: data,
     });
 

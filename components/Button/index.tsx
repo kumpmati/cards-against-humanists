@@ -9,15 +9,30 @@ interface Props {
   Icon?: FC;
   iconRight?: boolean;
   onClick?: () => any;
+  disabled?: string;
 }
 
-const Button: FC<Props> = ({ href, text, Icon, iconRight, onClick }) => {
+const Button: FC<Props> = ({
+  href,
+  text,
+  Icon,
+  iconRight,
+  onClick,
+  disabled,
+}) => {
+  const buttonClassNames = `
+    ${styles.button}
+    ${iconRight ? styles.right : ""}
+    ${!text && styles.noText}
+    ${disabled ? styles["button--disabled"] : ""}
+  `;
+
   const ButtonComponent = (
     <a
-      onClick={onClick}
-      className={`${styles.button} ${iconRight ? styles.right : ""} ${
-        !text && styles.noText
-      }`}>
+      title={disabled}
+      aria-disabled={!!disabled}
+      onClick={!!disabled ? null : onClick}
+      className={buttonClassNames}>
       {Icon && <Icon />}
       {text && <p>{text}</p>}
     </a>
