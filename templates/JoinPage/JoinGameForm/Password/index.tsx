@@ -3,7 +3,7 @@ import { UseFormMethods } from "react-hook-form";
 import { JoinFormData } from "..";
 
 import styles from "./Password.module.css";
-import formStyles from "../../../../styles/Form.module.css";
+import formStyles from "../../../../styles/form.module.css";
 
 interface Props {
   form: UseFormMethods<JoinFormData>;
