@@ -4,11 +4,9 @@ import CardSettings from "./CardSettings";
 import GameSettings from "./GameSettings";
 import RoomSettings from "./RoomSettings";
 import formStyles from "../../../styles/Form.module.css";
-import { CardPack, FormProps, GameFormData } from "./types";
+import { FormProps, GameFormData } from "./types";
 
-const cardPacks: CardPack[] = [
-  { name: "Cards Against Humanists", value: "Cahum" },
-];
+const cardPacks: any[] = [{ name: "Cards Against Humanists", value: "Cahum" }];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
   const form = useForm<GameFormData>();
