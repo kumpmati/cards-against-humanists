@@ -1,0 +1,9 @@
+.createForm {
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+}
+
+.gameSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}

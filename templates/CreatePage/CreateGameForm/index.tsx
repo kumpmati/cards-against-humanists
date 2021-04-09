@@ -4,6 +4,7 @@ import CardSettings from "./CardSettings";
 import GameSettings from "./GameSettings";
 import RoomSettings from "./RoomSettings";
 import formStyles from "../../../styles/form.module.css";
+import styles from "./style.module.css";
 import { FormProps, GameFormData } from "./types";
 
 const cardPacks: any[] = [{ name: "Cards Against Humanists", value: "Cahum" }];
@@ -13,10 +14,15 @@ const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
   const { handleSubmit } = form;
 
   return (
-    <form id={formStyles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.createForm}
+      id={formStyles.form}
+      onSubmit={handleSubmit(onSubmit)}>
       <RoomSettings form={form} />
-      <GameSettings form={form} />
-      <CardSettings form={form} packs={cardPacks} />
+      <div className={styles.gameSection}>
+        <GameSettings form={form} />
+        <CardSettings form={form} packs={cardPacks} />
+      </div>
       <fieldset id={formStyles.submitFieldset}>
         <input type="submit" value="Create" id={formStyles.submit} />
       </fieldset>
