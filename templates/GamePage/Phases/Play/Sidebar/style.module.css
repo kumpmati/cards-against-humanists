@@ -37,17 +37,40 @@
   opacity: 1;
 }
 
+.content__info {
+  text-align: center;
+}
+
 .players {
   list-style-type: none;
   margin: 0;
   padding: 0;
-
-  text-align: center;
 }
 
-.players__item {
-  padding: 0.5em;
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: var(--border-radius-small);
+
+  padding: 0.5em 1em;
+}
+
+.player--czar {
+  background-color: var(--bg-col-2);
+}
+
+.player__name {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: var(--txt-col-1);
+  margin: 0.25em 0;
+}
+
+.player__points {
   color: var(--txt-col-2);
+  margin: 0.25em 0;
 }
 
 @media screen and (max-width: 40rem) {
