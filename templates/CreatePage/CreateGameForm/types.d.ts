@@ -4,7 +4,7 @@ export interface FormProps {
 
 export interface GameFormData {
   numPlayers: number;
-  password: string;
+  private: boolean;
   czarReveals: boolean;
   shuffleAnswers: boolean;
   packs: string[];

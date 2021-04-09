@@ -1,8 +1,14 @@
-#section {
+.section {
   display: flex;
+  flex-direction: column;
   gap: 2em;
 }
 
 .numPlayers {
-  width: auto;
+  min-width: 16ch;
+  width: max-content;
+}
+
+.numPlayers > input {
+  text-align: center;
 }

@@ -16,11 +16,12 @@ const CreatePage = () => {
     const matchID = await createMatch({
       numPlayers: data.numPlayers,
       setupData: data,
+      unlisted: data.private,
     });
 
     await joinMatch(matchID, {
       playerID: "0", // creator always joins as the first player
-      playerName: "a",
+      playerName: prompt("Choose a name:"),
     });
 
     push("/game");

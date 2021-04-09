@@ -104,11 +104,54 @@ main {
 .checkbox {
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: center;
   gap: 0.5rem;
 
   width: max-content;
 
   padding: 0.5rem;
+}
+
+.checkbox > input[type="checkbox"] {
+  appearance: none;
+  display: block;
+  width: 1.9em;
+  height: 1.9em;
+
+  color: var(--bg-col-3);
+  border: 1px solid currentColor;
+  border-radius: var(--border-radius);
+
+  outline: none;
+
+  background-color: var(--bg-col-3);
+
+  transition: transform 100ms, box-shadow 100ms;
+}
+
+.checkbox > input[type="checkbox"]:active {
+  transform: scale(0.95);
+}
+
+.checkbox > input[type="checkbox"]:focus-visible {
+  border-color: var(--bg-col-1);
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.checkbox > input[type="checkbox"]:checked {
+  color: var(--blue);
+  background-color: var(--blue);
+}
+
+.checkbox > input[type="checkbox"]:checked::before {
+  content: "x";
+  font-size: 1.25em;
+
+  display: grid;
+  place-content: center;
+  height: 100%;
+
+  color: white;
 }
 
 @media all and (max-width: 35rem) {

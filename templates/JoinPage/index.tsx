@@ -24,7 +24,7 @@ const JoinPage: FC = () => {
 
     await joinMatch(data.roomCode, {
       playerID: availableSpot?.id.toString(),
-      playerName: "abcde"[availableSpot?.id],
+      playerName: prompt("Choose a name:"),
     });
 
     setError(null);

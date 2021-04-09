@@ -14,9 +14,9 @@ const RoomSettings: FC<Props> = ({ form }) => {
     <fieldset>
       <h2>Room</h2>
 
-      <section id={styles.section}>
+      <section className={styles.section}>
         <div className={"textbox " + styles.numPlayers}>
-          <label htmlFor="password">Number of players</label>
+          <label htmlFor="numPlayers">Number of players</label>
           <input
             ref={register({ required: true, valueAsNumber: true })}
             min={2}
@@ -28,9 +28,9 @@ const RoomSettings: FC<Props> = ({ form }) => {
           />
         </div>
 
-        <div className="textbox">
-          <label htmlFor="password">Password (optional)</label>
-          <input ref={register} type="password" name="password" id="password" />
+        <div className="checkbox">
+          <input ref={register} type="checkbox" name="private" id="private" />
+          <label htmlFor="private">Private</label>
         </div>
       </section>
     </fieldset>
