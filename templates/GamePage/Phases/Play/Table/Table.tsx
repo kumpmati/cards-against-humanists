@@ -9,9 +9,10 @@ import styles from "./style.module.css";
 const Table = () => {
   const { stage, isCzar, G, game } = useContext(PlayContext);
   const { question, answers } = G.table;
+  const gameStage = G.state.stage;
 
-  const canReveal = isCzar && stage === PlayStages.czarReveals;
-  const canChooseWinner = isCzar && stage === PlayStages.chooseWinner;
+  const canReveal = isCzar && gameStage === PlayStages.czarReveals;
+  const canChooseWinner = isCzar && gameStage === PlayStages.chooseWinner;
 
   const shrinkQuestion =
     canChooseWinner || canReveal || stage === PlayStages.waitForCzar;

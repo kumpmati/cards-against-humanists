@@ -5,33 +5,30 @@ import Sidebar from "./Sidebar/Sidebar";
 import Table from "./Table/Table";
 
 import styles from "./style.module.css";
-import { CahumG } from "../../../../game/types";
 import Button from "../../../../components/Button";
 import { ChevronDown, ChevronUp } from "react-feather";
+import { PlayContextI } from "./types";
 
-export const PlayContext = createContext<{
-  isCzar: boolean;
-  stage: string;
-  G: CahumG;
-  game: any;
-}>({
+export const PlayContext = createContext<PlayContextI>({
   isCzar: false,
   stage: "",
   G: null,
+  ctx: null,
   game: null,
 });
 
 const Play = (game: any) => {
   const [handVisible, setHandVisible] = useState(false);
 
-  const { playerID, ctx } = game;
+  const { playerID, ctx, G } = game;
   const stage = ctx.activePlayers?.[playerID];
   const isCzar = ctx.currentPlayer == playerID;
 
-  const state = {
+  const state: PlayContextI = {
     stage,
     isCzar,
-    G: game.G,
+    G,
+    ctx,
     game,
   };
 

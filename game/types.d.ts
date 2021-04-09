@@ -19,23 +19,21 @@ export interface CardPack {
   answers: AnswerCard[];
 }
 
-type CahumG = {
-  currentStage: PlayStages.submitAnswer | PlayStages.chooseWinner;
+type CahumGServer = {
   table: {
     question: QuestionCard;
     answers: AnswerCard[];
     revealed: AnswerCard[];
   };
-  hand: AnswerCard[];
-  packs: string[];
-};
-
-export type CahumG = {
-  table: {
-    question: QuestionCard;
-    answers: AnswerCard[];
-    revealed: AnswerCard[];
-  };
+  points: Record<string, number>;
   hands: Record<string, AnswerCard[]>;
+  state: {
+    round: number;
+    stage: PlayStages;
+  };
   settings: SetupData;
 };
+
+export interface CahumG extends Omit<CahumGServer, "hands"> {
+  hand: AnswerCard[];
+}
