@@ -1,7 +1,7 @@
 .hand {
   overflow: auto;
 
-  max-height: 50vh;
+  max-height: 60vh;
 }
 
 .hand__inner {
@@ -14,7 +14,7 @@
 
 .submit {
   position: sticky;
-  top: 0;
+  top: -1px;
   display: flex;
 
   font-size: 1.25em;
