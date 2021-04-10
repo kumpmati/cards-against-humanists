@@ -8,10 +8,20 @@ import styles from "./style.module.css";
 import { FormProps, GameFormData } from "./types";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
-const cardPacks: any[] = [{ name: "Cards Against Humanists", value: "Cahum" }];
+const formDefaultValues: GameFormData = {
+  numPlayers: 2,
+  private: false,
+  czarReveals: false,
+  shuffleAnswers: true,
+  packs: ["Cahum"],
+};
+
+const availableCardPacks: any[] = [
+  { name: "Cards Against Humanists", value: "Cahum" },
+];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
-  const form = useForm<GameFormData>();
+  const form = useForm<GameFormData>({ defaultValues: formDefaultValues });
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -26,7 +36,7 @@ const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
 
       <div className={styles.gameSection}>
         <GameSettings form={form} />
-        <CardSettings form={form} packs={cardPacks} />
+        <CardSettings form={form} packs={availableCardPacks} />
       </div>
 
       <fieldset className={styles.submit} id={formStyles.submitFieldset}>
