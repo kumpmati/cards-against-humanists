@@ -1,35 +1,52 @@
 .hand {
-  overflow: hidden;
-  height: 100%;
+  overflow: auto;
+
+  max-height: 50vh;
 }
 
 .hand__inner {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(7.5em, 1fr));
-  gap: 0.25em;
+  grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
 
-  overflow-y: auto;
-  height: 100%;
   margin: 1em 0;
   padding: 1em;
 }
 
-.hand__inner > * {
-  margin: 0 auto;
+.submit {
+  position: sticky;
+  top: 0;
+  display: flex;
 
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.25);
-  transition: transform 100ms, box-shadow 100ms;
+  font-size: 1.25em;
+  padding: 0.25em;
+
+  background-color: var(--bg-col-1);
+  z-index: 20;
 }
 
-.hand__inner > *:hover {
-  transform: scale(1.075);
+.card {
+  margin: 0 auto;
+  transition: transform 100ms;
+}
 
-  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.25);
+.card:hover {
   z-index: 5;
+  transform: scale(1.05) translateY(-0.3em);
+}
+
+.card--selected {
+  z-index: 4;
+  transform: scale(1.05) translateY(-0.2em);
 }
 
 .hand--disabled {
   opacity: 0.25;
   pointer-events: none;
   user-select: none;
+}
+
+@media screen and (max-width: 40rem) {
+  .submit {
+    justify-content: center;
+  }
 }

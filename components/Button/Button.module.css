@@ -38,12 +38,12 @@
   padding: 0;
 }
 
-.button:hover {
+.button:not(.button--disabled):hover {
   color: var(--txt-col-1);
   background-color: var(--button-bg-col-hover);
 }
 
-.button:active {
+.button:not(.button--disabled):active {
   transform: scale(0.95);
 }
 

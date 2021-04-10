@@ -1,18 +1,29 @@
 import React, { useContext } from "react";
+import { ArrowUp, Check } from "react-feather";
+import Button from "../../../../../components/Button";
 import Card from "../../../../../components/Card/Card";
 import { PlayStages } from "../../../../../game/phases/play";
+import { submitAnswer } from "../../../../../game/phases/play/moves";
 import { AnswerCard } from "../../../../../game/types";
 import { PlayContext } from "../Play";
+import { useCardSelect } from "./hooks";
 
 import styles from "./style.module.css";
 
 const Hand = ({ close }) => {
-  const { stage, game, G } = useContext(PlayContext);
-  const { hand } = G;
+  const { isCzar, stage, G, game } = useContext(PlayContext);
+  const { hand, table } = G;
 
-  const submitCard = (card: AnswerCard) => {
-    game.moves.submitAnswer([card]);
-    close();
+  const requiredCards = table.question?.required_cards;
+
+  const { isSelected, select, selected, reset } = useCardSelect(requiredCards);
+  const correctNumCardsSelected = selected.length == requiredCards;
+
+  const submit = () => {
+    if (correctNumCardsSelected) {
+      game.moves.submitAnswer(selected);
+      reset();
+    }
   };
 
   const canSubmit = stage === PlayStages.submitAnswer;
@@ -23,14 +34,39 @@ const Hand = ({ close }) => {
 
   return (
     <div className={handClassNames}>
-      <div className={styles.hand__inner}>
-        {hand.map((card: AnswerCard, i: number) => (
-          <Card
-            key={card.text + i}
-            card={card}
-            onClick={() => submitCard(card)}
+      {!isCzar && (
+        <div className={styles.submit}>
+          <Button
+            Icon={Check}
+            text="Submit"
+            onClick={submit}
+            iconRight
+            disabled={
+              !correctNumCardsSelected
+                ? `This question requires ${requiredCards} cards`
+                : ""
+            }
           />
-        ))}
+        </div>
+      )}
+
+      <div className={styles.hand__inner}>
+        {hand.map((card: AnswerCard) => {
+          // card wrapper class names
+          const cardClassNames = `${styles.card} ${
+            isSelected(card) ? styles["card--selected"] : ""
+          }`;
+
+          return (
+            <div key={card.id} className={cardClassNames}>
+              <Card
+                card={card}
+                selected={isSelected(card)}
+                onClick={() => select(card)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

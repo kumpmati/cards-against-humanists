@@ -6,11 +6,17 @@ import styles from "./style.module.css";
 /**
  * Card component
  */
-const Card: FC<Props> = ({ card, onClick }) => {
-  const clickable = !!onClick ? styles["card--clickable"] : "";
+const Card: FC<Props> = ({ card, onClick, selected }) => {
+  const clickableClassName = !!onClick ? styles["card--clickable"] : "";
+  const selectedClassName = selected ? styles["card--selected"] : "";
 
   if (cardIsQuestion(card)) {
-    const className = `${styles.card} ${styles["card--question"]} ${clickable}`;
+    const className = `
+      ${styles.card}
+      ${styles["card--question"]}
+      ${clickableClassName}
+      ${selectedClassName}
+    `;
 
     return (
       <div onClick={onClick} className={className}>
@@ -22,7 +28,12 @@ const Card: FC<Props> = ({ card, onClick }) => {
     );
   }
 
-  const className = `${styles.card} ${clickable}`;
+  const className = `
+    ${styles.card}
+    ${clickableClassName}
+    ${selectedClassName}
+  `;
+
   return (
     <div onClick={onClick} className={className}>
       <p>{card.text}</p>
@@ -38,4 +49,5 @@ const cardIsQuestion = (card: CardType): card is QuestionCard =>
 interface Props {
   card: CardType;
   onClick?: () => any;
+  selected?: boolean;
 }

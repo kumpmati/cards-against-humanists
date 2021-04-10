@@ -25,9 +25,7 @@
 .hand {
   grid-area: hand;
   background-color: var(--bg-col-1);
-
-  max-height: 100%;
-  overflow-y: auto;
+  height: auto;
 }
 
 .hand__toggle {
@@ -68,12 +66,13 @@
     width: 100%;
     bottom: 0;
 
-    height: 0;
+    height: 100%;
+    max-height: 0;
 
-    transition: height 100ms;
+    transition: max-height 100ms;
   }
 
   .hand.hand--open {
-    height: calc(66%);
+    max-height: 50vh;
   }
 }
