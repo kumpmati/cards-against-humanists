@@ -18,7 +18,7 @@
   list-style-type: none;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
 
   color: var(--txt-col-0);
 }
@@ -31,4 +31,8 @@
   color: var(--txt-col-2);
 
   animation: bounce 250ms;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
