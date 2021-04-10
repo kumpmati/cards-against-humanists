@@ -1,4 +1,4 @@
-import { Play } from "react-feather";
+import { ChevronsRight } from "react-feather";
 import Button from "../../../../../components/Button";
 
 import styles from "./style.module.css";
@@ -20,7 +20,7 @@ const HostPanel = (props: any) => {
         <li>
           <Button
             iconRight
-            Icon={Play}
+            Icon={ChevronsRight}
             onClick={() => props.moves.startGame()}
             text="Start Game"
             disabled={
