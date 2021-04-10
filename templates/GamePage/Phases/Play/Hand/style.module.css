@@ -1,7 +1,7 @@
 .hand {
   overflow: auto;
 
-  max-height: 60vh;
+  max-height: 50vh;
 }
 
 .hand__inner {
@@ -14,14 +14,16 @@
 
 .submit {
   position: sticky;
-  top: -1px;
+  top: 0px;
   display: flex;
+
+  transform: translateY(-1px);
 
   font-size: 1.25em;
   padding: 0.25em;
 
   background-color: var(--bg-col-1);
-  z-index: 20;
+  z-index: 5;
 }
 
 .card {
@@ -30,12 +32,12 @@
 }
 
 .card:hover {
-  z-index: 5;
+  z-index: 3;
   transform: scale(1.05) translateY(-0.3em);
 }
 
 .card--selected {
-  z-index: 4;
+  z-index: 2;
   transform: scale(1.05) translateY(-0.2em);
 }
 

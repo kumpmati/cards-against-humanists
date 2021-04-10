@@ -51,6 +51,7 @@
 @media screen and (max-width: 40rem) {
   .sidebar {
     width: 100%;
+    max-width: 100vw;
     height: 3em;
   }
 
