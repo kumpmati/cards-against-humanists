@@ -5,10 +5,12 @@
 }
 
 .hand__inner {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
+  display: flex;
+  overflow-x: auto;
 
-  margin: 1em 0;
+  max-width: max-content;
+  margin: 1em auto;
+
   padding: 1em;
 }
 
@@ -50,5 +52,12 @@
 @media screen and (max-width: 40rem) {
   .submit {
     justify-content: center;
+  }
+
+  .hand__inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8.25em, 1fr));
+
+    max-width: 100%;
   }
 }
