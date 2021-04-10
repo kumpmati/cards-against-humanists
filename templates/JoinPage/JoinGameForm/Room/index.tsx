@@ -19,17 +19,15 @@ export const RoomSection: FC<Props> = ({ form }) => {
     <fieldset>
       <h2>Room code</h2>
 
-      <div>
-        <section className="textbox" id={styles.roomCode}>
-          <input
-            autoFocus
-            ref={register}
-            type="text"
-            name="roomCode"
-            defaultValue={roomCode}
-          />
-        </section>
-      </div>
+      <section className="textbox" id={styles.roomCode}>
+        <input
+          autoFocus
+          ref={register}
+          type="text"
+          name="roomCode"
+          defaultValue={roomCode}
+        />
+      </section>
     </fieldset>
   );
 };
