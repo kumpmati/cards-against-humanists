@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { WifiOff } from "react-feather";
-import { PlayContext } from "../Play";
+import { PlayContext } from "../../templates/GamePage/Phases/Play/Play";
 import styles from "./style.module.css";
 
 const InGamePlayerList = () => {

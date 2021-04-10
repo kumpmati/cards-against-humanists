@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Menu, WifiOff, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
-import InGamePlayerList from "./InGamePlayerList";
+import InGamePlayerList from "../../../../../components/InGamePlayerList/InGamePlayerList";
 
 import styles from "./style.module.css";
 
