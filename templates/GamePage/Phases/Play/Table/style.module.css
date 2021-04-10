@@ -18,7 +18,7 @@
 .question {
   font-size: 1.4em;
 
-  transition: font-size 200ms;
+  transition: font-size 100ms;
 }
 
 .question--small {

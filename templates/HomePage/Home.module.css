@@ -35,7 +35,7 @@
 
   cursor: pointer;
 
-  transition: transform 200ms, box-shadow 200ms;
+  transition: transform 100ms, box-shadow 100ms;
 }
 
 .section:hover {

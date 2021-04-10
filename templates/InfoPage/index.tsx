@@ -17,7 +17,6 @@ const InfoPage = () => {
       <div className="content">
         <div id={styles.header}>
           <h1 className="title">Info</h1>
-          <p>Information about the game and the website</p>
         </div>
         <div id={styles.content}>
           <section>
