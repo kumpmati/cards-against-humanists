@@ -13,3 +13,8 @@ export interface JoinMatchOptions {
   playerName: string;
   data?: any;
 }
+
+export interface LeaveMatchOptions {
+  playerID: string;
+  credentials: string;
+}

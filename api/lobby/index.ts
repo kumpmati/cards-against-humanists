@@ -1,7 +1,12 @@
 import axios from "axios";
-import { setMatchID, setPlayerInfo } from "..";
+import { getMatchID, getPlayerInfo, setMatchID, setPlayerInfo } from "..";
 import { API_URL } from "../constants";
-import { CreateMatchOptions, GetMatchOptions, JoinMatchOptions } from "./types";
+import {
+  CreateMatchOptions,
+  GetMatchOptions,
+  JoinMatchOptions,
+  LeaveMatchOptions,
+} from "./types";
 
 export const createMatch = async (opts: CreateMatchOptions) => {
   const response = await axios.post(`${API_URL}/games/cahum/create`, opts);
@@ -37,4 +42,25 @@ export const joinMatch = async (id: string, opts: JoinMatchOptions) => {
   } catch {
     return null;
   }
+};
+
+export const leaveMatch = async (id: string, opts: LeaveMatchOptions) => {
+  try {
+    const res = await axios.post(`${API_URL}/games/cahum/${id}/leave`, opts);
+    return res.data;
+  } catch {
+    return null;
+  }
+};
+
+export const leaveCurrentMatch = async () => {
+  const info = getPlayerInfo();
+
+  await leaveMatch(getMatchID(), {
+    playerID: info.playerID,
+    credentials: info.token,
+  });
+
+  setMatchID(null);
+  setPlayerInfo(null);
 };

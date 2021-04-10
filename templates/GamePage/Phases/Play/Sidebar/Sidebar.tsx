@@ -1,17 +1,19 @@
 import { useContext, useState } from "react";
-import { Menu, WifiOff, X } from "react-feather";
+import { LogOut, Menu, WifiOff, X } from "react-feather";
 import Button from "../../../../../components/Button";
 import { PlayContext } from "../Play";
 import InGamePlayerList from "../../../../../components/InGamePlayerList/InGamePlayerList";
 
 import styles from "./style.module.css";
+import { leaveCurrentMatch } from "../../../../../api/lobby";
+import { useRouter } from "next/router";
 
 export const Sidebar = () => {
+  const { push } = useRouter();
+
   const [visible, setVisible] = useState(false);
-  const { game, G, ctx } = useContext(PlayContext);
+  const { G } = useContext(PlayContext);
   const round = G.state.round;
-  const points = G.points;
-  const players = game.matchData as any[];
 
   const containerClassNames = `${styles.sidebar} ${
     visible ? styles["sidebar--visible"] : ""
@@ -20,6 +22,13 @@ export const Sidebar = () => {
   const contentClassName = `${styles.content} ${
     visible ? styles["content--visible"] : ""
   }`;
+
+  const leaveMatch = async () => {
+    if (!confirm("Are you sure?")) return;
+
+    await leaveCurrentMatch();
+    push("/");
+  };
 
   return (
     <>
@@ -34,6 +43,9 @@ export const Sidebar = () => {
 
       <div className={containerClassNames}>
         <div className={contentClassName}>
+          <span title="Leave game" className={styles.leave}>
+            <Button Icon={LogOut} onClick={leaveMatch} />
+          </span>
           <div className={styles.content__info}>
             <p>
               Round <b>{round}</b>
