@@ -7,9 +7,8 @@ import HostPanel from "./HostPanel/HostPanel";
 import Button from "../../../../components/Button";
 import { MessageSquare, Users, X } from "react-feather";
 
-const WaitForPlayers = (props: any) => {
-  const userIsHost = props.playerID == 0;
-  const isPrivateGame = props.G?.settings?.private;
+const WaitForPlayers = (game: any) => {
+  const userIsHost = game.playerID == 0;
 
   const [showChat, setShowChat] = useState(false);
   const [showPlayers, setShowPlayers] = useState(false);
@@ -36,10 +35,10 @@ const WaitForPlayers = (props: any) => {
 
       <div className={styles.container}>
         <section className={styles.main}>
-          <RoomCode hideCode={isPrivateGame} matchID={props.matchID} />
+          <RoomCode game={game} />
           {userIsHost && (
             <section className={styles.hostPanel}>
-              <HostPanel {...props} />
+              <HostPanel {...game} />
             </section>
           )}
         </section>
@@ -49,12 +48,12 @@ const WaitForPlayers = (props: any) => {
             showPlayers ? styles["playerList--show"] : ""
           }`}>
           <h2>Players</h2>
-          <PlayerList items={props.matchData} noTitle />
+          <PlayerList items={game.matchData} noTitle />
         </section>
 
         <section
           className={`${styles.chat} ${showChat ? styles["chat--show"] : ""}`}>
-          <Chat game={props} />
+          <Chat game={game} />
         </section>
       </div>
     </>

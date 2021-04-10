@@ -70,7 +70,13 @@
   color: var(--txt-col-2);
 }
 
-.matchInfo > h1 {
+.waitingText {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.waitingText > h1 {
   color: var(--txt-col-1);
 }
 

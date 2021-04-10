@@ -3,8 +3,8 @@ import Button from "../../../../../components/Button";
 
 import styles from "./style.module.css";
 
-const HostPanel = (props: any) => {
-  const playerList = props.matchData as any[];
+const HostPanel = (game: any) => {
+  const playerList = game.matchData as any[];
 
   const numPlayers = playerList.length;
   const numPlayersConnected = playerList.reduce(
@@ -21,7 +21,7 @@ const HostPanel = (props: any) => {
           <Button
             iconRight
             Icon={ChevronsRight}
-            onClick={() => props.moves.startGame()}
+            onClick={() => game.moves.startGame()}
             text="Start Game"
             disabled={
               numPlayersConnected < numPlayers

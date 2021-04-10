@@ -22,8 +22,8 @@ const HomePage = () => {
         <div>
           <h2>Game</h2>
           <div id={styles.game}>
-            <Create styles={styles} />
             <Join styles={styles} />
+            <Create styles={styles} />
           </div>
         </div>
         <div>
