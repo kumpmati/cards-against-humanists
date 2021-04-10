@@ -1,8 +1,11 @@
 .container {
   display: grid;
-  grid-template-areas: "host main chat";
+  grid-template-areas:
+    "players main chat"
+    "players main chat";
 
   grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   grid-auto-rows: 1fr;
   gap: 0.5em;
 
@@ -20,8 +23,9 @@
 
   width: 100%;
 
-  display: grid;
-  gap: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   margin: 0 auto;
 
@@ -39,8 +43,6 @@
 }
 
 .hostPanel {
-  background-color: var(--bg-col-1);
-
   padding: 0.25em;
 
   border-radius: var(--border-radius);

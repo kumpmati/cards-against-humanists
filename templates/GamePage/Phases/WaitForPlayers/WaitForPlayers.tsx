@@ -7,21 +7,23 @@ import HostPanel from "./HostPanel/HostPanel";
 
 const WaitForPlayers = (props: any) => {
   const userIsHost = props.playerID == 0;
-  const isPrivate = props.G?.settings?.private;
+  const isPrivateGame = props.G?.settings?.private;
 
   return (
     <div className={styles.container}>
       <section className={styles.main}>
-        <RoomCode hideCode={isPrivate} matchID={props.matchID} />
-        <div className={styles.playerList}>
-          <PlayerList items={props.matchData} noTitle />
-        </div>
+        <RoomCode hideCode={isPrivateGame} matchID={props.matchID} />
+        {userIsHost && (
+          <section className={styles.hostPanel}>
+            <HostPanel {...props} />
+          </section>
+        )}
       </section>
-      {userIsHost && (
-        <section className={styles.hostPanel}>
-          <HostPanel {...props} />
-        </section>
-      )}
+
+      <section className={styles.playerList}>
+        <PlayerList items={props.matchData} noTitle />
+      </section>
+
       <section className={styles.chat}>
         <Chat game={props} />
       </section>
