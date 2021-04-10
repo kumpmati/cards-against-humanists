@@ -28,27 +28,6 @@
   font-size: 1em;
 }
 
-.card__reveal {
-  position: relative;
-}
-
-.card__reveal::after {
-  content: "Click to reveal";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 8.5em;
-  height: 80%;
-
-  color: rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-}
-
 .czar {
   font-size: 1.25em;
   width: max-content;
@@ -68,9 +47,34 @@
 
   list-style-type: none;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-  gap: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+}
+
+.answer {
+  display: flex;
+}
+
+.card__reveal {
+  position: relative;
+}
+
+.card__reveal::after {
+  content: "Click to reveal";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8.5em;
+  height: 80%;
+
+  color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 @media screen and (max-width: 40rem) {

@@ -17,7 +17,7 @@ export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {};
  * @param ctx
  * @param id
  */
-export const revealCard = (G: CahumG, ctx: Ctx, id: string) => {};
+export const revealCard = (G: CahumG, ctx: Ctx, card: AnswerCard) => {};
 
 /**
  * Chooses the winning player for the round.

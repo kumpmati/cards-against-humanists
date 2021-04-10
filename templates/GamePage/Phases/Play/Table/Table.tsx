@@ -25,8 +25,11 @@ const Table = () => {
     shrinkQuestion ? styles["question--small"] : ""
   }`;
 
+  const isRevealed = (card: AnswerCard) =>
+    !!G.table.revealed.find((c) => c.id === card.id && c.owner === card.owner);
+
   const cardOnClick = (card: AnswerCard) => {
-    if (canReveal) return () => game.moves.revealCard(card.id);
+    if (canReveal) return () => game.moves.revealCard(card);
     if (canChooseWinner) return () => game.moves.chooseWinner(card.owner);
     return null;
   };
@@ -46,15 +49,17 @@ const Table = () => {
         </div>
         <ul className={styles.answers}>
           {answers.map((answer, i) => (
-            <div key={i}>
+            <li key={i} className={styles.answer}>
               {answer.map((card) => (
-                <li
+                <div
                   key={card.id}
-                  className={canReveal ? styles["card__reveal"] : ""}>
+                  className={
+                    canReveal && !isRevealed(card) ? styles["card__reveal"] : ""
+                  }>
                   <Card card={card} onClick={cardOnClick(card)} />
-                </li>
+                </div>
               ))}
-            </div>
+            </li>
           ))}
         </ul>
       </div>
