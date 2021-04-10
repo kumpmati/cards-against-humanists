@@ -1,5 +1,4 @@
 import { Ctx } from "boardgame.io";
-import { INVALID_MOVE } from "boardgame.io/core";
 import { AnswerCard, CahumG } from "../../types";
 
 /**
@@ -9,24 +8,7 @@ import { AnswerCard, CahumG } from "../../types";
  * @param ctx
  * @param args
  */
-export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {
-  if (!Array.isArray(cards)) return INVALID_MOVE;
-
-  cards.forEach((card, i) => {
-    G.table.answers.push({
-      ...card,
-      id: `${ctx.playerID}-${i}`,
-      owner: ctx.playerID,
-    });
-  });
-
-  // filter out all cards that have been submitted
-  const newHand = G.hand?.filter(
-    (c: AnswerCard) => !cards.find((card) => card.text === c.text)
-  );
-
-  G.hand = newHand; // update player's hand
-};
+export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {};
 
 /**
  * Reveals an answer card.
@@ -35,28 +17,13 @@ export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {
  * @param ctx
  * @param id
  */
-export const revealCard = (G: CahumG, ctx: Ctx, id: string) => {
-  const card = G.table.answers.find((c) => c.id === id);
-  if (!card) return INVALID_MOVE;
-
-  const alreadyRevealed = G.table.revealed.find((c) => c.id === id);
-  if (alreadyRevealed) return INVALID_MOVE;
-
-  G.table.revealed.push(card);
-};
+export const revealCard = (G: CahumG, ctx: Ctx, id: string) => {};
 
 /**
  * Chooses the winning player for the round.
  * Only the current Czar can make this move.
  * @param G
  * @param ctx
- * @param id
+ * @param ownerID
  */
-export const chooseWinner = (G: CahumG, ctx: Ctx, id: string) => {
-  if (typeof id !== "string") return INVALID_MOVE;
-
-  const winningPlayerID = G.table.answers.find((card) => card.id === id)?.owner;
-  if (!winningPlayerID) return INVALID_MOVE;
-
-  ctx.events.endTurn(); // move to next round
-};
+export const chooseWinner = (G: CahumG, ctx: Ctx, ownerID: string) => {};

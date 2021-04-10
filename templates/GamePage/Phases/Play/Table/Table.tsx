@@ -27,7 +27,7 @@ const Table = () => {
 
   const cardOnClick = (card: AnswerCard) => {
     if (canReveal) return () => game.moves.revealCard(card.id);
-    if (canChooseWinner) return () => game.moves.chooseWinner(card.id);
+    if (canChooseWinner) return () => game.moves.chooseWinner(card.owner);
     return null;
   };
 
@@ -45,12 +45,16 @@ const Table = () => {
           {question && <Card card={question} />}
         </div>
         <ul className={styles.answers}>
-          {answers.map((card) => (
-            <li
-              key={card.id}
-              className={canReveal ? styles["card__reveal"] : ""}>
-              <Card card={card} onClick={cardOnClick(card)} />
-            </li>
+          {answers.map((answer, i) => (
+            <div key={i}>
+              {answer.map((card) => (
+                <li
+                  key={card.id}
+                  className={canReveal ? styles["card__reveal"] : ""}>
+                  <Card card={card} onClick={cardOnClick(card)} />
+                </li>
+              ))}
+            </div>
           ))}
         </ul>
       </div>

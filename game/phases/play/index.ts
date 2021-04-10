@@ -19,17 +19,23 @@ const play: PhaseConfig = {
     stages: {
       // players other than the Czar submit their answers
       [PlayStages.submitAnswer]: {
-        moves: { submitAnswer },
+        moves: {
+          submitAnswer: { move: submitAnswer, client: false },
+        },
       },
 
       // Czar picks the winner
       [PlayStages.chooseWinner]: {
-        moves: { chooseWinner },
+        moves: {
+          chooseWinner: { move: chooseWinner, client: false },
+        },
       },
 
       // Czar reveals answers one by one
       [PlayStages.czarReveals]: {
-        moves: { revealCard },
+        moves: {
+          revealCard: { move: revealCard, client: false },
+        },
       },
 
       [PlayStages.waitForAnswers]: {
