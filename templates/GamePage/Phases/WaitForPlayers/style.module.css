@@ -7,13 +7,11 @@
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr;
   grid-auto-rows: 1fr;
-  gap: 0.5em;
 
   margin: 0 auto;
-  padding: 0.5em;
 
   height: 100vh;
-
+  width: 100vw;
   background-color: var(--bg-col-0);
 }
 
@@ -37,7 +35,7 @@
   width: 20em;
   height: 90vh;
 
-  padding: 0em;
+  overflow: hidden;
 
   background-color: var(--bg-col-1);
 }
@@ -51,7 +49,7 @@
 .matchInfo {
   width: max-content;
   margin: 0 auto;
-  padding: 3em 5em;
+  padding: 3em 0;
 
   text-align: center;
   display: grid;
@@ -92,4 +90,46 @@
   border: 0;
 
   cursor: pointer;
+}
+
+.playerList {
+  grid-area: players;
+  overflow: hidden;
+  padding: 0 1em;
+
+  text-align: center;
+}
+
+.mobileControls {
+  display: none;
+}
+
+@media screen and (max-width: 70rem) {
+  .container {
+    padding-top: 3em;
+  }
+
+  .chat,
+  .playerList {
+    position: absolute;
+    display: none;
+  }
+
+  .chat--show,
+  .playerList--show {
+    display: block;
+    width: 100%;
+    height: calc(100% - 3em);
+    background-color: var(--bg-col-1);
+  }
+
+  .mobileControls {
+    position: absolute;
+    width: 100%;
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25em;
+    background-color: var(--bg-col-0);
+  }
 }
