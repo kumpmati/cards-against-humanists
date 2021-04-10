@@ -50,7 +50,11 @@
   color: var(--txt-col-1);
   background-color: rgb(21, 99, 119);
 
-  transition: box-shadow 200ms;
+  transition: box-shadow 100ms, opacity 100ms;
+}
+
+#submit:disabled {
+  opacity: 0.5;
 }
 
 #submit:hover {

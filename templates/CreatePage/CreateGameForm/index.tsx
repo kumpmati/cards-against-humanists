@@ -6,12 +6,16 @@ import RoomSettings from "./RoomSettings";
 import formStyles from "../../../styles/form.module.css";
 import styles from "./style.module.css";
 import { FormProps, GameFormData } from "./types";
+import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
 const cardPacks: any[] = [{ name: "Cards Against Humanists", value: "Cahum" }];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
   const form = useForm<GameFormData>();
-  const { handleSubmit } = form;
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = form;
 
   return (
     <form
@@ -19,12 +23,24 @@ const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
       id={formStyles.form}
       onSubmit={handleSubmit(onSubmit)}>
       <RoomSettings form={form} />
+
       <div className={styles.gameSection}>
         <GameSettings form={form} />
         <CardSettings form={form} packs={cardPacks} />
       </div>
-      <fieldset id={formStyles.submitFieldset}>
-        <input type="submit" value="Create" id={formStyles.submit} />
+
+      <fieldset className={styles.submit} id={formStyles.submitFieldset}>
+        <input
+          type="submit"
+          value="Create"
+          id={formStyles.submit}
+          disabled={isSubmitting}
+        />
+        {isSubmitting && (
+          <div className={styles.submit__loader}>
+            <LoadingSpinner />
+          </div>
+        )}
       </fieldset>
     </form>
   );

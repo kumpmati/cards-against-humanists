@@ -1,0 +1,19 @@
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: flex;
+  width: max-content;
+  height: max-content;
+
+  margin: 0 auto;
+  padding: 0;
+
+  animation: spin 1000ms infinite;
+}
