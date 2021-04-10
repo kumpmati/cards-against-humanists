@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { ArrowUp, Check } from "react-feather";
+import { Check } from "react-feather";
 import Button from "../../../../../components/Button";
 import Card from "../../../../../components/Card/Card";
 import { PlayStages } from "../../../../../game/phases/play";
-import { submitAnswer } from "../../../../../game/phases/play/moves";
 import { AnswerCard } from "../../../../../game/types";
 import { PlayContext } from "../Play";
 import { useCardSelect } from "./hooks";
@@ -23,6 +22,7 @@ const Hand = ({ close }) => {
     if (correctNumCardsSelected) {
       game.moves.submitAnswer(selected);
       reset();
+      close();
     }
   };
 
