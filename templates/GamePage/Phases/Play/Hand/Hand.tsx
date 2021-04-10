@@ -34,8 +34,8 @@ const Hand = ({ close }) => {
 
   return (
     <div className={handClassNames}>
-      {!isCzar && (
-        <div className={styles.submit}>
+      <div className={styles.submit}>
+        {!isCzar && (
           <Button
             Icon={Check}
             text="Submit"
@@ -47,18 +47,18 @@ const Hand = ({ close }) => {
                 : ""
             }
           />
-        </div>
-      )}
+        )}
+      </div>
 
       <div className={styles.hand__inner}>
-        {hand.map((card: AnswerCard) => {
+        {hand.map((card: AnswerCard, i) => {
           // card wrapper class names
           const cardClassNames = `${styles.card} ${
             isSelected(card) ? styles["card--selected"] : ""
           }`;
 
           return (
-            <div key={card.id} className={cardClassNames}>
+            <div key={card.id + i} className={cardClassNames}>
               <Card
                 card={card}
                 selected={isSelected(card)}
