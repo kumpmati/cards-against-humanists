@@ -17,15 +17,15 @@ const InGamePlayerList = () => {
         const isConnected = player.isConnected;
 
         const playerClassNames = `
-      ${styles.player}
-      ${playerIsCzar ? styles["player--czar"] : ""}
-      ${!isConnected ? styles["player--disconnected"] : ""}  
-    `;
+          ${styles.player}
+          ${playerIsCzar ? styles["player--czar"] : ""}
+          ${!isConnected ? styles["player--disconnected"] : ""}  
+        `;
 
         return (
           <li
-            title={playerIsCzar ? "Czar" : ""}
             key={player.id}
+            title={playerIsCzar ? "Czar" : ""}
             className={playerClassNames}>
             <p className={styles.player__name}>
               {player.name} {isYou && "(You)"}

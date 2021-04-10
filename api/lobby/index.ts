@@ -56,11 +56,11 @@ export const leaveMatch = async (id: string, opts: LeaveMatchOptions) => {
 export const leaveCurrentMatch = async () => {
   const info = getPlayerInfo();
 
-  await leaveMatch(getMatchID(), {
+  const res = await leaveMatch(getMatchID(), {
     playerID: info.playerID,
     credentials: info.token,
   });
 
-  setMatchID(null);
-  setPlayerInfo(null);
+  if (res) setMatchID(null);
+  return res;
 };
