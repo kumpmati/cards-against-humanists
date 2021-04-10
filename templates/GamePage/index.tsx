@@ -5,6 +5,7 @@ import { getMatchID, getPlayerInfo, PlayerInfo } from "../../api";
 import { Cahum } from "../../game";
 import Board from "./Board";
 import GameLoading from "../../components/GameLoading/GameLoading";
+import Head from "next/head";
 
 const GameRenderer = () => {
   const [matchID, setMatchID] = useState(null);
@@ -25,11 +26,16 @@ const GameRenderer = () => {
   });
 
   return (
-    <Game
-      matchID={matchID}
-      playerID={playerInfo?.playerID}
-      credentials={playerInfo?.token}
-    />
+    <>
+      <Head>
+        <title key="title">Cards Against Humanists | Playing</title>
+      </Head>
+      <Game
+        matchID={matchID}
+        playerID={playerInfo?.playerID}
+        credentials={playerInfo?.token}
+      />
+    </>
   );
 };
 

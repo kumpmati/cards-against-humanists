@@ -8,6 +8,7 @@ import styles from "./style.module.css";
 import Button from "../../../../components/Button";
 import { ChevronDown, ChevronUp } from "react-feather";
 import { PlayContextI } from "./types";
+import Head from "next/head";
 
 export const PlayContext = createContext<PlayContextI>({
   isCzar: false,
@@ -32,29 +33,37 @@ const Play = (game: any) => {
     game,
   };
 
+  const title = isCzar ? "Playing as the Czar" : "Playing";
+
   return (
-    <PlayContext.Provider value={state}>
-      <div className={styles.container}>
-        <section className={styles.sidebar}>
-          <Sidebar />
-        </section>
-        <section className={styles.table}>
-          <Table />
-        </section>
-        <section
-          className={`${styles.hand} ${
-            handVisible ? styles["hand--open"] : ""
-          }`}>
-          <Hand close={() => setHandVisible(false)} />
-        </section>
-        <div className={styles.hand__toggle}>
-          <Button
-            Icon={handVisible ? ChevronDown : ChevronUp}
-            onClick={() => setHandVisible((v) => !v)}
-          />
+    <>
+      <Head>
+        <title key="title">Cards Against Humanists | {title}</title>
+      </Head>
+
+      <PlayContext.Provider value={state}>
+        <div className={styles.container}>
+          <section className={styles.sidebar}>
+            <Sidebar />
+          </section>
+          <section className={styles.table}>
+            <Table />
+          </section>
+          <section
+            className={`${styles.hand} ${
+              handVisible ? styles["hand--open"] : ""
+            }`}>
+            <Hand close={() => setHandVisible(false)} />
+          </section>
+          <div className={styles.hand__toggle}>
+            <Button
+              Icon={handVisible ? ChevronDown : ChevronUp}
+              onClick={() => setHandVisible((v) => !v)}
+            />
+          </div>
         </div>
-      </div>
-    </PlayContext.Provider>
+      </PlayContext.Provider>
+    </>
   );
 };
 
