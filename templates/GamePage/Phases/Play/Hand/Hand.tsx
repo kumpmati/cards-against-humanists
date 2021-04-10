@@ -52,16 +52,24 @@ const Hand = ({ close }) => {
 
       <div className={styles.hand__inner}>
         {hand.map((card: AnswerCard, i) => {
+          const SelectionElement = () => {
+            const number = isSelected(card);
+            if (number === -1) return null;
+
+            if (requiredCards === 1) return <Check size={18} />;
+            return <p>{number + 1}</p>;
+          };
+
           // card wrapper class names
           const cardClassNames = `${styles.card} ${
-            isSelected(card) ? styles["card--selected"] : ""
+            !!SelectionElement() ? styles["card--selected"] : ""
           }`;
 
           return (
             <div key={card.id + i} className={cardClassNames}>
               <Card
                 card={card}
-                selected={isSelected(card)}
+                selected={SelectionElement()}
                 onClick={() => select(card)}
               />
             </div>

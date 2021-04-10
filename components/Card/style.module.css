@@ -6,8 +6,6 @@
   font-size: 0.8em;
   font-weight: bold;
 
-  overflow: hidden;
-
   padding: 1em;
 
   width: 11em;
@@ -21,10 +19,12 @@
 
   user-select: none;
 
+  transition: border-color 100ms, color 100ms;
+
   box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.25);
 }
 
-.card__number {
+.card__requiredCards {
   font-size: 0.8em;
   position: absolute;
   bottom: 1em;
@@ -33,6 +33,26 @@
   opacity: 0.9;
 
   margin: 0;
+}
+
+.card__selectedIcon {
+  position: absolute;
+  top: -0.75em;
+  left: -0.5em;
+
+  margin: 0;
+  padding: 0;
+
+  border-radius: 100%;
+
+  width: 2.25em;
+  height: 2.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: var(--blue);
 }
 
 .card--question {

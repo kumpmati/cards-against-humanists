@@ -15,9 +15,9 @@ export const useCardSelect = (max: number) => {
     }
   };
 
-  // check if a card is selected
-  const isSelected = (card: AnswerCard) =>
-    !!selected.find((c) => c.id === card.id);
+  // returns the index of the card
+  const isSelected = (card: AnswerCard): number =>
+    selected.findIndex((c) => c.id === card.id);
 
   // clear selections
   const reset = () => setSelected([]);

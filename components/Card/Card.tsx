@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC, ReactElement } from "react";
 import { QuestionCard, Card as CardType } from "../../game/types";
 
 import styles from "./style.module.css";
@@ -8,8 +8,11 @@ import styles from "./style.module.css";
  */
 const Card: FC<Props> = ({ card, onClick, selected }) => {
   const clickableClassName = !!onClick ? styles["card--clickable"] : "";
-  const selectedClassName = selected ? styles["card--selected"] : "";
+  const selectedClassName = !!selected ? styles["card--selected"] : "";
 
+  /**
+   * Question card
+   */
   if (cardIsQuestion(card)) {
     const className = `
       ${styles.card}
@@ -20,14 +23,23 @@ const Card: FC<Props> = ({ card, onClick, selected }) => {
 
     return (
       <div onClick={onClick} className={className}>
+        {selected && (
+          <div className={styles.card__selectedIcon}>{selected}</div>
+        )}
         <p>{card.text}</p>
+
         {card.required_cards > 1 && (
-          <p className={styles.card__number}>Choose {card.required_cards}</p>
+          <p className={styles.card__requiredCards}>
+            Choose {card.required_cards}
+          </p>
         )}
       </div>
     );
   }
 
+  /**
+   * Answer card
+   */
   const className = `
     ${styles.card}
     ${clickableClassName}
@@ -36,6 +48,7 @@ const Card: FC<Props> = ({ card, onClick, selected }) => {
 
   return (
     <div onClick={onClick} className={className}>
+      {selected && <div className={styles.card__selectedIcon}>{selected}</div>}
       <p>{card.text}</p>
     </div>
   );
@@ -49,5 +62,5 @@ const cardIsQuestion = (card: CardType): card is QuestionCard =>
 interface Props {
   card: CardType;
   onClick?: () => any;
-  selected?: boolean;
+  selected?: ReactElement;
 }
