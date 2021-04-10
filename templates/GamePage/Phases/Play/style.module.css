@@ -40,7 +40,7 @@
       "hand";
 
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr max-content;
+    grid-template-rows: auto 1fr auto;
     grid-auto-flow: row;
   }
 
