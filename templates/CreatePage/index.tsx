@@ -6,7 +6,6 @@ import styles from "./Create.module.css";
 import { useRouter } from "next/router";
 import { createMatch, joinMatch } from "../../api/lobby";
 import { GameFormData } from "./CreateGameForm/types";
-import { sleep } from "../../util";
 
 const CreatePage = () => {
   const { push } = useRouter();

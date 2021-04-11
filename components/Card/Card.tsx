@@ -30,7 +30,7 @@ const Card: FC<Props> = ({ card, onClick, selected }) => {
 
         {card.required_cards > 1 && (
           <p className={styles.card__requiredCards}>
-            Choose {card.required_cards}
+            Pick {card.required_cards}
           </p>
         )}
       </div>

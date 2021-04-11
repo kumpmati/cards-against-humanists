@@ -17,7 +17,8 @@ const formDefaultValues: GameFormData = {
 };
 
 const availableCardPacks: any[] = [
-  { name: "Cards Against Humanists", value: "Cahum" },
+  { name: "Cahum (Finnish)", value: "Cahum" },
+  { name: "Cards Against Humanity (English)", value: "CAH_en" },
 ];
 
 const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
