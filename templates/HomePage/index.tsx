@@ -5,10 +5,9 @@ import Info from "./Sections/info";
 import Join from "./Sections/join";
 
 import styles from "./Home.module.css";
-import { useJoinPrompt } from "./hooks";
 
 const HomePage = () => {
-  useJoinPrompt(); // ask user to join ongoing match if it exists
+  // useJoinPrompt(); // ask user to join ongoing match if it exists
 
   return (
     <main>
