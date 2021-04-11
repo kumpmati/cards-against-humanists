@@ -22,7 +22,7 @@ const GameRenderer = () => {
     board: Board,
     multiplayer: SocketIO({ server: url }),
     loading: GameLoading,
-    debug: false, // TODO: set to false
+    debug: false,
   });
 
   return (
