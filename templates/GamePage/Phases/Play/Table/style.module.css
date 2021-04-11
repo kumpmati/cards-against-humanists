@@ -7,15 +7,11 @@
 
   display: grid;
   grid-template-areas: "question answers";
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 1em;
 
   padding: 1em;
   text-align: center;
-}
-
-.table--answers {
-  grid-template-columns: auto 1fr;
 }
 
 .question {
@@ -49,11 +45,11 @@
 
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75em;
 }
 
 .answer {
   display: flex;
+  margin: 0.25em;
 }
 
 .card__reveal {
