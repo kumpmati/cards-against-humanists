@@ -1,7 +1,9 @@
 import Head from "next/head";
 import React from "react";
 import { ArrowLeft } from "react-feather";
+import { createNewCard } from "../../api/cards";
 import Button from "../../components/Button";
+import CreateCardForm from "./CreateCardForm/CreateCardForm";
 import styles from "./style.module.css";
 
 const ManagePage = () => {
@@ -22,7 +24,7 @@ const ManagePage = () => {
         </div>
 
         <section>
-          <h2>Cards</h2>
+          <CreateCardForm />
         </section>
       </div>
     </main>
