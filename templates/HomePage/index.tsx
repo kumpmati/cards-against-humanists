@@ -17,7 +17,7 @@ const HomePage = () => {
 
       <div className="content">
         <h1 className="title">Cards Against Humanists</h1>
-        <p id={styles.slogan}>v2.0</p>
+        <p id={styles.slogan}>v2.0 (Beta)</p>
         <div>
           <h2>Game</h2>
           <div id={styles.game}>
