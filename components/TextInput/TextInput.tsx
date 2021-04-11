@@ -7,10 +7,11 @@ const TextInput: FC<Props> = ({ id, state, label, onPressEnter }) => {
     <div className="textbox">
       {label && <label htmlFor={id}>{label}</label>}
       <input
+        autoComplete="off"
         type="text"
         value={text}
-        onChange={e => setText(e.target.value)}
-        onKeyDown={e => e.code === "Enter" && onPressEnter()}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => e.code === "Enter" && onPressEnter()}
         id={id}
       />
     </div>
