@@ -36,7 +36,7 @@ export const joinMatch = async (id: string, opts: JoinMatchOptions) => {
     );
     const { playerCredentials } = res.data;
 
-    setMatchID(id);
+    setMatchID(id.toLowerCase());
     setPlayerInfo({
       playerID: opts.playerID,
       playerName: opts.playerName,
@@ -51,7 +51,10 @@ export const joinMatch = async (id: string, opts: JoinMatchOptions) => {
 
 export const leaveMatch = async (id: string, opts: LeaveMatchOptions) => {
   try {
-    const res = await axios.post(`${API_URL}/games/cahum/${id}/leave`, opts);
+    const res = await axios.post(
+      `${API_URL}/games/cahum/${id.toLowerCase()}/leave`,
+      opts
+    );
     return res.data;
   } catch {
     return null;
