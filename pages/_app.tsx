@@ -11,6 +11,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
+        <meta
+          name="description"
+          content="Web version of Cards Against Humanity."
+        />
+        <meta name="author" content="Matias Kumpulainen" />
+        <meta
+          name="keywords"
+          content="Cards Against Humanity, CAH, Web, Game, Online, Next.js"
+        />
       </Head>
       <Component {...pageProps} />
     </>

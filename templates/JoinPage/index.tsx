@@ -35,7 +35,7 @@ const JoinPage: FC = () => {
   return (
     <main>
       <Head>
-        <title>Cards Against Humanists | Join game</title>
+        <title>Cahum | Join game</title>
       </Head>
 
       <nav>

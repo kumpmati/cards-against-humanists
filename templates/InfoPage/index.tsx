@@ -7,7 +7,7 @@ const InfoPage = () => {
   return (
     <main>
       <Head>
-        <title>Cards Against Humanists | Info</title>
+        <title>Cahum | Info</title>
       </Head>
 
       <nav>

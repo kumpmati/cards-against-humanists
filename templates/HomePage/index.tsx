@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <main>
       <Head>
-        <title>Cards Against Humanists</title>
+        <title>Cahum</title>
       </Head>
 
       <div className="content">

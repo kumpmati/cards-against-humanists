@@ -10,7 +10,7 @@ const ManagePage = () => {
   return (
     <main className={styles.container}>
       <Head>
-        <title>Cards Against Humanists | Manage</title>
+        <title>Cahum | Manage</title>
       </Head>
 
       <nav>

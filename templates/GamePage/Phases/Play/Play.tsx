@@ -38,7 +38,7 @@ const Play = (game: any) => {
   return (
     <>
       <Head>
-        <title key="title">Cards Against Humanists | {title}</title>
+        <title key="title">Cahum | {title}</title>
       </Head>
 
       <PlayContext.Provider value={state}>

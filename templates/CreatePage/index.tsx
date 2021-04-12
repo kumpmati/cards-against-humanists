@@ -31,7 +31,7 @@ const CreatePage = () => {
   return (
     <main>
       <Head>
-        <title>Cards Against Humanists | Create game</title>
+        <title>Cahum | Create game</title>
       </Head>
 
       <nav>

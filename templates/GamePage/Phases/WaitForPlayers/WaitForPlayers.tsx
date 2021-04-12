@@ -6,6 +6,7 @@ import RoomCode from "./RoomCode";
 import HostPanel from "./HostPanel/HostPanel";
 import Button from "../../../../components/Button";
 import { MessageSquare, Users, X } from "react-feather";
+import Head from "next/head";
 
 const WaitForPlayers = (game: any) => {
   const userIsHost = game.playerID == 0;
@@ -24,6 +25,10 @@ const WaitForPlayers = (game: any) => {
 
   return (
     <>
+      <Head>
+        <title key="title">Cahum | Waiting for players</title>
+      </Head>
+
       <div className={styles.mobileControls}>
         <span title={`${showPlayers ? "Hide" : "Show"} players`}>
           <Button Icon={showPlayers ? X : Users} onClick={togglePlayers} />

@@ -28,7 +28,7 @@ const GameRenderer = () => {
   return (
     <>
       <Head>
-        <title key="title">Cards Against Humanists | Playing</title>
+        <title key="title">Cahum | Playing</title>
       </Head>
       <Game
         matchID={matchID}

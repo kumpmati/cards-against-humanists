@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   return (
     <main>
       <Head>
-        <title>Cards Against Humanists | 404</title>
+        <title>Cahum | 404</title>
       </Head>
 
       <nav>
