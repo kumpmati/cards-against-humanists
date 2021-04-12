@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, KeyboardEvent } from "react";
 
 import styles from "./Button.module.css";
 
@@ -27,8 +27,15 @@ const Button: FC<Props> = ({
     ${disabled ? styles["button--disabled"] : ""}
   `;
 
+  const onKeyPress = (e: KeyboardEvent<any>) => {
+    if (e.key !== "Enter" || disabled) return null;
+    onClick();
+  };
+
   const ButtonComponent = (
     <a
+      tabIndex={0}
+      onKeyPress={onKeyPress}
       title={disabled}
       aria-disabled={!!disabled}
       onClick={!!disabled ? null : onClick}

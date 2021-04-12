@@ -37,11 +37,6 @@
 
 .content {
   padding: 1em;
-  opacity: 0;
-}
-
-.content--visible {
-  opacity: 1;
 }
 
 .content__info {

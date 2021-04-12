@@ -19,10 +19,6 @@ export const Sidebar = () => {
     visible ? styles["sidebar--visible"] : ""
   }`;
 
-  const contentClassName = `${styles.content} ${
-    visible ? styles["content--visible"] : ""
-  }`;
-
   const leaveMatch = async () => {
     if (!confirm("Are you sure?")) return;
 
@@ -42,18 +38,20 @@ export const Sidebar = () => {
       </div>
 
       <div className={containerClassNames}>
-        <div className={contentClassName}>
-          <span title="Leave game" className={styles.leave}>
-            <Button Icon={LogOut} onClick={leaveMatch} />
-          </span>
-          <div className={styles.content__info}>
-            <p>
-              Round <b>{round}</b>
-            </p>
+        {visible && (
+          <div className={styles.content}>
+            <span title="Leave game" className={styles.leave}>
+              <Button Icon={LogOut} onClick={leaveMatch} />
+            </span>
+            <div className={styles.content__info}>
+              <p>
+                Round <b>{round}</b>
+              </p>
+            </div>
+            <h2>Players</h2>
+            <InGamePlayerList />
           </div>
-          <h2>Players</h2>
-          <InGamePlayerList />
-        </div>
+        )}
       </div>
     </>
   );
