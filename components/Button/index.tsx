@@ -34,7 +34,7 @@ const Button: FC<Props> = ({
 
   const ButtonComponent = (
     <a
-      tabIndex={0}
+      tabIndex={disabled ? -1 : 0}
       onKeyPress={onKeyPress}
       title={disabled}
       aria-disabled={!!disabled}
