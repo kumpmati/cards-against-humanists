@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 
 import styles from "./Join.module.css";
 import JoinGameForm, { JoinFormData } from "./JoinGameForm";
+import { randomPlayerName } from "../../util";
 
 const JoinPage: FC = () => {
   const { push } = useRouter();
@@ -24,7 +25,7 @@ const JoinPage: FC = () => {
 
     await joinMatch(data.roomCode, {
       playerID: availableSpot?.id.toString(),
-      playerName: prompt("Choose a name:"),
+      playerName: prompt("Choose a name:") || randomPlayerName(),
     });
 
     setError(null);

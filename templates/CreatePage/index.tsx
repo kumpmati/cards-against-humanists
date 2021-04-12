@@ -6,6 +6,7 @@ import styles from "./Create.module.css";
 import { useRouter } from "next/router";
 import { createMatch, joinMatch } from "../../api/lobby";
 import { GameFormData } from "./CreateGameForm/types";
+import { randomPlayerName } from "../../util";
 
 const CreatePage = () => {
   const { push } = useRouter();
@@ -21,8 +22,7 @@ const CreatePage = () => {
 
     await joinMatch(matchID, {
       playerID: "0", // creator always joins as the first player
-      playerName:
-        prompt("Choose a name:") || `Teekkari-${~~(Math.random() * 1000)}`,
+      playerName: prompt("Choose a name:") || randomPlayerName(),
     });
 
     push("/game");

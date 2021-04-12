@@ -7,3 +7,5 @@ export const printCredits = () => {
     "background-color: black; color: white; padding: .6em 1.25em; margin: .25em; font-size: 1.25em"
   );
 };
+
+export const randomPlayerName = () => `Teekkari-${~~(Math.random() * 1000)}`;
