@@ -30,7 +30,7 @@ const RoomCode = ({ game }) => {
           value={matchID}
           readOnly
           onClick={() => {
-            navigator.clipboard.writeText(matchID);
+            navigator.clipboard.writeText(matchID.toUpperCase());
           }}
           title="Click to copy to clipboard"
         />

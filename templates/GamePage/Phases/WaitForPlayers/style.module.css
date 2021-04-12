@@ -94,11 +94,12 @@
 
 .code__input {
   font-size: 3.5em;
-  width: 6ch;
+  width: 7ch;
 
   padding: 0.2em;
 
   text-align: center;
+  text-transform: uppercase;
 
   background-color: transparent;
   color: var(--txt-col-0);

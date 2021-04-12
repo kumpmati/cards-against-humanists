@@ -19,7 +19,9 @@ export const createMatch = async (opts: CreateMatchOptions) => {
 
 export const getMatch = async (opts: GetMatchOptions) => {
   try {
-    const res = await axios.get(`${API_URL}/games/cahum/${opts.matchID}`);
+    const res = await axios.get(
+      `${API_URL}/games/cahum/${opts.matchID.toLowerCase()}`
+    );
     return res.data;
   } catch {
     return null;
@@ -28,7 +30,10 @@ export const getMatch = async (opts: GetMatchOptions) => {
 
 export const joinMatch = async (id: string, opts: JoinMatchOptions) => {
   try {
-    const res = await axios.post(`${API_URL}/games/cahum/${id}/join`, opts);
+    const res = await axios.post(
+      `${API_URL}/games/cahum/${id.toLowerCase()}/join`,
+      opts
+    );
     const { playerCredentials } = res.data;
 
     setMatchID(id);
