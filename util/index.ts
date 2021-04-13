@@ -1,6 +1,9 @@
 export const sleep = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
+/**
+ * Prints GitHub handle to the console
+ */
 export const printCredits = () => {
   console.log(
     "%c@kumpmati on GitHub",
@@ -8,4 +11,7 @@ export const printCredits = () => {
   );
 };
 
+/**
+ * Returns a randomly generated player name
+ */
 export const randomPlayerName = () => `Teekkari-${~~(Math.random() * 1000)}`;
