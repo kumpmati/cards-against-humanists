@@ -1,0 +1,15 @@
+#header {
+  margin-bottom: 4rem;
+}
+
+#header > p {
+  color: var(--txt-col-3);
+}
+
+#content > section > p {
+  color: var(--txt-col-3);
+}
+
+#content > section + section {
+  margin-top: 4rem;
+}

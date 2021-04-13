@@ -1,0 +1,13 @@
+#content {
+  display: grid;
+  place-content: center;
+
+  width: max-content;
+
+  margin-top: 5rem;
+  padding: 1rem;
+}
+
+#content > p {
+  color: var(--txt-col-2);
+}

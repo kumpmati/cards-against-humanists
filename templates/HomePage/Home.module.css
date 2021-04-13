@@ -1,0 +1,70 @@
+#container > div + div {
+  margin-top: 4rem;
+}
+
+#container > div > h2 {
+  font-size: 2rem;
+}
+
+#slogan {
+  margin: 0;
+  margin-bottom: 4rem;
+
+  padding: 0;
+
+  color: var(--txt-col-3);
+}
+
+#game,
+#other {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 0.5rem;
+
+  color: var(--txt-col-2);
+}
+
+#legal {
+  font-size: 0.9em;
+}
+
+#legal p {
+  color: var(--txt-col-3);
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 0.3rem;
+
+  cursor: pointer;
+
+  transition: transform 100ms, box-shadow 100ms;
+}
+
+.section:hover {
+  color: var(--txt-col-1);
+  background-color: var(--bg-col-2);
+}
+
+.section:active {
+  transform: scale(0.97);
+}
+
+.section:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.section p {
+  color: var(--txt-col-3);
+}
+
+.section > svg {
+  margin-left: 2rem;
+  height: 100%;
+}

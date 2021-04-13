@@ -1,0 +1,38 @@
+@keyframes bounce {
+  from {
+    transform: scale(1.25);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.playerList {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+
+  color: var(--txt-col-0);
+}
+
+.list__item {
+  text-align: center;
+  padding: 0.5em;
+  font-size: 1.25rem;
+
+  color: var(--txt-col-2);
+
+  animation: bounce 250ms;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
