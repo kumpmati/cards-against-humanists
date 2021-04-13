@@ -18,19 +18,29 @@ const HomePage = () => {
       <div className="content">
         <h1 className="title">Cards Against Humanists</h1>
         <p id={styles.slogan}>v2.0 (Beta)</p>
-        <div>
+        <section>
           <h2>Game</h2>
           <div id={styles.game}>
             <Join styles={styles} />
             <Create styles={styles} />
           </div>
-        </div>
-        <div>
+        </section>
+        <section>
           <h2>Other</h2>
           <div id={styles.other}>
             <Info styles={styles} />
           </div>
-        </div>
+        </section>
+
+        <br></br>
+        <br></br>
+
+        <section id={styles.legal}>
+          <p>
+            License and attributions can be found in the{" "}
+            <a href="/info#legal">info</a> section.
+          </p>
+        </section>
       </div>
     </main>
   );

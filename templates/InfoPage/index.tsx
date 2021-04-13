@@ -43,15 +43,37 @@ const InfoPage = () => {
               next Czar. A new round then begins.
             </p>
           </section>
+
+          <section id="legal">
+            <h2>Legal stuff</h2>
+
+            <p>
+              Cards Against Humanists is a copy of{" "}
+              <a target="noreferrer" href="https://cardsagainsthumanity.com">
+                Cards Against Humanity
+              </a>
+              . It is free to use. The website and its source code are
+              distributed under the{" "}
+              <a
+                target="noreferrer"
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                Creative Commons BY-NC-SA 4.0 license
+              </a>
+              . All credit for the fun game and for the cards in the 'Cards
+              Against Humanity (English)' pack goes to the people at Cards
+              Against Humanity.
+            </p>
+          </section>
+
           <section>
             <h2>Website</h2>
             <p>
-              This is a project by Matias Kumpulainen. Here's his{" "}
+              This is an open source project by Matias Kumpulainen. Here's his{" "}
               <a href="https://mvkump.dev">Website</a>.
             </p>
             <p>
-              This project is open source. If you want to see the code, here are
-              the GitHub links:
+              You are free to look at and copy the source code, here are the
+              GitHub links:
             </p>
             <ul>
               <li>
