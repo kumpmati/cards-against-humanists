@@ -1,12 +1,11 @@
 import Head from "next/head";
-import React from "react";
+import React, { FC } from "react";
 import { ArrowLeft } from "react-feather";
-import { createNewCard } from "../../api/cards";
 import Button from "../../components/Button";
 import CreateCardForm from "./CreateCardForm/CreateCardForm";
 import styles from "./style.module.css";
 
-const ManagePage = () => {
+const ManagePage: FC<Props> = ({ cardPacks }) => {
   return (
     <main className={styles.container}>
       <Head>
@@ -24,7 +23,7 @@ const ManagePage = () => {
         </div>
 
         <section>
-          <CreateCardForm />
+          <CreateCardForm cardPacks={cardPacks} />
         </section>
       </div>
     </main>
@@ -32,3 +31,7 @@ const ManagePage = () => {
 };
 
 export default ManagePage;
+
+interface Props {
+  cardPacks: { name: string; value: string }[];
+}

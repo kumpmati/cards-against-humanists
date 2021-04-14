@@ -16,16 +16,7 @@ const formDefaultValues: GameFormData = {
   packs: ["Cahum"],
 };
 
-export const availableCardPacks: any[] = [
-  { name: "Cahum (Finnish)", value: "Cahum" },
-  { name: "Cards Against Humanity (English)", value: "CAH_en" },
-  /*
-  { name: "Community (Finnish)", value: "Community_fi" },
-  { name: "Community (English)", value: "Community_en" },
-  */
-];
-
-const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
+const CreateGameForm: FC<FormProps> = ({ onSubmit, cardPacks }) => {
   const form = useForm<GameFormData>({ defaultValues: formDefaultValues });
   const {
     handleSubmit,
@@ -41,7 +32,7 @@ const CreateGameForm: FC<FormProps> = ({ onSubmit }) => {
 
       <div className={styles.gameSection}>
         <GameSettings form={form} />
-        <CardSettings form={form} packs={availableCardPacks} />
+        <CardSettings form={form} packs={cardPacks} />
       </div>
 
       <fieldset className={styles.submit} id={formStyles.submitFieldset}>

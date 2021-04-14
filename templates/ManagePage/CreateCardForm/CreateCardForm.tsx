@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { createNewCard } from "../../../api/cards";
 import { Card } from "../../../game/types";
 import formStyles from "../../../styles/form.module.css";
-import { availableCardPacks } from "../../CreatePage/CreateGameForm";
 
 const defaultValues: Card = {
   text: "",
@@ -10,7 +9,7 @@ const defaultValues: Card = {
   pack: "CAH_en",
 };
 
-const CreateCardForm = () => {
+const CreateCardForm = ({ cardPacks }) => {
   const { handleSubmit, register, reset, watch } = useForm({ defaultValues });
 
   const isQuestion = watch("question");
@@ -68,7 +67,7 @@ const CreateCardForm = () => {
         <h2>Pack</h2>
 
         <div>
-          {availableCardPacks.map((pack) => (
+          {cardPacks.map((pack) => (
             <div key={pack.value} className="checkbox">
               <input
                 key={pack.value}

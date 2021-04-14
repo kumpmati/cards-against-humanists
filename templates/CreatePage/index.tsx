@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import { createMatch, joinMatch } from "../../api/lobby";
 import { GameFormData } from "./CreateGameForm/types";
 import { randomPlayerName } from "../../util";
+import { FC } from "react";
 
-const CreatePage = () => {
+const CreatePage: FC<Props> = ({ cardPacks }) => {
   const { push } = useRouter();
 
   const onSubmit = async (data: GameFormData) => {
@@ -44,7 +45,7 @@ const CreatePage = () => {
           <p>Create a fresh game and start inviting people</p>
         </div>
         <div id={styles.content}>
-          <CreateGameForm onSubmit={onSubmit} />
+          <CreateGameForm cardPacks={cardPacks} onSubmit={onSubmit} />
         </div>
       </div>
     </main>
@@ -52,3 +53,10 @@ const CreatePage = () => {
 };
 
 export default CreatePage;
+
+interface Props {
+  cardPacks: {
+    name: string;
+    value: string;
+  }[];
+}
