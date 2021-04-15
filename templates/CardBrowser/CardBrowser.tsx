@@ -27,7 +27,9 @@ const CardBrowser: FC<Props> = ({ cardPacks }) => {
         </div>
 
         <div className={styles.controls}>
-          <select onChange={(e) => setPack(e.target.value)}>
+          <select
+            className={styles.controls__pack}
+            onChange={(e) => setPack(e.target.value)}>
             {cardPacks.map((pack) => (
               <option key={pack.code} value={pack.code}>
                 {pack.name}
