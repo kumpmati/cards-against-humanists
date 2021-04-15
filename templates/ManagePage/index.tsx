@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { FC } from "react";
 import { ArrowLeft } from "react-feather";
 import Button from "../../components/Button";
+import CardBrowser from "./CardBrowser/CardBrowser";
 import CreateCardForm from "./CreateCardForm/CreateCardForm";
 import styles from "./style.module.css";
 
@@ -25,6 +26,10 @@ const ManagePage: FC<Props> = ({ cardPacks }) => {
         <section>
           <CreateCardForm cardPacks={cardPacks} />
         </section>
+
+        <section>
+          <CardBrowser cardPacks={cardPacks} />
+        </section>
       </div>
     </main>
   );
@@ -33,5 +38,5 @@ const ManagePage: FC<Props> = ({ cardPacks }) => {
 export default ManagePage;
 
 interface Props {
-  cardPacks: { name: string; value: string }[];
+  cardPacks: { name: string; code: string }[];
 }

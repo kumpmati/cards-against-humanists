@@ -1,7 +1,10 @@
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { createNewCard } from "../../../api/cards";
 import { Card, CardPack } from "../../../game/types";
 import formStyles from "../../../styles/form.module.css";
+
+import styles from "./styles.module.css";
 
 const defaultValues: Partial<Card> = {
   text: "",
@@ -9,7 +12,7 @@ const defaultValues: Partial<Card> = {
   pack: "Community_en",
 };
 
-const CreateCardForm = ({ cardPacks }) => {
+const CreateCardForm: FC<Props> = ({ cardPacks }) => {
   const { handleSubmit, register, reset, watch } = useForm({ defaultValues });
 
   const isQuestion = watch("question");
@@ -46,21 +49,27 @@ const CreateCardForm = ({ cardPacks }) => {
           />
         </div>
 
-        <div className="checkbox">
-          <input id="question" type="checkbox" ref={register} name="question" />
-          <label htmlFor="question">Question card</label>
-        </div>
-
-        {isQuestion && (
-          <div className="textbox">
-            <label>Required cards</label>
+        <div className={styles.question}>
+          <div className="checkbox">
             <input
-              ref={register({ max: 3, min: 1, valueAsNumber: true })}
-              type="number"
-              name="required_cards"
+              id="question"
+              type="checkbox"
+              ref={register}
+              name="question"
             />
+            <label htmlFor="question">Question card</label>
           </div>
-        )}
+
+          {isQuestion && (
+            <div className="textbox">
+              <input
+                ref={register({ max: 3, min: 1, valueAsNumber: true })}
+                type="number"
+                name="required_cards"
+              />
+            </div>
+          )}
+        </div>
       </fieldset>
 
       <fieldset>
@@ -91,3 +100,7 @@ const CreateCardForm = ({ cardPacks }) => {
 };
 
 export default CreateCardForm;
+
+interface Props {
+  cardPacks: { name: string; code: string }[];
+}
