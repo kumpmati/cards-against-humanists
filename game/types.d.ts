@@ -1,20 +1,24 @@
 export type Card = QuestionCard | AnswerCard;
 
-export interface QuestionCard {
-  text: string;
-  required_cards: number;
-  pack: string;
-}
-
 export interface AnswerCard {
-  id?: string;
+  id: string;
   owner?: string;
   text: string;
   pack: string;
+  extra?: Record<string, any>;
+}
+
+export interface QuestionCard {
+  id: string;
+  text: string;
+  required_cards: number;
+  pack: string;
+  extra?: Record<string, any>;
 }
 
 export interface CardPack {
   name: string;
+  code: string;
   questions: QuestionCard[];
   answers: AnswerCard[];
 }

@@ -25,10 +25,10 @@ const CardSettings: FC<Props> = ({ form, packs }) => {
                 })}
                 type="checkbox"
                 name="packs"
-                value={pack.value}
-                id={pack.value}
+                value={pack.code}
+                id={pack.code}
               />
-              <label htmlFor={pack.value}>{pack.name}</label>
+              <label htmlFor={pack.code}>{pack.name}</label>
             </li>
           ))}
       </ul>

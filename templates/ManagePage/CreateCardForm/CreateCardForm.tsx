@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { createNewCard } from "../../../api/cards";
-import { Card } from "../../../game/types";
+import { Card, CardPack } from "../../../game/types";
 import formStyles from "../../../styles/form.module.css";
 
-const defaultValues: Card = {
+const defaultValues: Partial<Card> = {
   text: "",
   required_cards: 1,
   pack: "CAH_en",
@@ -18,7 +18,7 @@ const CreateCardForm = ({ cardPacks }) => {
     if (!confirm("Are you sure?")) return;
 
     if (Array.isArray(card.pack)) card.pack = card.pack[0]; // turn to string
-    const { question, ...formatted } = card; // remove question field
+    const { question, ...formatted } = card; // do not push question field to DB
 
     const id = await createNewCard(formatted);
     console.log(id);
@@ -67,17 +67,17 @@ const CreateCardForm = ({ cardPacks }) => {
         <h2>Pack</h2>
 
         <div>
-          {cardPacks.map((pack) => (
-            <div key={pack.value} className="checkbox">
+          {cardPacks.map((pack: CardPack) => (
+            <div key={pack.code} className="checkbox">
               <input
-                key={pack.value}
+                key={pack.code}
                 type="radio"
                 ref={register({ required: true })}
                 name="pack"
-                id={"pack-" + pack.value}
-                value={pack.value}
+                id={"pack-" + pack.code}
+                value={pack.code}
               />
-              <label htmlFor={"pack-" + pack.value}>{pack.name}</label>
+              <label htmlFor={"pack-" + pack.code}>{pack.name}</label>
             </div>
           ))}
         </div>
