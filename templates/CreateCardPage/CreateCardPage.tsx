@@ -31,5 +31,5 @@ const CreateCardPage: FC<Props> = ({ cardPacks }) => {
 export default CreateCardPage;
 
 interface Props {
-  cardPacks: { name: string; code: string }[];
+  cardPacks: { name: string; code: string; editable: boolean }[];
 }

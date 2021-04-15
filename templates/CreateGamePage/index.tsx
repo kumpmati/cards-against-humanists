@@ -8,6 +8,7 @@ import { createMatch, joinMatch } from "../../api/lobby";
 import { GameFormData } from "./CreateGameForm/types";
 import { randomPlayerName } from "../../util";
 import { FC } from "react";
+import { CardPackNoCards } from "../../game/types";
 
 const CreatePage: FC<Props> = ({ cardPacks }) => {
   const { push } = useRouter();
@@ -55,8 +56,5 @@ const CreatePage: FC<Props> = ({ cardPacks }) => {
 export default CreatePage;
 
 interface Props {
-  cardPacks: {
-    name: string;
-    value: string;
-  }[];
+  cardPacks: CardPackNoCards[];
 }

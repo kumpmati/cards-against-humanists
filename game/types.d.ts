@@ -24,6 +24,8 @@ export interface CardPack {
   editable?: boolean;
 }
 
+export type CardPackNoCards = Omit<CardPack, "answers" | "questions">;
+
 type CahumGServer = {
   table: {
     question: QuestionCard;

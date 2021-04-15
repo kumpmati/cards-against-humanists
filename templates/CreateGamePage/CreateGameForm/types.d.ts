@@ -1,5 +1,7 @@
+import { CardPackNoCards } from "../../../game/types";
+
 export interface FormProps {
-  cardPacks: { name: string; value: string; editable: boolean }[];
+  cardPacks: CardPackNoCards[];
   onSubmit: (d: any) => any;
 }
 
