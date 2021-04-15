@@ -56,13 +56,14 @@ const Hand = ({ close }) => {
             const number = isSelected(card);
             if (number === -1) return null;
 
-            if (requiredCards === 1) return <Check size={18} />;
-            return <p>{number + 1}</p>;
+            return (
+              <p>{requiredCards === 1 ? <Check size={18} /> : number + 1}</p>
+            );
           };
 
           // card wrapper class names
           const cardClassNames = `${styles.card} ${
-            !!SelectionElement() ? styles["card--selected"] : ""
+            !!SelectionElement() ? styles["card--selected"] : styles.card
           }`;
 
           return (

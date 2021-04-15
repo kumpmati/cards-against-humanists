@@ -8,8 +8,16 @@ export const useCardSelect = (max: number) => {
   const select = (card: AnswerCard) => {
     const isSelected = !!selected.find((c) => c.id === card.id);
 
-    if (!isSelected && selected.length < max) {
-      setSelected((s) => [...s, card]);
+    if (!isSelected) {
+      if (selected.length < max) {
+        setSelected((s) => [...s, card]);
+      } else {
+        setSelected((s) => {
+          const newArr = [...s];
+          newArr[newArr.length - 1] = card;
+          return newArr;
+        });
+      }
     } else {
       setSelected((s) => s.filter((c) => c.id !== card.id));
     }
