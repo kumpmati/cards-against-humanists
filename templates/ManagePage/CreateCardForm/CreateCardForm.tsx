@@ -38,7 +38,7 @@ const CreateCardForm = ({ cardPacks }) => {
             id="card-text"
             ref={register({
               required: true,
-              validate: (v) => v.length > 0 && v.length < 120,
+              validate: (v) => v.length > 0 && v.length < 150,
             })}
             type="text"
             name="text"
