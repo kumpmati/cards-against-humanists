@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_URL } from "../../../api/constants";
-import { CardPack } from "../../../game/types";
+import { API_URL } from "../../api/constants";
+import { CardPack } from "../../game/types";
 
 export const useCardBrowser = (initialCode: string) => {
   const [code, setCode] = useState<string>(initialCode);

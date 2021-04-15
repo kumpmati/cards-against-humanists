@@ -1,12 +1,10 @@
 import Head from "next/head";
-import React, { FC } from "react";
-import { ArrowLeft } from "react-feather";
+import React from "react";
+import { ArrowLeft, List, Plus } from "react-feather";
 import Button from "../../components/Button";
-import CardBrowser from "./CardBrowser/CardBrowser";
-import CreateCardForm from "./CreateCardForm/CreateCardForm";
 import styles from "./style.module.css";
 
-const ManagePage: FC<Props> = ({ cardPacks }) => {
+const ManagePage = () => {
   return (
     <main className={styles.container}>
       <Head>
@@ -24,11 +22,8 @@ const ManagePage: FC<Props> = ({ cardPacks }) => {
         </div>
 
         <section>
-          <CreateCardForm cardPacks={cardPacks} />
-        </section>
-
-        <section>
-          <CardBrowser cardPacks={cardPacks} />
+          <Button href="/manage/browse" text="Browse cards" Icon={List} />
+          <Button href="/manage/create" text="Create new cards" Icon={Plus} />
         </section>
       </div>
     </main>
@@ -36,7 +31,3 @@ const ManagePage: FC<Props> = ({ cardPacks }) => {
 };
 
 export default ManagePage;
-
-interface Props {
-  cardPacks: { name: string; code: string }[];
-}

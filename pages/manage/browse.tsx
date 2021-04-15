@@ -1,8 +1,8 @@
 import axios from "axios";
 import { API_URL } from "../../api/constants";
-import CreatePage from "../../templates/CreateGamePage";
+import CardBrowser from "../../templates/CardBrowser/CardBrowser";
 
-export default CreatePage;
+export default CardBrowser;
 
 export async function getStaticProps() {
   return {

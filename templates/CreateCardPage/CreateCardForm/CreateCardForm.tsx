@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 const defaultValues: Partial<Card> = {
   text: "",
   required_cards: 1,
-  pack: "Community_en",
+  pack: "Cahum",
 };
 
 const CreateCardForm: FC<Props> = ({ cardPacks }) => {

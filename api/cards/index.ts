@@ -7,6 +7,6 @@ import { API_URL } from "../constants";
  * @param card
  */
 export const createNewCard = async (card: CardType) => {
-  const res = await axios.post(`${API_URL}/cards`, card);
+  const res = await axios.post(`${API_URL}/cards/new`, card);
   return res.data;
 };
