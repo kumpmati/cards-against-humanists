@@ -1,5 +1,5 @@
 export interface FormProps {
-  cardPacks: { name: string; value: string }[];
+  cardPacks: { name: string; value: string; editable: boolean }[];
   onSubmit: (d: any) => any;
 }
 

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { createNewCard } from "../../../api/cards";
-import { Card, CardPack } from "../../../game/types";
+import { Card } from "../../../game/types";
 import formStyles from "../../../styles/form.module.css";
 
 import styles from "./styles.module.css";
@@ -76,19 +76,21 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
         <h2>Pack</h2>
 
         <div>
-          {cardPacks.map((pack: CardPack) => (
-            <div key={pack.code} className="checkbox">
-              <input
-                key={pack.code}
-                type="radio"
-                ref={register({ required: true })}
-                name="pack"
-                id={"pack-" + pack.code}
-                value={pack.code}
-              />
-              <label htmlFor={"pack-" + pack.code}>{pack.name}</label>
-            </div>
-          ))}
+          {cardPacks
+            .filter((pack) => pack.editable)
+            .map((pack) => (
+              <div key={pack.code} className="checkbox">
+                <input
+                  key={pack.code}
+                  type="radio"
+                  ref={register({ required: true })}
+                  name="pack"
+                  id={"pack-" + pack.code}
+                  value={pack.code}
+                />
+                <label htmlFor={"pack-" + pack.code}>{pack.name}</label>
+              </div>
+            ))}
         </div>
       </fieldset>
 
@@ -102,5 +104,5 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
 export default CreateCardForm;
 
 interface Props {
-  cardPacks: { name: string; code: string }[];
+  cardPacks: { name: string; code: string; editable: boolean }[];
 }
