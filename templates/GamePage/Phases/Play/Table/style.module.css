@@ -33,7 +33,7 @@
   border-radius: var(--border-radius-small);
 }
 
-.czar > h1 {
+.czar > * {
   padding: 0.25em 1em;
 }
 

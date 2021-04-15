@@ -51,7 +51,7 @@ const Hand = ({ close }) => {
       </div>
 
       <div className={styles.hand__inner}>
-        {hand.map((card: AnswerCard, i) => {
+        {hand.map((card: AnswerCard) => {
           const SelectionElement = () => {
             const number = isSelected(card);
             if (number === -1) return null;
@@ -66,7 +66,7 @@ const Hand = ({ close }) => {
           }`;
 
           return (
-            <div key={card.id + i} className={cardClassNames}>
+            <div key={card.id} className={cardClassNames}>
               <Card
                 card={card}
                 selected={SelectionElement()}

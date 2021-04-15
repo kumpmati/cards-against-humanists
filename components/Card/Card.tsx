@@ -26,7 +26,7 @@ const Card: FC<Props> = ({ card, onClick, selected }) => {
         {selected && (
           <div className={styles.card__selectedIcon}>{selected}</div>
         )}
-        <p>{card.text}</p>
+        <p className={styles.card__text}>{card.text}</p>
 
         {card.required_cards > 1 && (
           <p className={styles.card__requiredCards}>

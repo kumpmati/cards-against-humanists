@@ -52,7 +52,7 @@ const Table = () => {
             <li key={i} className={styles.answer}>
               {answer.map((card) => (
                 <div
-                  key={card.id}
+                  key={card.id + card.text}
                   className={
                     canReveal && !isRevealed(card) ? styles["card__reveal"] : ""
                   }>
