@@ -9,11 +9,11 @@ const CreateCardPage: FC<Props> = ({ cardPacks }) => {
   return (
     <main>
       <Head>
-        <title>Cahum | Card browser</title>
+        <title>Cahum | Create cards</title>
       </Head>
 
       <nav>
-        <Button href="/manage" text="Back" Icon={ArrowLeft} />
+        <Button href="/cards" text="Back" Icon={ArrowLeft} />
       </nav>
 
       <div className="content">

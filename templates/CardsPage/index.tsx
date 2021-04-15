@@ -4,30 +4,30 @@ import { ArrowLeft, List, Plus } from "react-feather";
 import Button from "../../components/Button";
 import styles from "./style.module.css";
 
-const ManagePage = () => {
+const CardsPage = () => {
   return (
     <main className={styles.container}>
       <Head>
-        <title>Cahum | Manage</title>
+        <title>Cahum | Cards</title>
       </Head>
 
       <nav>
-        <Button href="/" text="Back" Icon={ArrowLeft} />
+        <Button href="/" text="Home" Icon={ArrowLeft} />
       </nav>
 
       <div className="content">
         <div id={styles.header}>
-          <h1 className="title">Manage</h1>
-          <p>Add new cards and stuff</p>
+          <h1 className="title">Cards</h1>
+          <p>Browse and submit cards</p>
         </div>
 
         <section>
-          <Button href="/manage/browse" text="Browse cards" Icon={List} />
-          <Button href="/manage/create" text="Create new cards" Icon={Plus} />
+          <Button href="/cards/browse" text="Browse" Icon={List} />
+          <Button href="/cards/create" text="Create" Icon={Plus} />
         </section>
       </div>
     </main>
   );
 };
 
-export default ManagePage;
+export default CardsPage;

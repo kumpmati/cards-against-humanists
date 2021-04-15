@@ -20,7 +20,6 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
   const submitCard = async (card: any) => {
     if (!confirm("Are you sure?")) return;
 
-    if (Array.isArray(card.pack)) card.pack = card.pack[0]; // turn to string
     const { question, ...formatted } = card; // do not push question field to DB
 
     const id = await createNewCard(formatted);
@@ -34,7 +33,6 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
       id={formStyles.form}
       onSubmit={handleSubmit(submitCard)}>
       <fieldset>
-        <h2>Create a new card</h2>
         <div className="textbox">
           <label htmlFor="card-text">Text</label>
           <input
@@ -76,21 +74,18 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
         <h2>Pack</h2>
 
         <div>
-          {cardPacks
-            .filter((pack) => pack.editable)
-            .map((pack) => (
-              <div key={pack.code} className="checkbox">
-                <input
-                  key={pack.code}
-                  type="radio"
-                  ref={register({ required: true })}
-                  name="pack"
-                  id={"pack-" + pack.code}
-                  value={pack.code}
-                />
-                <label htmlFor={"pack-" + pack.code}>{pack.name}</label>
-              </div>
-            ))}
+          <select
+            name="pack"
+            ref={register}
+            className={"select " + styles.controls__pack}>
+            {cardPacks
+              .filter((pack) => pack.editable)
+              .map((pack) => (
+                <option key={pack.code} value={pack.code}>
+                  {pack.name}
+                </option>
+              ))}
+          </select>
         </div>
       </fieldset>
 

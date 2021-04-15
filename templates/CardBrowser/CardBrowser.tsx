@@ -17,7 +17,7 @@ const CardBrowser: FC<Props> = ({ cardPacks }) => {
       </Head>
 
       <nav>
-        <Button href="/manage" text="Back" Icon={ArrowLeft} />
+        <Button href="/cards" text="Back" Icon={ArrowLeft} />
       </nav>
 
       <div className="content">
@@ -26,17 +26,15 @@ const CardBrowser: FC<Props> = ({ cardPacks }) => {
           <p>Browse every card available in the game</p>
         </div>
 
-        <div className={styles.controls}>
-          <select
-            className={styles.controls__pack}
-            onChange={(e) => setPack(e.target.value)}>
+        <form className={styles.controls}>
+          <select className="select" onChange={(e) => setPack(e.target.value)}>
             {cardPacks.map((pack) => (
               <option key={pack.code} value={pack.code}>
                 {pack.name}
               </option>
             ))}
           </select>
-        </div>
+        </form>
         <ul className={styles.list}>
           {cards.map((card) => {
             const requiredCards = card["required_cards"];

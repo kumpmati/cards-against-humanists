@@ -16,7 +16,7 @@
   color: var(--txt-col-2);
 }
 
-#form fieldset > h2 {
+#form fieldset h2 {
   font-size: 1.5rem;
 
   margin: 0;

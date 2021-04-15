@@ -162,6 +162,19 @@ main {
   color: white;
 }
 
+.select {
+  appearance: none;
+  display: flex;
+  font-size: 0.95em;
+  padding: 0.75em;
+
+  border: 0;
+  border-radius: var(--border-radius);
+
+  color: var(--txt-col-0);
+  background-color: var(--bg-col-2);
+}
+
 @media all and (max-width: 35rem) {
   .content {
     width: 100vw;
