@@ -6,7 +6,7 @@ import formStyles from "../../../styles/form.module.css";
 const defaultValues: Partial<Card> = {
   text: "",
   required_cards: 1,
-  pack: "CAH_en",
+  pack: "Community_en",
 };
 
 const CreateCardForm = ({ cardPacks }) => {
