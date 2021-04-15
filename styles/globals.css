@@ -42,7 +42,10 @@ a {
 }
 
 nav {
+  position: sticky;
+  top: 0;
   padding: 0.25em 0.5em;
+  background-color: var(--bg-col-1);
 }
 
 main {
