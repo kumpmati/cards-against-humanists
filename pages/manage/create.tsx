@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API_URL } from "../../api/constants";
-import { CardPack } from "../../game/types";
 import CreateCardPage from "../../templates/CreateCardPage/CreateCardPage";
 
 export default CreateCardPage;
