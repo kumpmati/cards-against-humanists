@@ -9,5 +9,6 @@ export async function getStaticProps() {
     props: {
       cardPacks: (await axios.get(`${API_URL}/packs`)).data,
     },
+    revalidate: 60,
   };
 }
