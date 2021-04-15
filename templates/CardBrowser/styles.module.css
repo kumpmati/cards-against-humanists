@@ -3,7 +3,13 @@
 }
 
 .controls {
+  position: sticky;
+  top: 3em;
+
   display: flex;
+
+  padding: 1em;
+  background-color: var(--bg-col-1);
 }
 
 .list {
