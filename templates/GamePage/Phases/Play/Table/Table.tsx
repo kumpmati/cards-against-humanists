@@ -54,7 +54,9 @@ const Table = () => {
                 <div
                   key={card.id + card.text}
                   className={
-                    canReveal && !isRevealed(card) ? styles["card__reveal"] : ""
+                    canReveal && !isRevealed(card)
+                      ? styles.card__reveal
+                      : styles.card
                   }>
                   <Card card={card} onClick={cardOnClick(card)} />
                 </div>

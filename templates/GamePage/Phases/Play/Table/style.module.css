@@ -1,3 +1,12 @@
+@keyframes card-in {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .table {
   font-size: 1.1em;
   width: 100%;
@@ -50,6 +59,10 @@
 .answer {
   display: flex;
   margin: 0.25em;
+}
+
+.card {
+  animation: card-in 250ms both;
 }
 
 .card__reveal {
