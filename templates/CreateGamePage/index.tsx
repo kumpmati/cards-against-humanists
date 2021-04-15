@@ -37,7 +37,7 @@ const CreatePage: FC<Props> = ({ cardPacks }) => {
       </Head>
 
       <nav>
-        <Button href="/" text="Back" Icon={ArrowLeft} />
+        <Button href="/" text="Home" Icon={ArrowLeft} />
       </nav>
 
       <div className="content">
