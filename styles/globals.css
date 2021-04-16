@@ -151,6 +151,11 @@ main {
   background-color: var(--blue);
 }
 
+.checkbox > input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .checkbox > input[type="checkbox"]:checked::before {
   content: "x";
   font-size: 1.4em;
