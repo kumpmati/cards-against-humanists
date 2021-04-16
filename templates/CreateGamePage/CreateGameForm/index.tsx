@@ -8,15 +8,15 @@ import styles from "./style.module.css";
 import { FormProps, GameFormData } from "./types";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
-const formDefaultValues: GameFormData = {
-  numPlayers: 2,
-  private: false,
-  czarReveals: false,
-  shuffleAnswers: true,
-  packs: ["Cahum"],
-};
-
 const CreateGameForm: FC<FormProps> = ({ onSubmit, cardPacks }) => {
+  const formDefaultValues: GameFormData = {
+    numPlayers: 2,
+    private: false,
+    czarReveals: false,
+    shuffleAnswers: true,
+    packs: ["CAH_en"],
+  };
+
   const form = useForm<GameFormData>({ defaultValues: formDefaultValues });
   const {
     handleSubmit,

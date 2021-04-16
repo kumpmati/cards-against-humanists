@@ -12,7 +12,7 @@ export const useCardBrowser = (initialCode: string) => {
 
     const fetchCards = async () => {
       const res = (await axios.get(`${API_URL}/cards?packs=${code}`)).data;
-      setCardPack(res.packs?.[0]);
+      setCardPack(res.packs?.[0] ?? null);
     };
 
     fetchCards();

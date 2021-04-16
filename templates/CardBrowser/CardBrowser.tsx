@@ -7,7 +7,7 @@ import { useCardBrowser } from "./hooks";
 import styles from "./styles.module.css";
 
 const CardBrowser: FC<Props> = ({ cardPacks }) => {
-  const { pack, setPack } = useCardBrowser(cardPacks[0].code);
+  const { pack, setPack } = useCardBrowser(cardPacks?.[0]?.code);
   const cards = pack ? [...pack.questions, ...pack.answers] : [];
 
   return (

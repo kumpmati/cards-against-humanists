@@ -13,7 +13,7 @@ export const RoomSection: FC<Props> = ({ form }) => {
   const { register } = form;
   const { query } = useRouter();
 
-  const roomCode = query.code ? query.code : "";
+  const roomCode = query.code ?? "";
 
   return (
     <fieldset>
