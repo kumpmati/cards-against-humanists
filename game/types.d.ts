@@ -49,3 +49,27 @@ export type CahumG = {
 export interface CahumGClient extends Omit<CahumG, "hands" | "deck"> {
   hand: AnswerCard[];
 }
+
+export interface SetupData {
+  numPlayers: number;
+  private: boolean;
+  czarReveals: boolean;
+  shuffleAnswers: boolean;
+  packs: string[];
+}
+
+export interface GameListing {
+  gameName: string;
+  unlisted: boolean;
+  players: PlayerListing[];
+  createdAt: number;
+  updatedAt: number;
+  setupData: SetupData;
+  matchID: string;
+}
+
+interface PlayerListing {
+  id: number;
+  name?: string;
+  isConnected?: boolean;
+}

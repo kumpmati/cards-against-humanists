@@ -1,0 +1,11 @@
+#header {
+  margin-bottom: 4em;
+}
+
+.list {
+  padding: 0;
+}
+
+.list > * + * {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

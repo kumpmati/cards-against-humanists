@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { AxiosError } from "axios";
 import { FC, useState } from "react";
-import { ArrowLeft } from "react-feather";
+import { ArrowLeft, List } from "react-feather";
 import { getMatch, joinMatch } from "../../api/lobby";
 import Button from "../../components/Button";
 
@@ -47,12 +47,22 @@ const JoinPage: FC = () => {
           <h1 className="title">Join game</h1>
           <p>Join an existing game</p>
         </div>
-        <JoinGameForm
-          close={() => setShowPassword(false)}
-          showPassword={showPassword}
-          onSubmit={onSubmit}
-        />
-        {error && <p>{error}</p>}
+
+        <section>
+          <JoinGameForm
+            close={() => setShowPassword(false)}
+            showPassword={showPassword}
+            onSubmit={onSubmit}
+          />
+          {error && <p>{error}</p>}
+        </section>
+
+        <br></br>
+        <br></br>
+
+        <section>
+          <Button href="/join/browse" text="Browse public games" Icon={List} />
+        </section>
       </div>
     </main>
   );
