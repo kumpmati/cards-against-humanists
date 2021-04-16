@@ -6,15 +6,14 @@ import formStyles from "../../../styles/form.module.css";
 
 import styles from "./styles.module.css";
 
-const defaultValues: Partial<Card> = {
-  text: "",
-  required_cards: 1,
-  pack: "Cahum",
-};
-
 const CreateCardForm: FC<Props> = ({ cardPacks }) => {
-  const { handleSubmit, register, reset, watch } = useForm({ defaultValues });
+  const defaultValues: Partial<Card> = {
+    text: "",
+    required_cards: 1,
+    pack: cardPacks.filter((p) => p.editable)?.[0].code, // first editable pack
+  };
 
+  const { handleSubmit, register, reset, watch } = useForm({ defaultValues });
   const isQuestion = watch("question");
 
   const submitCard = async (card: any) => {
