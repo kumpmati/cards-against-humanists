@@ -27,6 +27,7 @@ const GameListing: FC<PropsI> = ({ game, cardPacks }) => {
           href={`/join?code=${game.matchID}`}
           Icon={ArrowRight}
           iconRight
+          disabled={connectedPlayers >= maxPlayers ? "Game is full" : ""}
         />
       </div>
     </div>
