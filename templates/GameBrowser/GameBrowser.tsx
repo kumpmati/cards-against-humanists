@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { ArrowLeft } from "react-feather";
+import { ArrowLeft, RefreshCw, RotateCw } from "react-feather";
 import Button from "../../components/Button";
 import GameListing from "../../components/GameListing/GameListing";
 import { useGameList } from "./hooks";
@@ -8,7 +8,7 @@ import { useGameList } from "./hooks";
 import styles from "./styles.module.css";
 
 const GameBrowser = ({ cardPacks }) => {
-  const games = useGameList();
+  const { games, refresh } = useGameList();
 
   return (
     <main>
@@ -25,6 +25,8 @@ const GameBrowser = ({ cardPacks }) => {
           <h1 className="title">Public games</h1>
           <p>Join forces with random people across the internet</p>
         </div>
+
+        <Button onClick={refresh} text="Refresh" Icon={RefreshCw} iconRight />
 
         <section>
           <ul className={styles.list}>
