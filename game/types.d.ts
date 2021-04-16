@@ -21,12 +21,12 @@ export interface CardPack {
   code: string;
   questions: QuestionCard[];
   answers: AnswerCard[];
-  editable?: boolean;
+  editable: boolean;
 }
 
 export type CardPackNoCards = Omit<CardPack, "answers" | "questions">;
 
-type CahumGServer = {
+export type CahumG = {
   table: {
     question: QuestionCard;
     answers: AnswerCard[][];
@@ -39,8 +39,13 @@ type CahumGServer = {
     stage: PlayStages;
   };
   settings: SetupData;
+  deck: {
+    answerDeckIndex: number;
+    questionDeckIndex: number;
+    seed: string;
+  };
 };
 
-export interface CahumG extends Omit<CahumGServer, "hands"> {
+export interface CahumGClient extends Omit<CahumG, "hands" | "deck"> {
   hand: AnswerCard[];
 }

@@ -1,5 +1,5 @@
 import { Ctx } from "boardgame.io";
-import { AnswerCard, CahumG } from "../../types";
+import { AnswerCard, CahumGClient } from "../../types";
 
 /**
  * Used to submit an answer of 1 or more cards.
@@ -8,7 +8,11 @@ import { AnswerCard, CahumG } from "../../types";
  * @param ctx
  * @param args
  */
-export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {};
+export const submitAnswer = (
+  G: CahumGClient,
+  ctx: Ctx,
+  cards: AnswerCard[]
+) => {};
 
 /**
  * Reveals an answer card.
@@ -17,7 +21,7 @@ export const submitAnswer = (G: CahumG, ctx: Ctx, cards: AnswerCard[]) => {};
  * @param ctx
  * @param id
  */
-export const revealCard = (G: CahumG, ctx: Ctx, card: AnswerCard) => {};
+export const revealCard = (G: CahumGClient, ctx: Ctx, card: AnswerCard) => {};
 
 /**
  * Chooses the winning player for the round.
@@ -26,4 +30,4 @@ export const revealCard = (G: CahumG, ctx: Ctx, card: AnswerCard) => {};
  * @param ctx
  * @param ownerID
  */
-export const chooseWinner = (G: CahumG, ctx: Ctx, ownerID: string) => {};
+export const chooseWinner = (G: CahumGClient, ctx: Ctx, ownerID: string) => {};

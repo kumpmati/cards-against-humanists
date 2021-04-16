@@ -1,10 +1,10 @@
 import { Ctx, Game } from "boardgame.io";
-import { CahumG } from "../../../../game/types";
+import { CahumGClient } from "../../../../game/types";
 
 export interface PlayContextI {
   isCzar: boolean;
   stage: string;
-  G: CahumG;
+  G: CahumGClient;
   ctx: Ctx;
   game: any;
 }

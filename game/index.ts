@@ -1,12 +1,12 @@
 import { Game } from "boardgame.io";
 import play from "./phases/play";
 import waitForPlayers from "./phases/waitForPlayers";
-import { CahumG } from "./types";
+import { CahumGClient } from "./types";
 
 /**
  * CLIENT-SIDE
  */
-export const Cahum: Game<CahumG> = {
+export const Cahum: Game<CahumGClient> = {
   name: "cahum",
 
   // The seed used by the pseudo-random number generator.
