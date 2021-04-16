@@ -3,11 +3,6 @@ import { UseFormMethods } from "react-hook-form";
 import { GameFormData } from "../types";
 import styles from "./CardSettings.module.css";
 
-interface Props {
-  form: UseFormMethods<GameFormData>;
-  packs: any[];
-}
-
 const CardSettings: FC<Props> = ({ form, packs }) => {
   const { register } = form;
 
@@ -16,7 +11,7 @@ const CardSettings: FC<Props> = ({ form, packs }) => {
       <h2>Card packs</h2>
       <ul id={styles.cardPacks}>
         {packs &&
-          packs.map((pack, i) => (
+          packs.filter(hasCards).map((pack, i) => (
             <li key={i} className="checkbox">
               <input
                 ref={register({
@@ -27,6 +22,7 @@ const CardSettings: FC<Props> = ({ form, packs }) => {
                 name="packs"
                 value={pack.code}
                 id={pack.code}
+                disabled={pack.answers + pack.questions === 0}
               />
               <label htmlFor={pack.code}>{pack.name}</label>
             </li>
@@ -37,3 +33,10 @@ const CardSettings: FC<Props> = ({ form, packs }) => {
 };
 
 export default CardSettings;
+
+const hasCards = (pack: any) => pack.answers + pack.questions > 0;
+
+interface Props {
+  form: UseFormMethods<GameFormData>;
+  packs: any[];
+}
