@@ -20,9 +20,7 @@ const CreateCardForm: FC<Props> = ({ cardPacks }) => {
     if (!confirm("Are you sure?")) return;
 
     const { question, ...formatted } = card; // do not push question field to DB
-
-    const id = await createNewCard(formatted);
-    console.log(id);
+    await createNewCard(formatted);
     reset();
   };
 
