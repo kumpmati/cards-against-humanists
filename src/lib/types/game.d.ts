@@ -1,3 +1,4 @@
+import { GameController } from '@/services/game';
 import { AnswerCard, QuestionCard } from './cards';
 
 export type GameSettings = {
@@ -34,17 +35,17 @@ export type ClientGameState = Omit<ServerGameState, 'hands' | 'deck'> & {
 };
 
 export type ServerGameState = {
-	status: GameStateStatus;
+	phase: GamePhase;
 	czar: string | null;
 	round: number;
-	roundStartTime: number;
+	phaseStartTime: number;
 	table: ServerGameTable;
 	hands: Record<string, AnswerCard[]>;
 };
 
 export type ServerGameTable = {
 	question: QuestionCard | null;
-	answers: AnswerCard[];
+	answers: Record<string, AnswerCard[]>;
 };
 
 export type ServerGame = {
@@ -67,26 +68,24 @@ export type ClientGame = {
 	state: ClientGameState;
 };
 
-export type GameStateStatus =
+export type GamePhase =
 	| 'IN_LOBBY'
 	| 'GAME_START'
 	| 'ROUND_START'
 	| 'WAITING_FOR_ANSWERS'
 	| 'WAITING_FOR_WINNER'
+	| 'REVEALING_CARDS'
 	| 'ROUND_END'
 	| 'GAME_END';
 
-export type GameEvent =
-	| 'GAME_STARTED'
-	| 'GAME_ENDED'
-	| 'PLAYER_JOINED'
-	| 'PLAYER_CONNECTED'
-	| 'PLAYER_DISCONNECTED'
-	| 'PLAYER_LEFT'
-	| 'CZAR_SELECTED'
-	| 'ROUND_STARTED'
-	| 'ROUND_ENDED'
-	| 'QUESTION_CHANGED'
-	| 'ANSWER_CARD_SUBMITTED'
-	| 'ANSWER_CARDS_REVEALED'
-	| 'WINNER_CHOSEN';
+export type ChooseWinnerAction = {
+	cards: string[];
+};
+
+export type SubmitAnswerAction = {
+	cards: string[];
+};
+
+export type RevealCardAction = {
+	cards: string[];
+};

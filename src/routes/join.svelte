@@ -9,32 +9,32 @@
 	let gameId = '';
 
 	const joinGame = async () => {
+		// new user on join
 		const user: User = {
 			id: '',
-			game: '',
+			gameId: '',
 			nickname,
 			token: ''
 		};
 
 		const res = await fetch(`${API_URL}/api/game/${gameId}/join`, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(user)
 		});
 
 		const data = await res.json();
-		if (!data.game?.id) {
-			console.error(data?.message);
+
+		if (data.error) {
+			console.error(data.message);
 			return;
 		}
 
 		const { game, player } = data;
 
-		// update store
+		// update stored user
 		$userStore = {
-			game: game.id,
+			gameId: game.id,
 			id: player.id,
 			nickname: player.nickname,
 			token: player.token

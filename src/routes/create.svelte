@@ -41,7 +41,7 @@
 
 		// update store
 		$userStore = {
-			game: game.id,
+			gameId: game.id,
 			id: player.id,
 			nickname: player.nickname,
 			token: player.token

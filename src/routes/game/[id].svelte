@@ -40,9 +40,6 @@
 	// authenticate user on mount
 	onMount(() => {
 		$userStore.gameId = gameInfo.id;
-
-		console.log('user store:', $userStore);
-
 		game.join($userStore);
 	});
 </script>

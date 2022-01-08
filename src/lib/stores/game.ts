@@ -4,19 +4,16 @@ import type { Readable } from 'svelte/store';
 import { writable } from 'svelte/store';
 import { io, Socket } from 'socket.io-client';
 import type {
+	Action,
+	ActionEvent,
 	ClientToServerEvents,
-	InGameRequest,
 	ServerToClientEvents
 } from '$lib/types/socket.io';
-
-type Auth = {
-	gameId: string;
-	token: string;
-};
+import type { User } from '$lib/types/user';
 
 export interface GameStore extends Readable<ClientGame> {
-	join: (credentials: Auth) => void;
-	send: <E extends keyof ClientToServerEvents, T>(event: E, value: T) => Promise<void>;
+	join: (credentials: User) => void;
+	send: <E extends ActionEvent, T>(event: E, value: T) => Promise<void>;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -24,10 +21,10 @@ export const createGameStore = (): GameStore => {
 	const { subscribe, set } = writable<ClientGame>(null);
 
 	let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
-	let auth: Auth;
+	let user: User;
 
-	const join = (credentials: Auth) => {
-		auth = credentials;
+	const join = (credentials: User) => {
+		user = credentials;
 
 		// reconnect needed to pass new auth credentials to backend
 		reconnect();
@@ -36,14 +33,13 @@ export const createGameStore = (): GameStore => {
 	const connect = () => {
 		if (socket) return;
 
-		console.log('connecting with:', auth);
-
 		// pass in auth credentials when making initial connection
-		socket = io(API_WS_URL, { auth });
+		socket = io(API_WS_URL, { auth: user });
 
 		// update store on state change
 		socket.on('stateChanged', (d) => set(d.body));
 
+		socket.on('error', (d) => console.error('error:', d.error));
 		socket.on('connect_error', (d) => console.error('error connecting:', d.message));
 	};
 
@@ -56,19 +52,15 @@ export const createGameStore = (): GameStore => {
 		connect();
 	};
 
-	const send = async <EventType extends keyof ClientToServerEvents, Body>(
-		event: EventType,
-		value: Body
-	) => {
+	const send = async <E extends ActionEvent, Body>(event: E, value: Body) => {
 		connect();
 
-		const request: InGameRequest<Body> = {
-			gameId: auth.gameId,
-			token: auth.token,
+		const request: Action<E, Body> = {
+			event,
 			body: value
 		};
 
-		socket.emit(event as any, request);
+		socket.emit('action', request);
 	};
 
 	return {
